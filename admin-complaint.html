@@ -532,7 +532,7 @@
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/complaints/" +
+                        "https://nandgaon-civicconnect.onrender.com/api/complaints/" +
                         encodeURIComponent(
                             complaintId
                         )
@@ -653,7 +653,7 @@
                     photoContainer.innerHTML = `
 
                         <img
-                            src="http://localhost:5000${complaint.photo}"
+                            src="https://nandgaon-civicconnect.onrender.com${complaint.photo}"
                             alt="Complaint Photo"
                         >
 
@@ -691,7 +691,7 @@
                         >
 
                             <source
-                                src="http://localhost:5000${complaint.video}"
+                                src="https://nandgaon-civicconnect.onrender.com${complaint.video}"
                             >
 
                             Your browser does not support
@@ -747,7 +747,7 @@
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/complaints/" +
+                        "https://nandgaon-civicconnect.onrender.com/api/complaints/" +
                         encodeURIComponent(
                             complaintId
                         ) +
