@@ -1,0 +1,784 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f8fc;
+            color: #183b66;
+            font-family: Arial, sans-serif;
+        }
+
+        /* =====================================================
+           ADMIN HEADER
+        ===================================================== */
+
+        .admin-page {
+            padding: 45px 25px 70px;
+        }
+
+        .admin-header {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 50px;
+            background: #eaf3ff;
+            color: #0b5fc4;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .admin-header h1 {
+            margin: 0 0 8px;
+            color: #123e73;
+            font-size: 32px;
+        }
+
+        .admin-header p {
+            margin: 0;
+            color: #66788f;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           SUMMARY CARDS
+        ===================================================== */
+
+        .summary-grid {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 30px rgba(15, 40, 70, 0.06);
+        }
+
+        .summary-card span {
+            display: block;
+            color: #7b8a9c;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .summary-card strong {
+            font-size: 27px;
+            color: #123e73;
+        }
+
+
+        /* =====================================================
+           COMPLAINT TABLE
+        ===================================================== */
+
+        .complaints-card {
+            max-width: 1200px;
+            margin: auto;
+
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow: 0 15px 40px rgba(15, 40, 70, 0.07);
+
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .table-header h2 {
+            margin: 0;
+            color: #173f70;
+            font-size: 20px;
+        }
+
+        .refresh-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            background: #0b5fc4;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .refresh-btn:hover {
+            background: #084e9f;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        th {
+            padding: 13px 12px;
+            text-align: left;
+            background: #f3f7fc;
+            color: #315477;
+            font-size: 12px;
+            border-bottom: 1px solid #dfe7f0;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #edf1f5;
+            color: #526b86;
+            font-size: 12px;
+            vertical-align: top;
+        }
+
+        tr:hover td {
+            background: #fafcff;
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status-select {
+            padding: 8px 9px;
+            border: 1px solid #ccd8e5;
+            border-radius: 7px;
+            background: white;
+            color: #294b70;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .update-btn {
+            margin-top: 7px;
+            padding: 7px 11px;
+            border: none;
+            border-radius: 7px;
+            background: #16834b;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .update-btn:hover {
+            background: #116b3d;
+        }
+
+
+        /* =====================================================
+           EMPTY / LOADING
+        ===================================================== */
+
+        .message {
+            padding: 35px;
+            text-align: center;
+            color: #7b8a9c;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .admin-page {
+                padding: 30px 12px 50px;
+            }
+
+            .admin-header h1 {
+                font-size: 26px;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .complaints-card {
+                padding: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="services.html">Services</a>
+
+            <a href="register-complaint.html">Complaint</a>
+
+            <a href="faq.html">FAQ</a>
+
+            <a href="feedback.html">Feedback</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         ADMIN DASHBOARD
+    ===================================================== -->
+
+    <main class="admin-page">
+
+
+        <div class="admin-header">
+
+            <span class="admin-badge">
+                🏛️ ADMINISTRATION PANEL
+            </span>
+
+            <h1>
+                Civic Complaint Dashboard
+            </h1>
+
+            <p>
+                Monitor citizen complaints and update their current status.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================== -->
+
+        <div class="summary-grid">
+
+            <div class="summary-card">
+                <span>Total Complaints</span>
+                <strong id="totalComplaints">0</strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Submitted</span>
+                <strong id="submittedComplaints">0</strong>
+            </div>
+
+            <div class="summary-card">
+                <span>In Progress</span>
+                <strong id="progressComplaints">0</strong>
+            </div>
+
+            <div class="summary-card">
+                <span>Resolved</span>
+                <strong id="resolvedComplaints">0</strong>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             COMPLAINT TABLE
+        ================================================== -->
+
+        <div class="complaints-card">
+
+            <div class="table-header">
+
+                <h2>
+                    📋 Citizen Complaints
+                </h2>
+
+                <button
+                    class="refresh-btn"
+                    onclick="loadComplaints()"
+                >
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
+            <div id="complaintsContainer">
+
+                <div class="message">
+                    Loading complaints...
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
+
+        <p>
+            Enhancing Public Awareness of e-Governance
+        </p>
+
+        <p>
+            © 2026 Nandgaon CivicConnect
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         ADMIN JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        const API_URL =
+            "http://localhost:5000";
+
+
+        // =====================================================
+        // LOAD ALL COMPLAINTS
+        // =====================================================
+
+        async function loadComplaints() {
+
+            const container =
+                document.getElementById("complaintsContainer");
+
+            container.innerHTML =
+                '<div class="message">Loading complaints...</div>';
+
+
+            try {
+
+                const response = await fetch(
+                    API_URL + "/api/admin/complaints"
+                );
+
+                const result =
+                    await response.json();
+
+
+                if (!result.success) {
+
+                    throw new Error(
+                        result.message || "Unable to load complaints"
+                    );
+
+                }
+
+
+                const complaints =
+                    result.complaints;
+
+
+                updateSummary(complaints);
+
+
+                if (complaints.length === 0) {
+
+                    container.innerHTML =
+                        '<div class="message">No complaints found.</div>';
+
+                    return;
+
+                }
+
+
+                let tableHTML = `
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Complaint ID</th>
+
+                                <th>Citizen</th>
+
+                                <th>Contact</th>
+
+                                <th>Ward</th>
+
+                                <th>Category</th>
+
+                                <th>Description</th>
+
+                                <th>Location</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                `;
+
+
+                complaints.forEach(function (complaint) {
+
+                    tableHTML += `
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ${escapeHTML(complaint.complaintId)}
+                                </strong>
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.name)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.phone)}
+                                <br>
+                                ${escapeHTML(complaint.email || "-")}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.ward)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.category)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.description)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(complaint.location)}
+                            </td>
+
+                            <td>
+
+                                <select
+                                    class="status-select"
+                                    id="status-${complaint.complaintId}"
+                                >
+
+                                    ${createStatusOptions(complaint.status)}
+
+                                </select>
+
+                                <br>
+
+                                <button
+                                    class="update-btn"
+                                    onclick="updateStatus('${escapeJS(complaint.complaintId)}')"
+                                >
+                                    Update
+                                </button>
+
+                            </td>
+
+                        </tr>
+                    `;
+
+                });
+
+
+                tableHTML += `
+
+                        </tbody>
+
+                    </table>
+                `;
+
+
+                container.innerHTML =
+                    tableHTML;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin dashboard error:",
+                    error
+                );
+
+                container.innerHTML = `
+
+                    <div class="message">
+
+                        ❌ Unable to load complaints.
+                        <br><br>
+
+                        Make sure the backend server is running.
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        // =====================================================
+        // CREATE STATUS OPTIONS
+        // =====================================================
+
+        function createStatusOptions(currentStatus) {
+
+            const statuses = [
+
+                "Submitted",
+                "Verified",
+                "In Progress",
+                "Resolved",
+                "Rejected"
+
+            ];
+
+
+            return statuses.map(function (status) {
+
+                return `
+
+                    <option
+                        value="${status}"
+                        ${status === currentStatus ? "selected" : ""}
+                    >
+                        ${status}
+                    </option>
+
+                `;
+
+            }).join("");
+
+        }
+
+
+        // =====================================================
+        // UPDATE STATUS
+        // =====================================================
+
+        async function updateStatus(complaintId) {
+
+            const select =
+                document.getElementById(
+                    "status-" + complaintId
+                );
+
+
+            const newStatus =
+                select.value;
+
+
+            try {
+
+                const response = await fetch(
+
+                    API_URL +
+                    "/api/admin/complaints/" +
+                    encodeURIComponent(complaintId) +
+                    "/status",
+
+                    {
+
+                        method: "PUT",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body: JSON.stringify({
+
+                            status: newStatus
+
+                        })
+
+                    }
+
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.success) {
+
+                    alert(
+                        result.message ||
+                        "Unable to update status."
+                    );
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Complaint status updated successfully!"
+                );
+
+
+                loadComplaints();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Status update error:",
+                    error
+                );
+
+                alert(
+                    "Unable to connect to the server."
+                );
+
+            }
+
+        }
+
+
+        // =====================================================
+        // SUMMARY COUNTS
+        // =====================================================
+
+        function updateSummary(complaints) {
+
+            document.getElementById(
+                "totalComplaints"
+            ).textContent =
+                complaints.length;
+
+
+            document.getElementById(
+                "submittedComplaints"
+            ).textContent =
+                complaints.filter(
+                    c => c.status === "Submitted"
+                ).length;
+
+
+            document.getElementById(
+                "progressComplaints"
+            ).textContent =
+                complaints.filter(
+                    c => c.status === "In Progress"
+                ).length;
+
+
+            document.getElementById(
+                "resolvedComplaints"
+            ).textContent =
+                complaints.filter(
+                    c => c.status === "Resolved"
+                ).length;
+
+        }
+
+
+        // =====================================================
+        // SECURITY HELPERS
+        // =====================================================
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function escapeJS(value) {
+
+            return String(value ?? "")
+                .replace(/\\/g, "\\\\")
+                .replace(/'/g, "\\'");
+
+        }
+
+
+        // =====================================================
+        // INITIAL LOAD
+        // =====================================================
+
+        loadComplaints();
+
+    </script>
+
+</body>
+
+</html>
+```

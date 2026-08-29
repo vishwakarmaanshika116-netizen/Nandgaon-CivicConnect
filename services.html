@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =====================================================
+           SERVICES PAGE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f6f9fd;
+            color: #173b66;
+        }
+
+        .services-page {
+            padding: 60px 20px 85px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .services-header {
+            max-width: 760px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .services-badge {
+            display: inline-block;
+            padding: 7px 15px;
+            border-radius: 50px;
+            background: #eaf3ff;
+            color: #0b5fc4;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .services-header h1 {
+            margin: 0 0 13px;
+            color: #123d70;
+            font-size: 38px;
+        }
+
+        .services-header p {
+            margin: 0;
+            color: #697d94;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           SERVICE GRID
+        ===================================================== */
+
+        .services-container {
+            width: min(1120px, 100%);
+            margin: auto;
+        }
+
+        .service-grid-new {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 23px;
+        }
+
+
+        /* =====================================================
+           SERVICE CARD
+        ===================================================== */
+
+        .service-card-new {
+            position: relative;
+            background: white;
+            border: 1px solid #e0e8f1;
+            border-radius: 18px;
+            padding: 30px;
+            min-height: 255px;
+            box-shadow: 0 8px 25px rgba(15, 40, 70, 0.05);
+            transition: all 0.28s ease;
+            overflow: hidden;
+        }
+
+        .service-card-new::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #f0f6ff;
+            right: -50px;
+            bottom: -60px;
+            transition: 0.3s;
+        }
+
+        .service-card-new:hover {
+            transform: translateY(-7px);
+            border-color: #c6dbf3;
+            box-shadow: 0 18px 40px rgba(15, 40, 70, 0.11);
+        }
+
+        .service-card-new:hover::after {
+            transform: scale(1.3);
+        }
+
+
+        /* =====================================================
+           ICON
+        ===================================================== */
+
+        .service-icon-new {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: #edf5ff;
+            font-size: 27px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .service-card-new h2 {
+            position: relative;
+            z-index: 2;
+            margin: 0 0 10px;
+            color: #153f71;
+            font-size: 20px;
+        }
+
+        .service-card-new p {
+            position: relative;
+            z-index: 2;
+            max-width: 470px;
+            margin: 0 0 22px;
+            color: #6c7f95;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .service-button {
+            position: relative;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 17px;
+            border-radius: 9px;
+            background: #0b61c7;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .service-button:hover {
+            background: #084f9f;
+            transform: translateX(2px);
+        }
+
+
+        /* =====================================================
+           SMALL LABEL
+        ===================================================== */
+
+        .service-label {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            z-index: 3;
+            padding: 5px 9px;
+            border-radius: 50px;
+            background: #f1f5f9;
+            color: #66788e;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CITIZEN INFO
+        ===================================================== */
+
+        .citizen-section {
+            width: min(1120px, 100%);
+            margin: 65px auto 0;
+        }
+
+        .citizen-card {
+            position: relative;
+            overflow: hidden;
+            padding: 42px;
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                #073b7a,
+                #0c68cf
+            );
+            color: white;
+            text-align: center;
+            box-shadow: 0 18px 45px rgba(11, 83, 164, 0.17);
+        }
+
+        .citizen-card::before {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            border: 45px solid rgba(255,255,255,0.05);
+            left: -80px;
+            top: -110px;
+        }
+
+        .citizen-card::after {
+            content: "";
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 35px solid rgba(255,255,255,0.05);
+            right: -60px;
+            bottom: -100px;
+        }
+
+        .citizen-card h2 {
+            position: relative;
+            z-index: 2;
+            margin: 0 0 12px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .citizen-card p {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: rgba(255,255,255,0.80);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .citizen-button {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 9px;
+            background: white;
+            color: #0b5fc4;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .citizen-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+
+        /* =====================================================
+           QUICK FEATURES
+        ===================================================== */
+
+        .features {
+            width: min(950px, 100%);
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .feature {
+            padding: 20px 15px;
+            background: white;
+            border: 1px solid #e2e9f1;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .feature strong {
+            display: block;
+            color: #315477;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .feature span {
+            color: #8290a0;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 750px) {
+
+            .services-page {
+                padding: 45px 14px 65px;
+            }
+
+            .services-header h1 {
+                font-size: 30px;
+            }
+
+            .service-grid-new {
+                grid-template-columns: 1fr;
+            }
+
+            .citizen-card {
+                padding: 35px 22px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="register-complaint.html">
+                Complaint
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+        </div>
+
+        <div class="language-switch">
+
+            <button onclick="setLanguage('en')">
+                English
+            </button>
+
+            <button onclick="setLanguage('hi')">
+                हिंदी
+            </button>
+
+            <button onclick="setLanguage('mr')">
+                मराठी
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         SERVICES PAGE
+    ===================================================== -->
+
+    <main class="services-page">
+
+
+        <!-- HEADER -->
+
+        <div class="services-header">
+
+            <span class="services-badge">
+                🏛️ DIGITAL CIVIC SERVICES
+            </span>
+
+            <h1>
+                Our Services
+            </h1>
+
+            <p>
+                Explore simple digital services designed to connect
+                citizens with civic support, complaint management and
+                e-Governance information.
+            </p>
+
+        </div>
+
+
+
+        <!-- SERVICE CARDS -->
+
+        <div class="services-container">
+
+            <div class="service-grid-new">
+
+
+                <!-- REGISTER -->
+
+                <div class="service-card-new">
+
+                    <span class="service-label">
+                        CITIZEN SERVICE
+                    </span>
+
+                    <div class="service-icon-new">
+                        📝
+                    </div>
+
+                    <h2>
+                        Register Complaint
+                    </h2>
+
+                    <p>
+                        Report civic problems such as roads, water supply,
+                        garbage, drainage, streetlights and other local issues.
+                    </p>
+
+                    <a
+                        href="register-complaint.html"
+                        class="service-button"
+                    >
+                        Register Complaint →
+                    </a>
+
+                </div>
+
+
+
+                <!-- TRACK -->
+
+                <div class="service-card-new">
+
+                    <span class="service-label">
+                        TRANSPARENCY
+                    </span>
+
+                    <div class="service-icon-new">
+                        🔍
+                    </div>
+
+                    <h2>
+                        Track Complaint
+                    </h2>
+
+                    <p>
+                        Check the progress of your complaint and understand
+                        whether it is submitted, verified, in progress
+                        or resolved.
+                    </p>
+
+                    <a
+                        href="track-complaint.html"
+                        class="service-button"
+                    >
+                        Track Complaint →
+                    </a>
+
+                </div>
+
+
+
+                <!-- AWARENESS -->
+
+                <div class="service-card-new">
+
+                    <span class="service-label">
+                        INFORMATION
+                    </span>
+
+                    <div class="service-icon-new">
+                        📢
+                    </div>
+
+                    <h2>
+                        e-Governance Awareness
+                    </h2>
+
+                    <p>
+                        Learn about digital government services,
+                        citizen participation and useful online
+                        public-service platforms.
+                    </p>
+
+                    <a
+                        href="awareness.html"
+                        class="service-button"
+                    >
+                        Explore Awareness →
+                    </a>
+
+                </div>
+
+
+
+                <!-- CPGRAMS -->
+
+                <div class="service-card-new">
+
+                    <span class="service-label">
+                        GRIEVANCE
+                    </span>
+
+                    <div class="service-icon-new">
+                        🏛️
+                    </div>
+
+                    <h2>
+                        CPGRAMS
+                    </h2>
+
+                    <p>
+                        Learn about the Centralized Public Grievance
+                        Redress and Monitoring System for raising
+                        grievances related to public services.
+                    </p>
+
+                    <a
+                        href="cpgrams.html"
+                        class="service-button"
+                    >
+                        Learn More →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             QUICK FEATURES
+        ================================================== -->
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📍
+                </div>
+
+                <strong>
+                    Location Based
+                </strong>
+
+                <span>
+                    Report issues with their location.
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📷
+                </div>
+
+                <strong>
+                    Evidence Support
+                </strong>
+
+                <span>
+                    Add photos or videos with complaints.
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🌐
+                </div>
+
+                <strong>
+                    Digital Access
+                </strong>
+
+                <span>
+                    Access civic information online.
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="citizen-section">
+
+            <div class="citizen-card">
+
+                <h2>
+                    Your Voice Can Make a Difference
+                </h2>
+
+                <p>
+                    Found a civic issue in your area?
+                    Report it through Nandgaon CivicConnect and
+                    help build a cleaner, safer and better community.
+                </p>
+
+                <a
+                    href="register-complaint.html"
+                    class="citizen-button"
+                >
+                    📝 Report a Civic Issue
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
+
+        <p>
+            Enhancing Public Awareness of e-Governance
+        </p>
+
+        <p>
+            © 2026 Nandgaon CivicConnect
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

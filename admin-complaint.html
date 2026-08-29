@@ -1,0 +1,822 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complaint Details | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .admin-complaint-page {
+            padding: 50px 20px 80px;
+            background: #f5f8fc;
+            min-height: 80vh;
+        }
+
+        .complaint-details-card {
+            width: min(900px, 100%);
+            margin: auto;
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(15, 40, 70, 0.08);
+        }
+
+        .details-header {
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #edf1f5;
+        }
+
+        .details-header h1 {
+            margin: 0 0 8px;
+            color: #123e73;
+        }
+
+        .details-header p {
+            margin: 0;
+            color: #718096;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .detail-box {
+            padding: 16px;
+            background: #f8fbff;
+            border: 1px solid #e2eaf3;
+            border-radius: 10px;
+        }
+
+        .detail-box.full {
+            grid-column: 1 / -1;
+        }
+
+        .detail-box label {
+            display: block;
+            margin-bottom: 6px;
+            color: #6d7f93;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .detail-box strong {
+            color: #183b66;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        /* =====================================================
+           MEDIA SECTION
+        ===================================================== */
+
+        .media-section {
+            margin-top: 25px;
+            padding-top: 22px;
+            border-top: 1px solid #edf1f5;
+        }
+
+        .media-section h2 {
+            color: #173f70;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .media-box {
+            padding: 18px;
+            background: #f8fbff;
+            border: 1px solid #e2eaf3;
+            border-radius: 12px;
+        }
+
+        .media-box h3 {
+            margin-top: 0;
+            color: #183b66;
+            font-size: 15px;
+        }
+
+        .media-box img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #eef3f8;
+        }
+
+        .media-box video {
+            width: 100%;
+            max-height: 350px;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .no-media {
+            color: #718096;
+            font-size: 14px;
+            padding: 15px 0;
+        }
+
+        .status-section {
+            margin-top: 25px;
+            padding-top: 22px;
+            border-top: 1px solid #edf1f5;
+        }
+
+        .status-section h2 {
+            color: #173f70;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .status-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .status-controls select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #d5dee9;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #0b5fc4;
+            font-weight: 700;
+        }
+
+        @media (max-width: 700px) {
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-box.full {
+                grid-column: auto;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-controls {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div>
+
+            <span>Admin Portal</span>
+
+            <button
+                class="btn"
+                onclick="adminLogout()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         COMPLAINT DETAILS
+    ====================================================== -->
+
+    <main class="admin-complaint-page">
+
+        <div class="complaint-details-card">
+
+            <a
+                href="admin-dashboard.html"
+                class="back-button"
+            >
+                ← Back to Dashboard
+            </a>
+
+
+            <!-- HEADER -->
+
+            <div class="details-header">
+
+                <h1>
+                    Complaint Details
+                </h1>
+
+                <p id="complaintId">
+                    Loading complaint...
+                </p>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div
+                class="details-grid"
+                id="complaintDetails"
+            >
+
+                <div class="detail-box">
+
+                    <label>Citizen Name</label>
+
+                    <strong id="name">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Mobile Number</label>
+
+                    <strong id="phone">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Email</label>
+
+                    <strong id="email">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Ward</label>
+
+                    <strong id="ward">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box full">
+
+                    <label>Address</label>
+
+                    <strong id="address">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Category</label>
+
+                    <strong id="category">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Location</label>
+
+                    <strong id="location">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box full">
+
+                    <label>Description</label>
+
+                    <strong id="description">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Submitted On</label>
+
+                    <strong id="createdAt">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <label>Current Status</label>
+
+                    <strong id="currentStatus">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PHOTO / VIDEO
+            ================================================== -->
+
+            <div class="media-section">
+
+                <h2>
+                    Complaint Evidence
+                </h2>
+
+                <div class="media-grid">
+
+                    <!-- PHOTO -->
+
+                    <div class="media-box">
+
+                        <h3>
+                            📷 Complaint Photo
+                        </h3>
+
+                        <div id="photoContainer">
+
+                            <p class="no-media">
+                                No photo uploaded.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VIDEO -->
+
+                    <div class="media-box">
+
+                        <h3>
+                            🎥 Complaint Video
+                        </h3>
+
+                        <div id="videoContainer">
+
+                            <p class="no-media">
+                                No video uploaded.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATUS UPDATE
+            ================================================== -->
+
+            <div class="status-section">
+
+                <h2>
+                    Update Complaint Status
+                </h2>
+
+                <div class="status-controls">
+
+                    <select id="statusSelect">
+
+                        <option value="Submitted">
+                            Submitted
+                        </option>
+
+                        <option value="Verified">
+                            Verified
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Resolved">
+                            Resolved
+                        </option>
+
+                        <option value="Rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        class="btn"
+                        onclick="updateComplaintStatus()"
+                    >
+                        Update Status
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
+
+        <p>
+            Admin Portal | Nandgaon CivicConnect
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/script.js"></script>
+
+
+    <script>
+
+        // =====================================================
+        // GET COMPLAINT ID FROM URL
+        // =====================================================
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const complaintId =
+            params.get("id");
+
+
+        // =====================================================
+        // LOAD COMPLAINT
+        // =====================================================
+
+        async function loadComplaint() {
+
+            if (!complaintId) {
+
+                alert(
+                    "Complaint ID is missing."
+                );
+
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/complaints/" +
+                        encodeURIComponent(
+                            complaintId
+                        )
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.success) {
+
+                    alert(
+                        "Complaint not found."
+                    );
+
+                    return;
+                }
+
+
+                const complaint =
+                    result.complaint;
+
+
+                // =================================================
+                // BASIC DETAILS
+                // =================================================
+
+                document.getElementById(
+                    "complaintId"
+                ).textContent =
+                    "Complaint ID: " +
+                    complaint.complaintId;
+
+
+                document.getElementById(
+                    "name"
+                ).textContent =
+                    complaint.name || "-";
+
+
+                document.getElementById(
+                    "phone"
+                ).textContent =
+                    complaint.phone || "-";
+
+
+                document.getElementById(
+                    "email"
+                ).textContent =
+                    complaint.email ||
+                    "Not provided";
+
+
+                document.getElementById(
+                    "ward"
+                ).textContent =
+                    complaint.ward || "-";
+
+
+                document.getElementById(
+                    "address"
+                ).textContent =
+                    complaint.address || "-";
+
+
+                document.getElementById(
+                    "category"
+                ).textContent =
+                    complaint.category || "-";
+
+
+                document.getElementById(
+                    "location"
+                ).textContent =
+                    complaint.location || "-";
+
+
+                document.getElementById(
+                    "description"
+                ).textContent =
+                    complaint.description || "-";
+
+
+                document.getElementById(
+                    "createdAt"
+                ).textContent =
+                    new Date(
+                        complaint.createdAt
+                    ).toLocaleString("en-IN");
+
+
+                document.getElementById(
+                    "currentStatus"
+                ).textContent =
+                    complaint.status || "-";
+
+
+                document.getElementById(
+                    "statusSelect"
+                ).value =
+                    complaint.status ||
+                    "Submitted";
+
+
+                // =================================================
+                // PHOTO
+                // =================================================
+
+                const photoContainer =
+                    document.getElementById(
+                        "photoContainer"
+                    );
+
+
+                if (complaint.photo) {
+
+                    photoContainer.innerHTML = `
+
+                        <img
+                            src="http://localhost:5000${complaint.photo}"
+                            alt="Complaint Photo"
+                        >
+
+                    `;
+
+                } else {
+
+                    photoContainer.innerHTML = `
+
+                        <p class="no-media">
+                            No photo uploaded.
+                        </p>
+
+                    `;
+
+                }
+
+
+                // =================================================
+                // VIDEO
+                // =================================================
+
+                const videoContainer =
+                    document.getElementById(
+                        "videoContainer"
+                    );
+
+
+                if (complaint.video) {
+
+                    videoContainer.innerHTML = `
+
+                        <video
+                            controls
+                        >
+
+                            <source
+                                src="http://localhost:5000${complaint.video}"
+                            >
+
+                            Your browser does not support
+                            video playback.
+
+                        </video>
+
+                    `;
+
+                } else {
+
+                    videoContainer.innerHTML = `
+
+                        <p class="no-media">
+                            No video uploaded.
+                        </p>
+
+                    `;
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Complaint loading error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to connect to the server."
+                );
+
+            }
+
+        }
+
+
+        // =====================================================
+        // UPDATE STATUS
+        // =====================================================
+
+        async function updateComplaintStatus() {
+
+            const newStatus =
+                document.getElementById(
+                    "statusSelect"
+                ).value;
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/complaints/" +
+                        encodeURIComponent(
+                            complaintId
+                        ) +
+                        "/status",
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                status: newStatus
+                            })
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    alert(
+                        "Complaint status updated successfully!"
+                    );
+
+
+                    loadComplaint();
+
+                } else {
+
+                    alert(
+                        result.message ||
+                        "Unable to update status."
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Status update error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to connect to the server."
+                );
+
+            }
+
+        }
+
+
+        // =====================================================
+        // INITIAL LOAD
+        // =====================================================
+
+        loadComplaint();
+
+    </script>
+
+</body>
+
+</html>
+```

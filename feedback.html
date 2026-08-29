@@ -1,0 +1,677 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* ================================
+           FEEDBACK PAGE
+        ================================= */
+
+        .feedback-page {
+            min-height: calc(100vh - 80px);
+            padding: 70px 20px 80px;
+            background:
+                radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 35%),
+                #f7f9fc;
+        }
+
+        /* Header */
+
+        .feedback-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .feedback-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: #e8f0ff;
+            color: #1457b8;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .feedback-header h1 {
+            margin: 0 0 14px;
+            font-size: 38px;
+            color: #123b70;
+            font-weight: 700;
+        }
+
+        .feedback-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Main Card */
+
+        .feedback-container {
+            max-width: 850px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+            border: 1px solid #e5eaf1;
+        }
+
+        /* Card Top */
+
+        .feedback-card-top {
+            padding: 28px 35px;
+            background: linear-gradient(135deg, #0d47a1, #1769d2);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .feedback-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .feedback-card-top h2 {
+            margin: 0 0 5px;
+            font-size: 21px;
+        }
+
+        .feedback-card-top p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Form */
+
+        .feedback-form {
+            padding: 38px 45px 45px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            color: #173b68;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .required {
+            color: #dc2626;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17px;
+            opacity: 0.75;
+        }
+
+        .input-wrapper input {
+            padding-left: 45px;
+        }
+
+        .feedback-form input,
+        .feedback-form select,
+        .feedback-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d7dee8;
+            border-radius: 11px;
+            padding: 13px 15px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #fbfcfe;
+            color: #1e293b;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form select:focus,
+        .feedback-form textarea:focus {
+            border-color: #1769d2;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(23, 105, 210, 0.10);
+        }
+
+        .feedback-form textarea {
+            resize: vertical;
+            min-height: 135px;
+        }
+
+        /* Rating */
+
+        .rating-section {
+            margin-bottom: 25px;
+        }
+
+        .rating-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rating-option {
+            flex: 1;
+            min-width: 100px;
+            cursor: pointer;
+        }
+
+        .rating-option input {
+            display: none;
+        }
+
+        .rating-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            min-height: 72px;
+            padding: 8px;
+            border: 1px solid #dce3ec;
+            border-radius: 12px;
+            background: #fbfcfe;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .rating-stars {
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        .rating-text {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .rating-option:hover .rating-box {
+            transform: translateY(-2px);
+            border-color: #1769d2;
+            box-shadow: 0 7px 18px rgba(23, 105, 210, 0.10);
+        }
+
+        .rating-option input:checked + .rating-box {
+            border-color: #1769d2;
+            background: #eef5ff;
+            box-shadow: 0 0 0 3px rgba(23, 105, 210, 0.10);
+        }
+
+        /* Submit */
+
+        .submit-area {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .feedback-submit {
+            width: 100%;
+            border: none;
+            border-radius: 11px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #0d47a1, #1769d2);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .feedback-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(23, 105, 210, 0.25);
+        }
+
+        .feedback-note {
+            margin-top: 13px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* Footer */
+
+        .feedback-footer {
+            margin-top: 55px;
+            text-align: center;
+        }
+
+        .feedback-footer h3 {
+            margin-bottom: 7px;
+            color: #123b70;
+        }
+
+        .feedback-footer p {
+            margin: 5px 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            .feedback-page {
+                padding: 45px 15px 60px;
+            }
+
+            .feedback-header h1 {
+                font-size: 30px;
+            }
+
+            .feedback-card-top {
+                padding: 24px;
+            }
+
+            .feedback-form {
+                padding: 28px 22px 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .rating-options {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="register-complaint.html">Complaint</a>
+            <a href="faq.html">FAQ</a>
+            <a href="feedback.html">Feedback</a>
+
+        </div>
+
+        <div class="language-switch">
+
+            <button onclick="setLanguage('en')">
+                English
+            </button>
+
+            <button onclick="setLanguage('hi')">
+                हिंदी
+            </button>
+
+            <button onclick="setLanguage('mr')">
+                मराठी
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================================
+         FEEDBACK PAGE
+    ================================= -->
+
+    <main class="feedback-page">
+
+        <div class="feedback-header">
+
+            <span class="feedback-badge">
+                💬 Citizen Voice Matters
+            </span>
+
+            <h1>
+                Share Your Feedback
+            </h1>
+
+            <p>
+                Your feedback helps us improve Nandgaon CivicConnect
+                and make digital civic services simpler, faster and better
+                for everyone.
+            </p>
+
+        </div>
+
+
+        <!-- FEEDBACK CARD -->
+
+        <div class="feedback-container">
+
+            <div class="feedback-card-top">
+
+                <div class="feedback-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h2>
+                        Help Us Improve
+                    </h2>
+
+                    <p>
+                        Tell us about your experience with CivicConnect.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form
+                id="feedbackForm"
+                class="feedback-form"
+            >
+
+                <!-- NAME + EMAIL -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="feedbackName">
+                            Full Name <span class="required">*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+                            <input
+                                type="text"
+                                id="feedbackName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="feedbackEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉️
+                            </span>
+
+                            <input
+                                type="email"
+                                id="feedbackEmail"
+                                placeholder="Enter your email address"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RATING -->
+
+                <div class="form-group rating-section">
+
+                    <label>
+                        Rate Your Experience
+                        <span class="required">*</span>
+                    </label>
+
+                    <div class="rating-options">
+
+                        <label class="rating-option">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="5"
+                                required
+                            >
+
+                            <span class="rating-box">
+
+                                <span class="rating-stars">
+                                    ⭐⭐⭐⭐⭐
+                                </span>
+
+                                <span class="rating-text">
+                                    Excellent
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="rating-option">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="4"
+                            >
+
+                            <span class="rating-box">
+
+                                <span class="rating-stars">
+                                    ⭐⭐⭐⭐
+                                </span>
+
+                                <span class="rating-text">
+                                    Good
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="rating-option">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="3"
+                            >
+
+                            <span class="rating-box">
+
+                                <span class="rating-stars">
+                                    ⭐⭐⭐
+                                </span>
+
+                                <span class="rating-text">
+                                    Average
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="rating-option">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="2"
+                            >
+
+                            <span class="rating-box">
+
+                                <span class="rating-stars">
+                                    ⭐⭐
+                                </span>
+
+                                <span class="rating-text">
+                                    Needs Improvement
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="rating-option">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="1"
+                            >
+
+                            <span class="rating-box">
+
+                                <span class="rating-stars">
+                                    ⭐
+                                </span>
+
+                                <span class="rating-text">
+                                    Poor
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEEDBACK -->
+
+                <div class="form-group">
+
+                    <label for="feedback">
+                        Your Feedback
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="feedback"
+                        rows="5"
+                        placeholder="Tell us what you liked or what we can improve..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="feedback-submit"
+                    >
+                        🚀 Submit Feedback
+                    </button>
+
+                    <p class="feedback-note">
+                        🔒 Your feedback helps us improve the citizen experience.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="feedback-footer">
+
+            <h3>
+                🇮🇳 Nandgaon CivicConnect
+            </h3>
+
+            <p>
+                Enhancing Public Awareness of e-Governance
+            </p>
+
+            <p>
+                © 2026 Nandgaon CivicConnect
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
+```

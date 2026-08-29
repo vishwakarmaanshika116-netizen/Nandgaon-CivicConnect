@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Track Complaint | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =====================================================
+           TRACK COMPLAINT PAGE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f6f9fd;
+            color: #173b66;
+        }
+
+        .track-page {
+            padding: 60px 20px 85px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .track-header {
+            max-width: 720px;
+            margin: 0 auto 38px;
+            text-align: center;
+        }
+
+        .track-badge {
+            display: inline-block;
+            padding: 7px 15px;
+            border-radius: 50px;
+            background: #eaf3ff;
+            color: #0b5fc4;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .track-header h1 {
+            margin: 0 0 12px;
+            color: #123d70;
+            font-size: 36px;
+        }
+
+        .track-header p {
+            margin: 0;
+            color: #718197;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           TRACK CARD
+        ===================================================== */
+
+        .track-container {
+            width: min(850px, 100%);
+            margin: auto;
+        }
+
+        .track-card {
+            background: white;
+            border: 1px solid #e0e8f1;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 12px 35px rgba(15, 40, 70, 0.07);
+        }
+
+        .track-card h2 {
+            margin: 0 0 8px;
+            color: #173f70;
+            font-size: 20px;
+        }
+
+        .track-card-description {
+            margin: 0 0 22px;
+            color: #7b899a;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           SEARCH FORM
+        ===================================================== */
+
+        .track-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .track-form input {
+            flex: 1;
+            padding: 14px 15px;
+            border: 1px solid #d3dce7;
+            border-radius: 9px;
+            background: #fbfcfe;
+            color: #274665;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        .track-form input:focus {
+            border-color: #1970d2;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(25,112,210,0.08);
+        }
+
+        .track-button {
+            border: none;
+            border-radius: 9px;
+            padding: 0 22px;
+            background: #0b61c7;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .track-button:hover {
+            background: #084f9f;
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           STATUS RESULT
+        ===================================================== */
+
+        #complaintStatus {
+            display: none;
+            margin-top: 28px;
+        }
+
+        .status-card {
+            background: white;
+            border: 1px solid #dfe7f0;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(15,40,70,0.06);
+        }
+
+        .status-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #edf1f5;
+        }
+
+        .status-top h3 {
+            margin: 0 0 5px;
+            color: #183f70;
+            font-size: 18px;
+        }
+
+        .complaint-number {
+            margin: 0;
+            color: #8492a2;
+            font-size: 11px;
+        }
+
+        .status-badge {
+            padding: 8px 13px;
+            border-radius: 50px;
+            background: #fff5dd;
+            color: #9a6900;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           TIMELINE
+        ===================================================== */
+
+        .timeline {
+            position: relative;
+            margin: 30px 0 10px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 17px;
+            top: 18px;
+            bottom: 18px;
+            width: 2px;
+            background: #dce6f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #edf5ff;
+            border: 2px solid #cfe1f5;
+            font-size: 14px;
+        }
+
+        .timeline-item.active .timeline-dot {
+            background: #0b61c7;
+            border-color: #0b61c7;
+            color: white;
+        }
+
+        .timeline-content h4 {
+            margin: 0 0 5px;
+            color: #2a4d70;
+            font-size: 13px;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            color: #8290a0;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           COMPLAINT DETAILS
+        ===================================================== */
+
+        .details-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid #edf1f5;
+        }
+
+        .detail-item {
+            padding: 14px;
+            border-radius: 10px;
+            background: #f7faff;
+        }
+
+        .detail-item span {
+            display: block;
+            margin-bottom: 5px;
+            color: #8a98a9;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .detail-item strong {
+            color: #345675;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           HELP BOX
+        ===================================================== */
+
+        .help-box {
+            width: min(850px, 100%);
+            margin: 28px auto 0;
+            padding: 18px 20px;
+            border-radius: 12px;
+            background: #edf6ff;
+            border: 1px solid #d7e9fc;
+            text-align: center;
+        }
+
+        .help-box p {
+            margin: 0;
+            color: #5c7590;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           PROCESS SECTION
+        ===================================================== */
+
+        .process-section {
+            width: min(1050px, 100%);
+            margin: 65px auto 0;
+            text-align: center;
+        }
+
+        .process-section h2 {
+            margin: 0 0 10px;
+            color: #163e6f;
+            font-size: 25px;
+        }
+
+        .process-section > p {
+            margin: 0 0 30px;
+            color: #7b899a;
+            font-size: 12px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .process-card {
+            position: relative;
+            padding: 22px 15px;
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 14px;
+        }
+
+        .process-number {
+            width: 38px;
+            height: 38px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #edf5ff;
+            color: #0b61c7;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .process-card h3 {
+            margin: 0 0 7px;
+            color: #315477;
+            font-size: 13px;
+        }
+
+        .process-card p {
+            margin: 0;
+            color: #8491a0;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .track-page {
+                padding: 45px 13px 65px;
+            }
+
+            .track-header h1 {
+                font-size: 29px;
+            }
+
+            .track-card {
+                padding: 22px 18px;
+            }
+
+            .track-form {
+                flex-direction: column;
+            }
+
+            .track-button {
+                padding: 13px;
+            }
+
+            .status-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .details-box {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="register-complaint.html">
+                Complaint
+            </a>
+
+            <a href="track-complaint.html">
+                Track
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+        </div>
+
+        <div class="language-switch">
+
+            <button onclick="setLanguage('en')">
+                English
+            </button>
+
+            <button onclick="setLanguage('hi')">
+                हिंदी
+            </button>
+
+            <button onclick="setLanguage('mr')">
+                मराठी
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="track-page">
+
+
+        <!-- HEADER -->
+
+        <div class="track-header">
+
+            <span class="track-badge">
+                🔍 COMPLAINT TRACKING
+            </span>
+
+            <h1>
+                Track Your Complaint
+            </h1>
+
+            <p>
+                Enter your Complaint ID below to view the latest
+                status and progress of your civic complaint.
+            </p>
+
+        </div>
+
+
+
+        <!-- TRACK CARD -->
+
+        <div class="track-container">
+
+            <div class="track-card">
+
+                <h2>
+                    Check Complaint Status
+                </h2>
+
+                <p class="track-card-description">
+                    Your Complaint ID can be found in the confirmation
+                    received after submitting your complaint.
+                </p>
+
+
+                <form
+                    id="trackForm"
+                    class="track-form"
+                >
+
+                    <input
+                        type="text"
+                        id="complaintId"
+                        placeholder="Example: NCC-2026-00125"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="track-button"
+                    >
+                        🔍 Track Status
+                    </button>
+
+                </form>
+
+
+
+                <!-- =================================================
+                     RESULT
+                ================================================== -->
+
+                <div id="complaintStatus">
+
+                    <div class="status-card">
+
+
+                        <!-- STATUS HEADER -->
+
+                        <div class="status-top">
+
+                            <div>
+
+                                <h3>
+                                    Complaint Status
+                                </h3>
+
+                                <p
+                                    class="complaint-number"
+                                    id="statusText"
+                                >
+                                    Complaint ID: —
+                                </p>
+
+                            </div>
+
+                            <span class="status-badge">
+                                In Progress
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- TIMELINE -->
+
+                        <div class="timeline">
+
+
+                            <div class="timeline-item active">
+
+                                <div class="timeline-dot">
+                                    ✓
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Complaint Submitted
+                                    </h4>
+
+                                    <p>
+                                        Your complaint has been successfully registered.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="timeline-item active">
+
+                                <div class="timeline-dot">
+                                    ✓
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Complaint Verified
+                                    </h4>
+
+                                    <p>
+                                        The complaint details have been reviewed.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="timeline-item active">
+
+                                <div class="timeline-dot">
+                                    →
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Action in Progress
+                                    </h4>
+
+                                    <p>
+                                        The concerned authority is working on the issue.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot">
+                                    4
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <h4>
+                                        Resolved
+                                    </h4>
+
+                                    <p>
+                                        The issue will be marked resolved after completion.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- DETAILS -->
+
+                        <div class="details-box">
+
+                            <div class="detail-item">
+
+                                <span>
+                                    Category
+                                </span>
+
+                                <strong>
+                                    Civic Issue
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span>
+                                    Ward
+                                </span>
+
+                                <strong>
+                                    Your Ward
+                                </strong>
+
+                            </div>
+
+
+                            <div class="detail-item">
+
+                                <span>
+                                    Last Updated
+                                </span>
+
+                                <strong>
+                                    Recently
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HELP -->
+
+            <div class="help-box">
+
+                <p>
+                    💡 <strong>Can't find your Complaint ID?</strong>
+                    Please check your complaint confirmation details
+                    or contact the concerned local authority.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             PROCESS
+        ================================================== -->
+
+        <section class="process-section">
+
+            <h2>
+                How Complaint Tracking Works
+            </h2>
+
+            <p>
+                Your complaint moves through these stages until resolution.
+            </p>
+
+
+            <div class="process-grid">
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        1
+                    </div>
+
+                    <h3>
+                        Submitted
+                    </h3>
+
+                    <p>
+                        Your complaint is registered on the platform.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        2
+                    </div>
+
+                    <h3>
+                        Verified
+                    </h3>
+
+                    <p>
+                        Details are reviewed by the concerned authority.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        3
+                    </div>
+
+                    <h3>
+                        Action
+                    </h3>
+
+                    <p>
+                        Appropriate action is taken on the issue.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        4
+                    </div>
+
+                    <h3>
+                        Resolved
+                    </h3>
+
+                    <p>
+                        The complaint is closed after resolution.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
+
+        <p>
+            Enhancing Public Awareness of e-Governance
+        </p>
+
+        <p>
+            © 2026 Nandgaon CivicConnect
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

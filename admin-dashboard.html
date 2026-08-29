@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Nandgaon CivicConnect</title>
+
+<link rel="stylesheet" href="css/style.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- =====================================================
+     ADMIN NAVBAR
+====================================================== -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        🇮🇳 Nandgaon CivicConnect
+    </div>
+
+    <div>
+        <span>Admin Dashboard</span>
+
+        <button class="btn" onclick="adminLogout()">
+            Logout
+        </button>
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     DASHBOARD HEADER
+====================================================== -->
+
+<section class="section">
+
+    <h2>Municipal Admin Dashboard</h2>
+
+    <p>
+        Manage and monitor civic complaints assigned
+        to your ward.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     STATISTICS
+====================================================== -->
+
+<section class="section">
+
+    <div class="cards">
+
+        <!-- TOTAL -->
+
+        <div class="card">
+
+            <h3>
+                Total Complaints
+            </h3>
+
+            <h2 id="totalComplaints">
+                0
+            </h2>
+
+        </div>
+
+
+        <!-- PENDING -->
+
+        <div class="card">
+
+            <h3>
+                Pending
+            </h3>
+
+            <h2 id="pendingComplaints">
+                0
+            </h2>
+
+        </div>
+
+
+        <!-- VERIFIED -->
+
+        <div class="card">
+
+            <h3>
+                Verified
+            </h3>
+
+            <h2 id="verifiedComplaints">
+                0
+            </h2>
+
+        </div>
+
+
+        <!-- IN PROGRESS -->
+
+        <div class="card">
+
+            <h3>
+                In Progress
+            </h3>
+
+            <h2 id="progressComplaints">
+                0
+            </h2>
+
+        </div>
+
+
+        <!-- RESOLVED -->
+
+        <div class="card">
+
+            <h3>
+                Resolved
+            </h3>
+
+            <h2 id="resolvedComplaints">
+                0
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RECENT COMPLAINTS
+====================================================== -->
+
+<section class="section">
+
+    <h2>
+        Recent Complaints
+    </h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Complaint ID
+                    </th>
+
+                    <th>
+                        Citizen
+                    </th>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="complaintTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CITIZEN FEEDBACK
+====================================================== -->
+
+<section class="section">
+
+    <h2>
+        Citizen Feedback
+    </h2>
+
+
+    <div class="cards">
+
+
+        <!-- TOTAL FEEDBACK -->
+
+        <div class="card">
+
+            <h3>
+                Total Feedback
+            </h3>
+
+            <h2 id="totalFeedback">
+                0
+            </h2>
+
+        </div>
+
+
+        <!-- AVERAGE RATING -->
+
+        <div class="card">
+
+            <h3>
+                Average Rating
+            </h3>
+
+            <h2 id="averageRating">
+                ⭐ 0.0
+            </h2>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <h3>
+        🇮🇳 Nandgaon CivicConnect
+    </h3>
+
+    <p>
+        Admin Portal | Nandgaon CivicConnect
+    </p>
+
+    <p>
+        © 2026 Nandgaon CivicConnect
+    </p>
+
+</footer>
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD JAVASCRIPT
+====================================================== -->
+
+<script>
+
+    // ====================================================
+    // LOAD ADMIN COMPLAINTS
+    // ====================================================
+
+    async function loadAdminComplaints() {
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:5000/api/admin/complaints"
+            );
+
+
+            const result =
+                await response.json();
+
+
+            if (!result.success) {
+
+                alert(
+                    "Unable to load complaints."
+                );
+
+                return;
+
+            }
+
+
+            const complaints =
+                result.complaints;
+
+
+            // ============================================
+            // STATISTICS
+            // ============================================
+
+            document.getElementById(
+                "totalComplaints"
+            ).textContent =
+                complaints.length;
+
+
+            // PENDING
+
+            document.getElementById(
+                "pendingComplaints"
+            ).textContent =
+                complaints.filter(function (c) {
+
+                    return c.status === "Submitted";
+
+                }).length;
+
+
+            // VERIFIED
+
+            document.getElementById(
+                "verifiedComplaints"
+            ).textContent =
+                complaints.filter(function (c) {
+
+                    return c.status === "Verified";
+
+                }).length;
+
+
+            // IN PROGRESS
+
+            document.getElementById(
+                "progressComplaints"
+            ).textContent =
+                complaints.filter(function (c) {
+
+                    return c.status === "In Progress";
+
+                }).length;
+
+
+            // RESOLVED
+
+            document.getElementById(
+                "resolvedComplaints"
+            ).textContent =
+                complaints.filter(function (c) {
+
+                    return c.status === "Resolved";
+
+                }).length;
+
+
+            // ============================================
+            // COMPLAINT TABLE
+            // ============================================
+
+            const table =
+                document.getElementById(
+                    "complaintTable"
+                );
+
+
+            table.innerHTML = "";
+
+
+            // NO COMPLAINTS
+
+            if (complaints.length === 0) {
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="6">
+                            No complaints found.
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            // ============================================
+            // DISPLAY COMPLAINTS
+            // ============================================
+
+            complaints.forEach(
+                function (complaint) {
+
+
+                    const row =
+                        document.createElement("tr");
+
+
+                    const date =
+                        new Date(
+                            complaint.createdAt
+                        ).toLocaleDateString(
+                            "en-IN"
+                        );
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            ${complaint.complaintId}
+                        </td>
+
+
+                        <td>
+                            ${complaint.name}
+                        </td>
+
+
+                        <td>
+                            ${complaint.category}
+                        </td>
+
+
+                        <td>
+                            ${date}
+                        </td>
+
+
+                        <td>
+
+                            <span class="status">
+
+                                ${complaint.status}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                class="btn"
+                                onclick="viewComplaint('${complaint.complaintId}')"
+                            >
+
+                                View
+
+                            </button>
+
+                        </td>
+
+                    `;
+
+
+                    table.appendChild(row);
+
+                }
+            );
+
+        }
+
+
+        catch (error) {
+
+            console.error(
+                "Loading complaints error:",
+                error
+            );
+
+
+            alert(
+                "Unable to connect to the server."
+            );
+
+        }
+
+    }
+
+
+    // ====================================================
+    // VIEW COMPLAINT
+    // ====================================================
+
+    function viewComplaint(complaintId) {
+
+        window.location.href =
+            "admin-complaint.html?id=" +
+            encodeURIComponent(
+                complaintId
+            );
+
+    }
+
+
+    // ====================================================
+    // LOAD DATA
+    // ====================================================
+
+    loadAdminComplaints();
+
+</script>
+
+
+<!-- MAIN JAVASCRIPT -->
+
+<script src="js/script.js"></script>
+```
+
+</body>
+
+</html>

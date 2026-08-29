@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register Complaint | Nandgaon CivicConnect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =====================================================
+           REGISTER COMPLAINT PAGE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f8fc;
+            color: #183b66;
+        }
+
+        .complaint-page {
+            padding: 55px 20px 80px;
+        }
+
+        /* PAGE HEADER */
+
+        .complaint-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 35px;
+        }
+
+        .complaint-badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 50px;
+            background: #eaf3ff;
+            color: #0b5fc4;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .complaint-header h1 {
+            margin: 0 0 12px;
+            color: #123e73;
+            font-size: 34px;
+        }
+
+        .complaint-header p {
+            margin: 0;
+            color: #66788f;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+
+        /* MAIN FORM */
+
+        .complaint-container {
+            width: min(900px, 100%);
+            margin: auto;
+        }
+
+        .complaint-form-card {
+            background: white;
+            border: 1px solid #e1e8f0;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 15px 45px rgba(15, 40, 70, 0.08);
+        }
+
+
+        /* FORM SECTIONS */
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-section:last-of-type {
+            margin-bottom: 25px;
+        }
+
+        .form-section-header {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 22px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid #edf1f5;
+        }
+
+        .section-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #eaf3ff;
+            font-size: 19px;
+        }
+
+        .form-section-header h2 {
+            margin: 0;
+            color: #173f70;
+            font-size: 18px;
+        }
+
+        .form-section-header p {
+            margin: 3px 0 0;
+            color: #8190a2;
+            font-size: 11px;
+        }
+
+
+        /* FORM GRID */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #25476d;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .required {
+            color: #d23b3b;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5dee9;
+            border-radius: 9px;
+            outline: none;
+            background: #fbfcfe;
+            color: #243f60;
+            font-family: inherit;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1970d2;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(25,112,210,0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-hint {
+            margin-top: 6px;
+            color: #8a98a9;
+            font-size: 10px;
+        }
+
+
+        /* LOCATION */
+
+        .location-box {
+            display: flex;
+            gap: 9px;
+        }
+
+        .location-box input {
+            flex: 1;
+        }
+
+        .location-btn {
+            flex-shrink: 0;
+            border: 1px solid #0b63c9;
+            border-radius: 9px;
+            padding: 0 15px;
+            background: #edf5ff;
+            color: #0b5fc4;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .location-btn:hover {
+            background: #dcecff;
+        }
+
+
+        /* UPLOAD BOXES */
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .upload-box {
+            position: relative;
+            border: 1.5px dashed #b9c8da;
+            border-radius: 13px;
+            padding: 24px 18px;
+            text-align: center;
+            background: #fafcff;
+            transition: 0.2s;
+        }
+
+        .upload-box:hover {
+            border-color: #1970d2;
+            background: #f4f9ff;
+        }
+
+        .upload-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .upload-box strong {
+            display: block;
+            color: #315477;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .upload-box small {
+            display: block;
+            color: #8a98a9;
+            font-size: 10px;
+            margin-bottom: 12px;
+        }
+
+        .upload-box input {
+            width: 100%;
+            font-size: 11px;
+        }
+
+
+        /* INFORMATION BOX */
+
+        .info-box {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 11px;
+            background: #f0f7ff;
+            border: 1px solid #d7e9fc;
+        }
+
+        .info-box-icon {
+            font-size: 18px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #52708f;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+
+        /* SUBMIT */
+
+        .submit-area {
+            padding-top: 5px;
+            border-top: 1px solid #edf1f5;
+            text-align: center;
+        }
+
+        .submit-button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #0b5fc4, #1677d8);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(11,95,196,0.22);
+        }
+
+        .submit-note {
+            margin: 12px 0 0;
+            color: #8795a5;
+            font-size: 10px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .complaint-page {
+                padding: 40px 12px 60px;
+            }
+
+            .complaint-header h1 {
+                font-size: 28px;
+            }
+
+            .complaint-form-card {
+                padding: 22px 18px;
+            }
+
+            .form-grid,
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .location-box {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .location-btn {
+                padding: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="services.html">Services</a>
+
+            <a href="register-complaint.html">Complaint</a>
+
+            <a href="faq.html">FAQ</a>
+
+            <a href="feedback.html">Feedback</a>
+
+        </div>
+
+        <div class="language-switch">
+
+            <button onclick="setLanguage('en')">
+                English
+            </button>
+
+            <button onclick="setLanguage('hi')">
+                हिंदी
+            </button>
+
+            <button onclick="setLanguage('mr')">
+                मराठी
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         COMPLAINT PAGE
+    ===================================================== -->
+
+    <main class="complaint-page">
+
+
+        <!-- HEADER -->
+
+        <div class="complaint-header">
+
+            <span class="complaint-badge">
+                🏛️ CITIZEN GRIEVANCE PORTAL
+            </span>
+
+            <h1>
+                Register a Complaint
+            </h1>
+
+            <p>
+                Help us improve Nandgaon by reporting civic issues.
+                Provide accurate details so the concerned authority
+                can take appropriate action.
+            </p>
+
+        </div>
+
+
+
+        <div class="complaint-container">
+
+            <div class="complaint-form-card">
+
+               <form id="complaintForm">
+                <!-- INFORMATION -->
+
+                <div class="info-box">
+
+                    <div class="info-box-icon">
+                        💡
+                    </div>
+
+                    <p>
+                        Please provide correct information about the issue.
+                        You can upload a photo or video to help authorities
+                        understand the problem better.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PERSONAL DETAILS
+                ================================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-header">
+
+                        <div class="section-icon">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Personal Details
+                            </h2>
+
+                            <p>
+                                Tell us how we can contact you
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NAME -->
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- MOBILE -->
+
+                        <div class="form-group">
+
+                            <label for="mobile">
+                                Mobile Number <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                placeholder="Enter 10-digit mobile number"
+                                maxlength="10"
+                                pattern="[0-9]{10}"
+                                required
+                            >
+
+                            <span class="form-hint">
+                                Enter a valid 10-digit mobile number.
+                            </span>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group full">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address"
+                            >
+
+                            <span class="form-hint">
+                                Optional — used for complaint updates.
+                            </span>
+
+                        </div>
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group full">
+
+                            <label for="address">
+                                Address <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                id="address"
+                                name="address"
+                                placeholder="Enter your complete address"
+                                rows="3"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- WARD -->
+
+                        <div class="form-group">
+
+                            <label for="ward">
+                                Ward <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="ward"
+                                name="ward"
+                                placeholder="Enter ward number/name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COMPLAINT DETAILS
+                ================================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-header">
+
+                        <div class="section-icon">
+                            📝
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Complaint Details
+                            </h2>
+
+                            <p>
+                                Describe the civic issue you want to report
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="form-group full">
+
+                            <label for="category">
+                                Complaint Category
+                                <span class="required">*</span>
+                            </label>
+
+                            <select
+                                id="category"
+                                name="category"
+                                required
+                            >
+
+                                <option value="">
+                                    Select the issue category
+                                </option>
+
+                                <option value="water">
+                                    💧 Water Supply
+                                </option>
+
+                                <option value="road">
+                                    🛣️ Road & Potholes
+                                </option>
+
+                                <option value="streetlight">
+                                    💡 Street Light
+                                </option>
+
+                                <option value="garbage">
+                                    🗑️ Garbage & Cleanliness
+                                </option>
+
+                                <option value="drainage">
+                                    🚰 Drainage
+                                </option>
+
+                                <option value="electricity">
+                                    ⚡ Electricity
+                                </option>
+
+                                <option value="other">
+                                    📌 Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="form-group full">
+
+                            <label for="description">
+                                Complaint Description
+                                <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                placeholder="Describe the problem clearly — what happened, where it happened and how it is affecting citizens."
+                                rows="6"
+                                required
+                            ></textarea>
+
+                            <span class="form-hint">
+                                Please provide clear and specific information.
+                            </span>
+
+                        </div>
+
+
+                        <!-- LOCATION -->
+
+                        <div class="form-group full">
+
+                            <label for="location">
+                                Complaint Location
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="location-box">
+
+                                <input
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    placeholder="Enter location of the issue"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="location-btn"
+                                    onclick="getLocation()"
+                                >
+                                    📍 Use My Location
+                                </button>
+
+                            </div>
+
+                            <span class="form-hint">
+                                Mention the exact area, road, landmark or location.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     EVIDENCE
+                ================================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-header">
+
+                        <div class="section-icon">
+                            📎
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Supporting Evidence
+                            </h2>
+
+                            <p>
+                                Add photos or videos of the civic issue
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="upload-grid">
+
+
+                        <!-- PHOTO -->
+
+                        <div class="upload-box">
+
+                            <div class="upload-icon">
+                                📷
+                            </div>
+
+                            <strong>
+                                Upload Photo
+                            </strong>
+
+                            <small>
+                                JPG, PNG or JPEG
+                            </small>
+
+                            <input
+                                type="file"
+                                id="photo"
+                                name="photo"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+
+                        <!-- VIDEO -->
+
+                        <div class="upload-box">
+
+                            <div class="upload-icon">
+                                🎥
+                            </div>
+
+                            <strong>
+                                Upload Video
+                            </strong>
+
+                            <small>
+                                MP4 or supported video format
+                            </small>
+
+                            <input
+                                type="file"
+                                id="video"
+                                name="video"
+                                accept="video/*"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SUBMIT
+                ================================================== -->
+
+                
+
+                    <div class="submit-area">
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                        >
+                            📝 Submit Complaint
+                        </button>
+
+                        <p class="submit-note">
+                            By submitting this complaint, you confirm that
+                            the information provided is accurate.
+                        </p>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
+
+        <p>
+            Enhancing Public Awareness of e-Governance
+        </p>
+
+        <p>
+            © 2026 Nandgaon CivicConnect
+        </p>
+
+    </footer>
+
+
+
+    <script src="js/script.js"></script>
+
+
+    <!-- GPS FUNCTION -->
+
+    <script>
+
+        function getLocation() {
+
+            const locationInput =
+                document.getElementById("location");
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Location services are not supported by your browser."
+                );
+
+                return;
+            }
+
+            locationInput.value = "Detecting location...";
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    const latitude =
+                        position.coords.latitude;
+
+                    const longitude =
+                        position.coords.longitude;
+
+                    locationInput.value =
+                        "GPS: " +
+                        latitude.toFixed(6) +
+                        ", " +
+                        longitude.toFixed(6);
+
+                },
+
+                function() {
+
+                    locationInput.value = "";
+
+                    alert(
+                        "Unable to detect your location. Please enter it manually."
+                    );
+
+                }
+
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
