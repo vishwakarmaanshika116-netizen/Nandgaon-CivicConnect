@@ -4,8 +4,15 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const multer = require("multer");
+const { v2: cloudinary } = require("cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 dotenv.config();
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const Complaint = require("./complaintModel");
 
@@ -26,37 +33,22 @@ app.use(express.json());
 // MULTER - PHOTO / VIDEO UPLOAD
 // ============================================================
 
-const storage = multer.diskStorage({
+// ============================================================
+// CLOUDINARY - PHOTO / VIDEO UPLOAD
+// ============================================================
 
-    destination: function (req, file, cb) {
-
-        cb(null, "uploads/");
-
-    },
-
-    filename: function (req, file, cb) {
-
-        const uniqueName =
-            Date.now() +
-            "-" +
-            Math.round(Math.random() * 1E9) +
-            "-" +
-            file.originalname;
-
-        cb(null, uniqueName);
-
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "nandgaon-civicconnect",
+        resource_type: "auto"
     }
-
 });
-
 
 const upload = multer({
     storage: storage
 });
 
-
-// Make uploaded files accessible
-app.use("/uploads", express.static("uploads"));
 
 
 // ============================================================
@@ -152,34 +144,23 @@ app.post(
             // =================================================
 
             let photoPath = "";
-            let videoPath = "";
+let videoPath = "";
 
+if (
+    req.files &&
+    req.files.photo &&
+    req.files.photo.length > 0
+) {
+    photoPath = req.files.photo[0].path;
+}
 
-            if (
-                req.files &&
-                req.files.photo &&
-                req.files.photo.length > 0
-            ) {
-
-                photoPath =
-                    "/uploads/" +
-                    req.files.photo[0].filename;
-
-            }
-
-
-            if (
-                req.files &&
-                req.files.video &&
-                req.files.video.length > 0
-            ) {
-
-                videoPath =
-                    "/uploads/" +
-                    req.files.video[0].filename;
-
-            }
-
+if (
+    req.files &&
+    req.files.video &&
+    req.files.video.length > 0
+) {
+    videoPath = req.files.video[0].path;
+}
 
             // =================================================
             // CREATE COMPLAINT
