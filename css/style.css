@@ -1025,3 +1025,34 @@ footer {
     color: #0b63ce;
     background: #eef6ff;
 }
+
+/* COMMON BLUE BUBBLE HOVER EFFECT */
+
+.common-hover {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.common-hover::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(8, 113, 209, 0.12);
+    border-radius: 50%;
+    right: -50px;
+    bottom: -50px;
+    transform: scale(0);
+    transition: transform 0.4s ease;
+    pointer-events: none;
+}
+
+.common-hover:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(8, 102, 213, 0.15);
+}
+
+.common-hover:hover::after {
+    transform: scale(1.5);
+}
