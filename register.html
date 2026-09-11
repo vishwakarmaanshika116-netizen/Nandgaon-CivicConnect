@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration - Nandgaon CivicConnect</title>
+
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #f5f8fc;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            width: 100%;
+            height: 80px;
+
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5.2%;
+
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+
+            position: relative;
+            z-index: 10;
+        }
+
+
+        /* Website Logo */
+
+        .logo {
+
+            font-size: 22px;
+            font-weight: 700;
+
+            color: #123f6b;
+
+            white-space: nowrap;
+        }
+
+
+        /* Menu */
+
+        .nav-links {
+
+            display: flex;
+            align-items: center;
+
+            gap: 26px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #171717;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            padding: 10px 0;
+
+            transition: 0.2s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #2563eb;
+        }
+
+
+        /* Active Register */
+
+        .nav-links .active {
+
+            color: #2563eb;
+
+            position: relative;
+        }
+
+
+        .nav-links .active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 3px;
+
+            background: #2563eb;
+
+            border-radius: 5px;
+        }
+
+
+        /* Admin Login Button */
+
+        .admin-btn {
+
+            background: #2864df !important;
+
+            color: white !important;
+
+            padding: 14px 21px !important;
+
+            border-radius: 10px;
+        }
+
+
+        .admin-btn:hover {
+
+            background: #174fc1 !important;
+
+            color: white !important;
+        }
+
+
+        /* =========================
+           MAIN BLUE SECTION
+        ========================= */
+
+        .main-section {
+
+            min-height: calc(100vh - 80px);
+
+            background: linear-gradient(
+                120deg,
+                #0d4c91,
+                #1674db
+            );
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            padding: 50px 20px;
+        }
+
+
+        /* Background Circle - Right */
+
+        .circle-one {
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            border-radius: 50%;
+
+            border: 70px solid rgba(255,255,255,0.04);
+
+            right: -200px;
+            top: -190px;
+        }
+
+
+        /* Background Circle - Left */
+
+        .circle-two {
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.04);
+
+            left: -160px;
+            bottom: -170px;
+        }
+
+
+        /* =========================
+           REGISTRATION CARD
+        ========================= */
+
+        .register-card {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 460px;
+
+            background: rgba(255,255,255,0.98);
+
+            padding: 38px 42px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 45px rgba(0,0,0,0.18);
+        }
+
+
+        /* Heading */
+
+        .register-card h1 {
+
+            text-align: center;
+
+            color: #123f6b;
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* Subtitle */
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #68788c;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            color: #24364b;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 15px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            color: #333;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group input::placeholder {
+
+            color: #9aa4b2;
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #2864df;
+
+            box-shadow:
+                0 0 0 3px rgba(40,100,223,0.10);
+        }
+
+
+        /* =========================
+           REGISTER BUTTON
+        ========================= */
+
+        .register-btn {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #2864df;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+
+            transition: 0.2s;
+        }
+
+
+        .register-btn:hover {
+
+            background: #a7b0c2;
+        }
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 12px;
+
+            background: #e8f7ee;
+
+            color: #18733b;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .nav-links {
+
+                gap: 16px;
+            }
+
+            .nav-links a {
+
+                font-size: 14px;
+            }
+
+            .admin-btn {
+
+                padding: 12px 15px !important;
+            }
+        }
+
+
+        @media (max-width: 850px) {
+
+            .navbar {
+
+                height: auto;
+
+                min-height: 80px;
+
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .nav-links {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .main-section {
+
+                min-height: calc(100vh - 130px);
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+
+                font-size: 19px;
+            }
+
+
+            .register-card {
+
+                width: 100%;
+
+                padding: 30px 24px;
+
+                border-radius: 15px;
+            }
+
+
+            .register-card h1 {
+
+                font-size: 26px;
+            }
+
+
+            .nav-links a {
+
+                font-size: 13px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <nav class="navbar">
+
+
+        <!-- Logo -->
+
+        <div class="logo">
+            Nandgaon CivicConnect
+        </div>
+
+
+        <!-- Menu -->
+
+        <div class="nav-links">
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="about.html">
+                About
+            </a>
+
+
+            <a href="services.html">
+                Services
+            </a>
+
+
+            <a href="register-complaint.html">
+                Complaint
+            </a>
+
+
+            <!-- CURRENT PAGE -->
+
+            <a href="register.html" class="active">
+                Register
+            </a>
+
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+
+            <a href="admin-login.html" class="admin-btn">
+                Admin Login
+            </a>
+
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ==================================================
+         REGISTRATION SECTION
+    ================================================== -->
+
+    <section class="main-section">
+
+
+        <!-- Decorative circles -->
+
+        <div class="circle-one"></div>
+
+        <div class="circle-two"></div>
+
+
+
+        <!-- Registration Card -->
+
+        <div class="register-card">
+
+
+            <h1>
+                Registration
+            </h1>
+
+
+            <p class="subtitle">
+                Register to connect with Nandgaon CivicConnect
+            </p>
+
+
+
+            <!-- Registration Form -->
+
+            <form id="registrationForm">
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- MOBILE NUMBER -->
+
+                <div class="form-group">
+
+                    <label for="mobile">
+                        Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        placeholder="Enter your mobile number"
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-btn">
+
+                    Register
+
+                </button>
+
+
+
+                <!-- SUCCESS MESSAGE -->
+
+                <div
+                    id="successMessage"
+                    class="success-message">
+
+                    Registration submitted successfully!
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        const form =
+            document.getElementById("registrationForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            successMessage.style.display = "block";
+
+
+            form.reset();
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
