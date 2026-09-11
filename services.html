@@ -8,61 +8,285 @@
 
     <title>Services | Nandgaon CivicConnect</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+
 
     <style>
 
         /* =====================================================
-           SERVICES PAGE
+           GLOBAL
         ===================================================== */
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            background: #f6f9fd;
-            color: #173b66;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .services-page {
-            padding: 60px 20px 85px;
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f8fc;
+            color: #172033;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
         }
 
 
         /* =====================================================
-           HEADER
+           NAVBAR - SAME AS ABOUT
         ===================================================== */
 
-        .services-header {
-            max-width: 760px;
-            margin: 0 auto 48px;
+        .navbar {
+            width: 100%;
+            min-height: 76px;
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #e7ebf2;
+
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+            box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+
+            color: #172033;
+        }
+
+        .brand::first-letter {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: #596579;
+            font-size: 14px;
+            font-weight: 600;
+
+            padding: 11px 14px;
+            border-radius: 10px;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0b63ce;
+            background: #eef6ff;
+        }
+
+        .nav-links a.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #0866d5, #1649a5);
+
+            box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
+        }
+
+
+        /* =====================================================
+           SERVICES HERO
+        ===================================================== */
+
+        .services-hero {
+            position: relative;
+
+            min-height: 410px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(255,255,255,0.15),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(255,193,7,0.15),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #063b8f,
+                    #0874d1 55%,
+                    #0a9ad6
+                );
+        }
+
+        .services-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+
+            top: -300px;
+            right: -150px;
+        }
+
+        .services-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 50%;
+
+            bottom: -260px;
+            left: -100px;
+        }
+
+        .services-hero-inner {
+            position: relative;
+            z-index: 2;
+
             text-align: center;
+
+            max-width: 850px;
+
+            padding: 65px 25px;
         }
 
-        .services-badge {
+        .services-tag {
             display: inline-block;
-            padding: 7px 15px;
-            border-radius: 50px;
-            background: #eaf3ff;
-            color: #0b5fc4;
+
+            padding: 8px 16px;
+            margin-bottom: 20px;
+
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.10);
+
+            color: white;
+
             font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 13px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
         }
 
-        .services-header h1 {
-            margin: 0 0 13px;
-            color: #123d70;
-            font-size: 38px;
+        .services-hero h1 {
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(42px, 6vw, 65px);
+
+            line-height: 1.08;
+
+            color: white;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
         }
 
-        .services-header p {
-            margin: 0;
-            color: #697d94;
+        .services-hero h1 span {
+            color: #ffd23f;
+        }
+
+        .services-hero p {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: rgba(255,255,255,0.90);
+
+            font-size: 17px;
+
             line-height: 1.7;
-            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           SERVICE SECTION
+        ===================================================== */
+
+        .services-page {
+            padding: 80px 25px 85px;
+        }
+
+        .services-container {
+            width: min(1150px, 100%);
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+
+            max-width: 700px;
+
+            margin: 0 auto 50px;
+        }
+
+        .section-title span {
+            color: #0871d1;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+        .section-title h2 {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 38px;
+
+            margin: 10px 0 13px;
+        }
+
+        .section-title p {
+            color: #748094;
+
+            line-height: 1.7;
         }
 
 
@@ -70,15 +294,12 @@
            SERVICE GRID
         ===================================================== */
 
-        .services-container {
-            width: min(1120px, 100%);
-            margin: auto;
-        }
-
         .service-grid-new {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
-            gap: 23px;
+
+            gap: 25px;
         }
 
 
@@ -88,55 +309,157 @@
 
         .service-card-new {
             position: relative;
-            background: white;
-            border: 1px solid #e0e8f1;
-            border-radius: 18px;
-            padding: 30px;
-            min-height: 255px;
-            box-shadow: 0 8px 25px rgba(15, 40, 70, 0.05);
-            transition: all 0.28s ease;
+
+            padding: 35px 30px;
+
+            background: #f8fbff;
+
+            border: 1px solid #e3edf8;
+
+            border-radius: 20px;
+
             overflow: hidden;
+
+            transition: 0.35s ease;
         }
+
+
+        /* BLUE BUBBLE */
 
         .service-card-new::after {
             content: "";
+
             position: absolute;
-            width: 130px;
-            height: 130px;
+
+            width: 180px;
+            height: 180px;
+
             border-radius: 50%;
-            background: #f0f6ff;
-            right: -50px;
-            bottom: -60px;
-            transition: 0.3s;
+
+            background: rgba(8,113,209,0.07);
+
+            right: -80px;
+            bottom: -90px;
+
+            transition: 0.4s ease;
         }
 
+
+        /* SMALL BLUE GLOW */
+
+        .service-card-new::before {
+            content: "";
+
+            position: absolute;
+
+            width: 5px;
+            height: 0;
+
+            left: 0;
+            top: 0;
+
+            background: linear-gradient(
+                180deg,
+                #0871d1,
+                #0a9ad6
+            );
+
+            border-radius: 0 0 10px 0;
+
+            transition: 0.35s ease;
+        }
+
+
+        /* HOVER */
+
         .service-card-new:hover {
-            transform: translateY(-7px);
-            border-color: #c6dbf3;
-            box-shadow: 0 18px 40px rgba(15, 40, 70, 0.11);
+            transform: translateY(-8px);
+
+            background: #ffffff;
+
+            border-color: #bcdcff;
+
+            box-shadow:
+                0 20px 40px rgba(25,55,95,0.10),
+                0 0 0 1px rgba(8,113,209,0.04);
         }
 
         .service-card-new:hover::after {
-            transform: scale(1.3);
+            transform: scale(1.45);
+
+            background: rgba(8,113,209,0.10);
+        }
+
+        .service-card-new:hover::before {
+            height: 100%;
         }
 
 
         /* =====================================================
-           ICON
+           SERVICE ICON
         ===================================================== */
 
         .service-icon-new {
-            width: 58px;
-            height: 58px;
+            position: relative;
+            z-index: 3;
+
+            width: 60px;
+            height: 60px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
-            background: #edf5ff;
-            font-size: 27px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
+
+            border-radius: 16px;
+
+            background: #e7f3ff;
+
+            font-size: 28px;
+
+            margin-bottom: 22px;
+
+            transition: 0.35s ease;
+        }
+
+        .service-card-new:hover .service-icon-new {
+            transform: translateY(-4px) scale(1.06);
+
+            background: linear-gradient(
+                135deg,
+                #e0f0ff,
+                #f2f9ff
+            );
+
+            box-shadow:
+                0 10px 25px rgba(8,102,213,0.12);
+        }
+
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
+
+        .service-label {
+            position: absolute;
+
+            top: 22px;
+            right: 22px;
+
+            z-index: 3;
+
+            padding: 6px 10px;
+
+            border-radius: 30px;
+
+            background: #eef6ff;
+
+            color: #0871d1;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
         }
 
 
@@ -146,20 +469,30 @@
 
         .service-card-new h2 {
             position: relative;
-            z-index: 2;
-            margin: 0 0 10px;
-            color: #153f71;
-            font-size: 20px;
+            z-index: 3;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+
+            margin-bottom: 12px;
+
+            color: #172033;
         }
 
         .service-card-new p {
             position: relative;
-            z-index: 2;
-            max-width: 470px;
-            margin: 0 0 22px;
-            color: #6c7f95;
-            font-size: 13px;
+            z-index: 3;
+
+            color: #748094;
+
+            font-size: 14px;
+
             line-height: 1.7;
+
+            max-width: 500px;
+
+            margin-bottom: 25px;
         }
 
 
@@ -169,125 +502,46 @@
 
         .service-button {
             position: relative;
-            z-index: 3;
+            z-index: 4;
+
             display: inline-flex;
+
             align-items: center;
-            gap: 7px;
-            padding: 11px 17px;
-            border-radius: 9px;
-            background: #0b61c7;
+            justify-content: center;
+
+            padding: 12px 18px;
+
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #0866d5,
+                #1649a5
+            );
+
             color: white;
-            text-decoration: none;
+
             font-size: 12px;
-            font-weight: 700;
-            transition: 0.2s;
+
+            font-weight: 800;
+
+            transition: 0.3s ease;
+
+            box-shadow:
+                0 6px 15px rgba(8,102,213,0.16);
         }
 
         .service-button:hover {
-            background: #084f9f;
-            transform: translateX(2px);
-        }
+            transform: translateY(-3px);
 
+            box-shadow:
+                0 10px 25px rgba(8,102,213,0.25);
 
-        /* =====================================================
-           SMALL LABEL
-        ===================================================== */
-
-        .service-label {
-            position: absolute;
-            top: 22px;
-            right: 22px;
-            z-index: 3;
-            padding: 5px 9px;
-            border-radius: 50px;
-            background: #f1f5f9;
-            color: #66788e;
-            font-size: 9px;
-            font-weight: 700;
-        }
-
-
-        /* =====================================================
-           CITIZEN INFO
-        ===================================================== */
-
-        .citizen-section {
-            width: min(1120px, 100%);
-            margin: 65px auto 0;
-        }
-
-        .citizen-card {
-            position: relative;
-            overflow: hidden;
-            padding: 42px;
-            border-radius: 20px;
             background: linear-gradient(
                 135deg,
-                #073b7a,
-                #0c68cf
+                #0757b8,
+                #123d91
             );
-            color: white;
-            text-align: center;
-            box-shadow: 0 18px 45px rgba(11, 83, 164, 0.17);
-        }
-
-        .citizen-card::before {
-            content: "";
-            position: absolute;
-            width: 210px;
-            height: 210px;
-            border-radius: 50%;
-            border: 45px solid rgba(255,255,255,0.05);
-            left: -80px;
-            top: -110px;
-        }
-
-        .citizen-card::after {
-            content: "";
-            position: absolute;
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            border: 35px solid rgba(255,255,255,0.05);
-            right: -60px;
-            bottom: -100px;
-        }
-
-        .citizen-card h2 {
-            position: relative;
-            z-index: 2;
-            margin: 0 0 12px;
-            color: white;
-            font-size: 28px;
-        }
-
-        .citizen-card p {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
-            margin: 0 auto 25px;
-            color: rgba(255,255,255,0.80);
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .citizen-button {
-            position: relative;
-            z-index: 2;
-            display: inline-block;
-            padding: 13px 24px;
-            border-radius: 9px;
-            background: white;
-            color: #0b5fc4;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 700;
-            transition: 0.25s;
-        }
-
-        .citizen-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
 
@@ -297,35 +551,237 @@
 
         .features {
             width: min(950px, 100%);
-            margin: 50px auto 0;
+
+            margin: 60px auto 0;
+
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
-            gap: 17px;
+
+            gap: 18px;
         }
 
         .feature {
-            padding: 20px 15px;
+            padding: 25px 18px;
+
             background: white;
-            border: 1px solid #e2e9f1;
-            border-radius: 14px;
+
+            border: 1px solid #e6ebf2;
+
+            border-radius: 18px;
+
             text-align: center;
+
+            transition: 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 35px rgba(20,50,90,0.10);
+
+            border-color: #c8def5;
         }
 
         .feature-icon {
-            font-size: 23px;
-            margin-bottom: 8px;
+            font-size: 25px;
+
+            margin-bottom: 10px;
+
+            transition: 0.3s ease;
+        }
+
+        .feature:hover .feature-icon {
+            transform: scale(1.12);
         }
 
         .feature strong {
             display: block;
+
             color: #315477;
+
             font-size: 13px;
+
             margin-bottom: 5px;
         }
 
         .feature span {
             color: #8290a0;
+
             font-size: 11px;
+        }
+
+
+        /* =====================================================
+           CITIZEN CTA
+        ===================================================== */
+
+        .citizen-section {
+            padding: 80px 0 0;
+
+            width: min(1100px, 100%);
+
+            margin: auto;
+        }
+
+        .citizen-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 55px 60px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #063e91,
+                    #0875d1
+                );
+
+            box-shadow:
+                0 25px 55px rgba(7,72,145,0.20);
+
+            text-align: center;
+        }
+
+        .citizen-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            border-radius: 50%;
+
+            top: -230px;
+            left: -120px;
+        }
+
+        .citizen-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+            height: 280px;
+
+            border: 1px solid rgba(255,255,255,0.13);
+
+            border-radius: 50%;
+
+            right: -100px;
+            bottom: -190px;
+        }
+
+        .citizen-card h2 {
+            position: relative;
+            z-index: 2;
+
+            font-family: "Poppins", sans-serif;
+
+            color: white;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .citizen-card p {
+            position: relative;
+            z-index: 2;
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+
+            color: rgba(255,255,255,0.82);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .citizen-button {
+            position: relative;
+            z-index: 3;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 23px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #0757ad;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            transition: 0.3s ease;
+        }
+
+        .citizen-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px rgba(0,0,0,0.18);
+        }
+
+
+        /* =====================================================
+           FOOTER - SAME AS ABOUT
+        ===================================================== */
+
+        footer {
+            background: #101827;
+
+            padding: 55px 7% 25px;
+
+            margin-top: 80px;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+        }
+
+        .footer-line {
+            width: 70px;
+            height: 3px;
+
+            margin: 20px auto;
+
+            border-radius: 20px;
+
+            background: #1685dd;
+        }
+
+        footer p {
+            color: #9aa6b8;
+
+            font-size: 13px;
+
+            margin: 7px 0;
         }
 
 
@@ -333,28 +789,99 @@
            RESPONSIVE
         ===================================================== */
 
-        @media (max-width: 750px) {
+        @media (max-width: 1000px) {
 
-            .services-page {
-                padding: 45px 14px 65px;
+            .navbar {
+                padding: 15px 4%;
+
+                flex-direction: column;
+
+                gap: 12px;
             }
 
-            .services-header h1 {
-                font-size: 30px;
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
             }
 
             .service-grid-new {
                 grid-template-columns: 1fr;
             }
 
+            .features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .citizen-card {
-                padding: 35px 22px;
+                padding: 45px 30px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                position: relative;
+            }
+
+            .brand {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                gap: 3px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+
+                padding: 8px 9px;
+            }
+
+            .services-hero {
+                min-height: 390px;
+            }
+
+            .services-hero-inner {
+                padding: 50px 20px;
+            }
+
+            .services-hero h1 {
+                font-size: 39px;
+            }
+
+            .services-hero p {
+                font-size: 15px;
+            }
+
+            .services-page {
+                padding: 65px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .service-card-new {
+                padding: 30px 24px;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
 
+            .citizen-section {
+                padding-top: 60px;
+            }
+
+            .citizen-card {
+                padding: 40px 22px;
+            }
+
+            .citizen-card h2 {
+                font-size: 25px;
+            }
         }
 
     </style>
@@ -385,7 +912,7 @@
                 About
             </a>
 
-            <a href="services.html">
+            <a href="services.html" class="active">
                 Services
             </a>
 
@@ -401,46 +928,74 @@
                 Feedback
             </a>
 
+            <a href="admin.html">
+                Admin Login
+            </a>
+
         </div>
-
-
 
     </nav>
 
 
 
     <!-- =====================================================
-         SERVICES PAGE
+         SERVICES HERO
     ===================================================== -->
 
-    <main class="services-page">
+    <section class="services-hero">
 
+        <div class="services-hero-inner">
 
-        <!-- HEADER -->
-
-        <div class="services-header">
-
-            <span class="services-badge">
+            <span class="services-tag">
                 🏛️ DIGITAL CIVIC SERVICES
             </span>
 
             <h1>
-                Our Services
+                Our <span>Services</span>
             </h1>
 
             <p>
                 Explore simple digital services designed to connect
-                citizens with civic support, complaint management and
-                e-Governance information.
+                citizens with civic support, complaint management
+                and e-Governance information.
             </p>
 
         </div>
 
+    </section>
 
 
-        <!-- SERVICE CARDS -->
+
+    <!-- =====================================================
+         SERVICES
+    ===================================================== -->
+
+    <main class="services-page">
 
         <div class="services-container">
+
+
+            <!-- SECTION TITLE -->
+
+            <div class="section-title">
+
+                <span>WHAT WE PROVIDE</span>
+
+                <h2>
+                    Simple Services for
+                    <span>Citizens</span>
+                </h2>
+
+                <p>
+                    Access important civic services and information
+                    through one simple digital platform.
+                </p>
+
+            </div>
+
+
+
+            <!-- SERVICE GRID -->
 
             <div class="service-grid-new">
 
@@ -577,101 +1132,101 @@
 
             </div>
 
+
+
+            <!-- =================================================
+                 QUICK FEATURES
+            ================================================== -->
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📍
+                    </div>
+
+                    <strong>
+                        Location Based
+                    </strong>
+
+                    <span>
+                        Report issues with their location.
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📷
+                    </div>
+
+                    <strong>
+                        Evidence Support
+                    </strong>
+
+                    <span>
+                        Add photos or videos with complaints.
+                    </span>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🌐
+                    </div>
+
+                    <strong>
+                        Digital Access
+                    </strong>
+
+                    <span>
+                        Access civic information online.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CTA
+            ================================================== -->
+
+            <section class="citizen-section">
+
+                <div class="citizen-card">
+
+                    <h2>
+                        Your Voice Can Make a Difference
+                    </h2>
+
+                    <p>
+                        Found a civic issue in your area?
+                        Report it through Nandgaon CivicConnect and
+                        help build a cleaner, safer and better community.
+                    </p>
+
+                    <a
+                        href="register-complaint.html"
+                        class="citizen-button"
+                    >
+                        📝 Report a Civic Issue
+                    </a>
+
+                </div>
+
+            </section>
+
+
         </div>
-
-
-
-        <!-- =================================================
-             QUICK FEATURES
-        ================================================== -->
-
-        <div class="features">
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    📍
-                </div>
-
-                <strong>
-                    Location Based
-                </strong>
-
-                <span>
-                    Report issues with their location.
-                </span>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    📷
-                </div>
-
-                <strong>
-                    Evidence Support
-                </strong>
-
-                <span>
-                    Add photos or videos with complaints.
-                </span>
-
-            </div>
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    🌐
-                </div>
-
-                <strong>
-                    Digital Access
-                </strong>
-
-                <span>
-                    Access civic information online.
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <section class="citizen-section">
-
-            <div class="citizen-card">
-
-                <h2>
-                    Your Voice Can Make a Difference
-                </h2>
-
-                <p>
-                    Found a civic issue in your area?
-                    Report it through Nandgaon CivicConnect and
-                    help build a cleaner, safer and better community.
-                </p>
-
-                <a
-                    href="register-complaint.html"
-                    class="citizen-button"
-                >
-                    📝 Report a Civic Issue
-                </a>
-
-            </div>
-
-        </section>
-
 
     </main>
 
@@ -683,16 +1238,24 @@
 
     <footer>
 
-        <h3>
+        <div class="footer-logo">
             🇮🇳 Nandgaon CivicConnect
-        </h3>
+        </div>
+
+        <div class="footer-line"></div>
 
         <p>
             Enhancing Public Awareness of e-Governance
         </p>
 
         <p>
-            © 2026 Nandgaon CivicConnect
+            Connecting Citizens • Improving Services •
+            Building Better Communities
+        </p>
+
+        <p>
+            © 2026 Nandgaon CivicConnect.
+            All Rights Reserved.
         </p>
 
     </footer>
