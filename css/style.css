@@ -1,13 +1,6 @@
-/* =========================================================
-   NANDGAON CIVICCONNECT
-   PROFESSIONAL WEBSITE STYLE.CSS
-   Modern UI + Hover Effects + Responsive Design
-========================================================= */
-
-
-/* =========================================================
-   1. GENERAL
-========================================================= */
+/* =========================
+   GENERAL
+========================= */
 
 * {
     margin: 0;
@@ -24,28 +17,15 @@ body {
     background: #f5f7fa;
     color: #222;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-img {
-    max-width: 100%;
-    display: block;
-}
 
-a {
-    transition: all 0.3s ease;
-}
-
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-}
-
+/* =========================
+   NAVBAR
+========================= */
 
 /* =========================================================
-   2. NAVBAR
+   NAVBAR - PROFESSIONAL CENTERED LAYOUT
 ========================================================= */
 
 .navbar {
@@ -57,7 +37,7 @@ textarea {
 
     padding: 0 5%;
 
-    background: rgba(255, 255, 255, 0.97);
+    background: #ffffff;
 
     border-bottom: 1px solid #e8edf3;
 
@@ -65,35 +45,19 @@ textarea {
     top: 0;
     z-index: 1000;
 
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
-
-    transition:
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-}
-
-.navbar:hover {
-    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
 }
 
 
 /* BRAND */
 
 .brand {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 800;
-    color: #123c69;
+
+    color: #17233c;
+
     white-space: nowrap;
-    text-decoration: none;
-
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-}
-
-.brand:hover {
-    color: #0b63ce;
-    transform: translateY(-2px);
 }
 
 
@@ -103,245 +67,208 @@ textarea {
     flex: 1;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
-    gap: 25px;
+    gap: 28px;
+
     margin-left: 40px;
 }
+
+
+/* NAV LINKS */
 
 .nav-links a {
     position: relative;
 
     text-decoration: none;
+
     color: #4b5563;
 
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
 
     padding: 25px 0;
 
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 
-/* NAV LINK HOVER */
+/* HOVER */
 
-.nav-links a:not(:last-child)::after {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 16px;
-
-    width: 0;
-    height: 3px;
-
-    background: linear-gradient(
-        90deg,
-        #0b63ce,
-        #38bdf8
-    );
-
-    border-radius: 20px;
-
-    transform: translateX(-50%);
-
-    transition: width 0.3s ease;
-}
-
-.nav-links a:not(:last-child):hover {
-    color: #0b63ce;
-    transform: translateY(-2px);
-}
-
-.nav-links a:not(:last-child):hover::after {
-    width: 100%;
+.nav-links a:hover {
+    color: #2563eb;
 }
 
 
-/* ACTIVE LINK */
+/* ACTIVE */
 
 .nav-links a.active {
-    color: #0b63ce;
+    color: #2563eb;
 }
+
+
+/* ACTIVE UNDERLINE */
 
 .nav-links a.active::after {
     content: "";
 
     position: absolute;
 
-    left: 50%;
+    left: 0;
+    right: 0;
+
     bottom: 16px;
 
-    width: 100%;
-    height: 3px;
+    height: 2px;
 
-    background: #0b63ce;
+    background: #2563eb;
 
-    border-radius: 20px;
-
-    transform: translateX(-50%);
+    border-radius: 10px;
 }
 
 
-/* ADMIN LOGIN BUTTON */
+/* ADMIN LOGIN */
 
 .nav-links a:last-child {
     padding: 10px 18px;
 
     color: #ffffff;
 
-    background: linear-gradient(
-        135deg,
-        #0b63ce,
-        #2563eb
-    );
+    background: #2563eb;
 
     border-radius: 8px;
-
-    box-shadow: 0 5px 15px rgba(11, 99, 206, 0.18);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
 }
 
 .nav-links a:last-child:hover {
+    background: #1d4ed8;
+
     color: #ffffff;
-
-    background: linear-gradient(
-        135deg,
-        #084b9c,
-        #1d4ed8
-    );
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 9px 22px rgba(11, 99, 206, 0.30);
 }
 
 
 /* =========================================================
-   3. LANGUAGE SWITCH
+   MOBILE
 ========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-wrap: wrap;
+
+        padding: 15px 20px;
+    }
+
+    .brand {
+        width: 100%;
+
+        text-align: center;
+
+        margin-bottom: 12px;
+    }
+
+    .nav-links {
+        width: 100%;
+
+        margin-left: 0;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        padding: 8px 0;
+    }
+
+    .nav-links a.active::after {
+        bottom: 2px;
+    }
+
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: bold;
+    color: #123c69;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #0b63ce;
+}
+
+
+/* =========================
+   LANGUAGE SWITCH
+========================= */
 
 .language-switch {
     display: flex;
     gap: 5px;
-    align-items: center;
 }
 
 .language-switch button {
     border: 1px solid #0b63ce;
-
-    background: #ffffff;
+    background: white;
     color: #0b63ce;
-
     padding: 6px 9px;
-
     border-radius: 5px;
-
     cursor: pointer;
-
     font-size: 12px;
-    font-weight: 600;
-
-    transition:
-        all 0.3s ease;
 }
 
 .language-switch button:hover {
     background: #0b63ce;
-    color: #ffffff;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 5px 12px rgba(11, 99, 206, 0.25);
-}
-
-.language-switch button:active {
-    transform: scale(0.95);
+    color: white;
 }
 
 
-/* =========================================================
-   4. HERO SECTION
-========================================================= */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 500px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     padding: 70px 20px;
 
-    position: relative;
-    overflow: hidden;
-
     background:
-        linear-gradient(
-            rgba(10, 55, 100, 0.76),
-            rgba(10, 55, 100, 0.76)
-        ),
+        linear-gradient(rgba(10, 55, 100, 0.75),
+        rgba(10, 55, 100, 0.75)),
         url("../images/home-banner.jpg");
 
     background-size: cover;
     background-position: center;
-
-    animation: heroZoom 12s ease-in-out infinite alternate;
-}
-
-@keyframes heroZoom {
-
-    from {
-        background-size: 100%;
-    }
-
-    to {
-        background-size: 108%;
-    }
 }
 
 .hero-content {
-    max-width: 850px;
+    max-width: 800px;
     color: white;
-
-    position: relative;
-    z-index: 2;
-
-    animation: heroContent 0.9s ease forwards;
-}
-
-@keyframes heroContent {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .hero h1 {
     font-size: 48px;
     margin-bottom: 10px;
-
-    text-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.25);
 }
 
 .hero h2 {
@@ -355,103 +282,38 @@ textarea {
 }
 
 
-/* =========================================================
-   5. BUTTONS
-========================================================= */
+/* =========================
+   BUTTONS
+========================= */
 
 .btn {
     display: inline-block;
-
     text-decoration: none;
-
-    background: linear-gradient(
-        135deg,
-        #0b63ce,
-        #2563eb
-    );
-
+    background: #0b63ce;
     color: white;
-
     padding: 12px 22px;
-
-    border-radius: 7px;
-
+    border-radius: 6px;
     font-weight: bold;
-
     margin: 5px;
-
-    border: none;
-
-    cursor: pointer;
-
-    position: relative;
-    overflow: hidden;
-
-    box-shadow:
-        0 5px 15px rgba(11, 99, 206, 0.18);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-}
-
-.btn::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 80%;
-    height: 100%;
-
-    background: rgba(255, 255, 255, 0.18);
-
-    transform: skewX(-25deg);
-
-    transition: left 0.5s ease;
-}
-
-.btn:hover::before {
-    left: 130%;
 }
 
 .btn:hover {
-    background: linear-gradient(
-        135deg,
-        #084b9c,
-        #1d4ed8
-    );
-
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 10px 25px rgba(11, 99, 206, 0.30);
+    background: #084b9c;
 }
-
-.btn:active {
-    transform: translateY(-1px) scale(0.98);
-}
-
-
-/* SECONDARY BUTTON */
 
 .secondary-btn {
-    background: #ffffff;
+    background: white;
     color: #0b63ce;
 }
 
 .secondary-btn:hover {
-    background: #ffffff;
-    color: #084b9c;
+    background: #eeeeee;
 }
 
 
-/* =========================================================
-   6. SECTIONS
-========================================================= */
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
     padding: 60px 8%;
@@ -462,214 +324,77 @@ textarea {
     font-size: 32px;
     color: #123c69;
     margin-bottom: 20px;
-
-    position: relative;
-    display: inline-block;
-}
-
-.section h2::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 4px;
-
-    background: linear-gradient(
-        90deg,
-        #0b63ce,
-        #38bdf8
-    );
-
-    border-radius: 10px;
-
-    margin: 8px auto 0;
 }
 
 .section > p {
     max-width: 800px;
     margin: auto;
-    color: #5f6b76;
 }
 
 
-/* =========================================================
-   7. CARDS
-========================================================= */
+/* =========================
+   CARDS
+========================= */
 
 .cards {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-
-    max-width: 1100px;
-
-    margin: 35px auto;
+    margin-top: 35px;
 }
 
 .card {
-    background: #ffffff;
-
+    background: white;
     padding: 25px 18px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5eaf0;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.07);
-
-    position: relative;
-    overflow: hidden;
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 4px;
-
-    background: linear-gradient(
-        90deg,
-        #0b63ce,
-        #38bdf8
-    );
-
-    transition: width 0.35s ease;
-}
-
-.card:hover {
-    transform: translateY(-9px);
-
-    border-color: #b9d6f5;
-
-    box-shadow:
-        0 16px 35px rgba(0, 0, 0, 0.12);
-}
-
-.card:hover::before {
-    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .card h3 {
     color: #123c69;
     margin-bottom: 12px;
-
-    transition: color 0.3s ease;
-}
-
-.card:hover h3 {
-    color: #0b63ce;
 }
 
 .card p {
     margin-bottom: 15px;
-    color: #5f6368;
 }
 
 .card a {
     text-decoration: none;
     color: #0b63ce;
     font-weight: bold;
-
-    transition:
-        color 0.3s ease,
-        padding-left 0.3s ease;
-}
-
-.card a:hover {
-    color: #084b9c;
-    padding-left: 5px;
 }
 
 
-/* =========================================================
-   8. HOW IT WORKS
-========================================================= */
+/* =========================
+   HOW IT WORKS
+========================= */
 
 .steps {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
-
-    max-width: 1100px;
-
-    margin: 35px auto;
+    margin-top: 35px;
 }
 
-.steps > div {
-    background: #ffffff;
-
+.steps div {
+    background: white;
     padding: 25px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e5eaf0;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.07);
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.steps > div:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 15px 32px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .steps span {
     display: inline-flex;
-
     width: 45px;
     height: 45px;
-
     align-items: center;
     justify-content: center;
-
-    background: linear-gradient(
-        135deg,
-        #0b63ce,
-        #38bdf8
-    );
-
+    background: #0b63ce;
     color: white;
-
     border-radius: 50%;
-
     font-weight: bold;
-
     margin-bottom: 10px;
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.steps > div:hover span {
-    transform: rotate(8deg) scale(1.12);
-
-    box-shadow:
-        0 7px 18px rgba(11, 99, 206, 0.28);
 }
 
 .steps h3 {
@@ -677,21 +402,14 @@ textarea {
 }
 
 
-/* =========================================================
-   9. AWARENESS SECTION
-========================================================= */
+/* =========================
+   AWARENESS SECTION
+========================= */
 
 .awareness-section {
     text-align: center;
-
     padding: 60px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eaf3ff,
-            #f5faff
-        );
+    background: #eaf3ff;
 }
 
 .awareness-section h2 {
@@ -704,1022 +422,62 @@ textarea {
 }
 
 
-/* =========================================================
-   10. FORM
-========================================================= */
-
-form {
-    max-width: 750px;
-
-    margin: 35px auto;
-
-    background: #ffffff;
-
-    padding: 35px;
-
-    border-radius: 15px;
-
-    border: 1px solid #e2e8f0;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.09);
-
-    text-align: left;
-
-    transition:
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-}
-
-form:hover {
-    box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.12);
-}
-
-form label {
-    display: block;
-
-    margin: 18px 0 7px;
-
-    font-weight: 600;
-
-    color: #123c69;
-}
-
-form input,
-form select,
-form textarea {
-    width: 100%;
-
-    padding: 12px 14px;
-
-    border: 1px solid #d4d9df;
-
-    border-radius: 7px;
-
-    font-size: 15px;
-
-    outline: none;
-
-    background: #fafbfc;
-
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease,
-        transform 0.2s ease;
-}
-
-form input:hover,
-form select:hover,
-form textarea:hover {
-    border-color: #a8c8e8;
-}
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-    border-color: #0b63ce;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 0 0 4px rgba(11, 99, 206, 0.10);
-}
-
-form textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-form input[type="file"] {
-    background: #ffffff;
-    padding: 10px;
-
-    cursor: pointer;
-}
-
-form input[type="file"]:hover {
-    background: #f0f7ff;
-    border-color: #0b63ce;
-}
-
-form .btn {
-    border: none;
-
-    cursor: pointer;
-
-    margin-top: 25px;
-
-    width: 100%;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   11. ABOUT PAGE
-========================================================= */
-
-.about-box {
-    max-width: 900px;
-
-    margin: 30px auto;
-
-    background: #ffffff;
-
-    padding: 35px;
-
-    border-radius: 15px;
-
-    border: 1px solid #e3eaf2;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.08);
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-}
-
-.about-box:hover {
-    transform: translateY(-7px);
-
-    border-color: #b9d6f5;
-
-    box-shadow:
-        0 16px 35px rgba(0, 0, 0, 0.12);
-}
-
-.about-box h3 {
-    color: #123c69;
-    margin-bottom: 12px;
-}
-
-.about-box p {
-    color: #555;
-    margin-bottom: 15px;
-}
-
-
-/* OBJECTIVE CARDS */
-
-.objective-card {
-    background: #ffffff;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
-    border: 1px solid #e3eaf2;
-
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.08);
-
-    text-align: center;
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.objective-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 16px 32px rgba(0, 0, 0, 0.12);
-}
-
-.objective-card h3 {
-    color: #0b63ce;
-    margin-bottom: 10px;
-
-    transition:
-        color 0.3s ease;
-}
-
-.objective-card:hover h3 {
-    color: #084b9c;
-}
-
-
-/* =========================================================
-   12. FAQ
-========================================================= */
-
-.faq-container {
-    max-width: 850px;
-
-    margin: 30px auto;
-
-    text-align: left;
-}
-
-.faq-item {
-    background: #ffffff;
-
-    border: 1px solid #dfe4ea;
-
-    border-radius: 8px;
-
-    margin-bottom: 12px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.03);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.faq-item:hover {
-    transform: translateY(-3px);
-
-    border-color: #b8d4f1;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.faq-question {
-    width: 100%;
-
-    border: none;
-
-    background: #ffffff;
-
-    padding: 16px 18px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    text-align: left;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #243b53;
-
-    cursor: pointer;
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease;
-}
-
-.faq-question:hover {
-    background: #f2f7fc;
-    color: #0b63ce;
-}
-
-.faq-question span:last-child {
-    font-size: 20px;
-
-    font-weight: normal;
-
-    color: #0b63ce;
-
-    margin-left: 15px;
-
-    transition:
-        transform 0.3s ease;
-}
-
-.faq-question:hover span:last-child {
-    transform: rotate(90deg);
-}
-
-.faq-answer {
-    display: none;
-
-    padding: 14px 20px 16px;
-
-    border-top: 1px solid #e3e8ee;
-
-    background: #f8fafc;
-}
-
-.faq-answer p {
-    margin: 0;
-
-    font-size: 13.5px;
-
-    line-height: 1.7;
-
-    color: #4a5568;
-}
-
-
-/* =========================================================
-   13. ADMIN LOGIN
-========================================================= */
-
-.admin-login {
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 30px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eef5fc,
-            #f8fafc
-        );
-}
-
-.login-card {
-    width: 100%;
-
-    max-width: 430px;
-
-    background: #ffffff;
-
-    padding: 40px;
-
-    border-radius: 15px;
-
-    border: 1px solid #dce2e8;
-
-    box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.10);
-
-    text-align: center;
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.login-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.14);
-}
-
-.login-logo {
-    font-size: 42px;
-
-    margin-bottom: 8px;
-
-    display: inline-block;
-
-    transition:
-        transform 0.4s ease;
-}
-
-.login-card:hover .login-logo {
-    transform: scale(1.12) rotate(-4deg);
-}
-
-.login-card h1 {
-    font-size: 22px;
-
-    color: #17365d;
-
-    margin-bottom: 5px;
-}
-
-.login-card h2 {
-    font-size: 18px;
-
-    color: #1769aa;
-
-    margin-bottom: 5px;
-}
-
-.login-card > p {
-    font-size: 13px;
-
-    color: #6b7280;
-
-    margin-bottom: 25px;
-}
-
-.login-card form {
-    margin: 0;
-
-    padding: 0;
-
-    box-shadow: none;
-
-    background: transparent;
-
-    max-width: 100%;
-}
-
-.login-card form:hover {
-    box-shadow: none;
-}
-
-.login-card form label {
-    text-align: left;
-
-    font-size: 14px;
-
-    margin-top: 15px;
-}
-
-.login-card input {
-    width: 100%;
-
-    padding: 12px;
-
-    border: 1px solid #d5dce3;
-
-    border-radius: 6px;
-
-    font-size: 14px;
-
-    background: #fafbfc;
-}
-
-.login-card input:focus {
-    outline: none;
-
-    border-color: #1769aa;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 0 0 4px rgba(23, 105, 170, 0.10);
-}
-
-.login-card .btn {
-    width: 100%;
-
-    border: none;
-
-    cursor: pointer;
-
-    margin-top: 25px;
-}
-
-.login-note {
-    font-size: 12px !important;
-
-    color: #777 !important;
-
-    margin-top: 20px !important;
-
-    margin-bottom: 12px !important;
-}
-
-.login-card > a {
-    text-decoration: none;
-
-    font-size: 13px;
-
-    color: #1769aa;
-}
-
-.login-card > a:hover {
-    text-decoration: underline;
-
-    color: #0b63ce;
-}
-
-
-/* =========================================================
-   14. ADMIN DASHBOARD
-========================================================= */
-
-.dashboard-container {
-    width: 100%;
-}
-
-.navbar > div:last-child {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-}
-
-.navbar > div:last-child span {
-    color: #17365d;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-
-/* DASHBOARD SECTION */
-
-.section {
-    padding: 35px 20px;
-}
-
-.section h2 {
-    color: #17365d;
-
-    font-size: 22px;
-}
-
-.section > p {
-    color: #68737d;
-
-    font-size: 14px;
-}
-
-
-/* DASHBOARD CARDS */
-
-.cards {
-    max-width: 1100px;
-
-    margin: 25px auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 18px;
-}
-
-.cards .card {
-    background: #ffffff;
-
-    padding: 22px;
-
-    border: 1px solid #e1e6eb;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.05);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.cards .card:hover {
-    transform: translateY(-7px);
-
-    border-color: #b8d4f1;
-
-    box-shadow:
-        0 14px 28px rgba(0, 0, 0, 0.10);
-}
-
-.cards .card h3 {
-    color: #5f6b76;
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
-
-.cards .card h2 {
-    color: #17365d;
-
-    font-size: 25px;
-
-    margin-top: 10px;
-}
-
-
-/* =========================================================
-   15. COMPLAINT TABLE
-========================================================= */
-
-.table-container {
-    max-width: 1100px;
-
-    margin: 20px auto;
-
-    background: #ffffff;
-
-    border: 1px solid #e1e6eb;
-
-    border-radius: 10px;
-
-    overflow-x: auto;
-
-    box-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.05);
-
-    transition:
-        box-shadow 0.3s ease;
-}
-
-.table-container:hover {
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.table-container table {
-    width: 100%;
-
-    border-collapse: collapse;
-
-    min-width: 700px;
-}
-
-.table-container th {
-    background:
-        linear-gradient(
-            135deg,
-            #17365d,
-            #1e4f80
-        );
-
-    color: white;
-
-    padding: 13px;
-
-    text-align: left;
-
-    font-size: 13px;
-}
-
-.table-container td {
-    padding: 13px;
-
-    border-bottom:
-        1px solid #e8ebee;
-
-    font-size: 13px;
-
-    color: #4b5563;
-}
-
-.table-container tbody tr {
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-}
-
-.table-container tbody tr:hover {
-    background: #f0f7ff;
-}
-
-
-/* =========================================================
-   16. STATUS BADGES
-========================================================= */
-
-.status {
-    display: inline-block;
-
-    padding: 5px 10px;
-
-    border-radius: 15px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.status:hover {
-    transform: scale(1.05);
-
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.10);
-}
-
-.status.pending {
-    background: #fff3cd;
-
-    color: #856404;
-}
-
-.status.in-progress {
-    background: #e3f2fd;
-
-    color: #1565c0;
-}
-
-.status.resolved {
-    background: #e8f5e9;
-
-    color: #2e7d32;
-}
-
-
-/* =========================================================
-   17. DASHBOARD BUTTON
-========================================================= */
-
-.table-container .btn {
-    padding: 7px 13px;
-
-    font-size: 12px;
-
-    border: none;
-
-    cursor: pointer;
-
-    margin: 0;
-}
-
-
-/* =========================================================
-   18. FEEDBACK
-========================================================= */
-
-#totalFeedback,
-#averageRating {
-    color: #17365d;
-
-    font-size: 25px;
-
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-}
-
-#totalFeedback:hover,
-#averageRating:hover {
-    color: #0b63ce;
-
-    transform: scale(1.08);
-}
-
-
-/* =========================================================
-   19. FOOTER
-========================================================= */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-    background:
-        linear-gradient(
-            135deg,
-            #123c69,
-            #0b2949
-        );
-
+    background: #123c69;
     color: white;
-
     text-align: center;
-
-    padding: 35px 20px;
-
-    margin-top: 40px;
-
-    position: relative;
-}
-
-footer::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 4px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0b63ce,
-            #38bdf8,
-            #0b63ce
-        );
+    padding: 30px 20px;
 }
 
 footer h3 {
     margin-bottom: 8px;
-
-    transition:
-        transform 0.3s ease;
-}
-
-footer h3:hover {
-    transform: translateY(-2px);
-}
-
-footer a {
-    color: #dcecff;
-
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #ffffff;
-
-    text-decoration: underline;
 }
 
 
-/* =========================================================
-   20. IMAGE HOVER
-========================================================= */
-
-.card img,
-.about-box img {
-    border-radius: 10px;
-
-    transition:
-        transform 0.4s ease,
-        filter 0.4s ease;
-}
-
-.card:hover img,
-.about-box:hover img {
-    transform: scale(1.03);
-
-    filter: brightness(1.03);
-}
-
-
-/* =========================================================
-   21. ICON HOVER
-========================================================= */
-
-.card i,
-.card .icon,
-.objective-card i {
-    transition:
-        transform 0.35s ease,
-        color 0.35s ease;
-}
-
-.card:hover i,
-.card:hover .icon,
-.objective-card:hover i {
-    transform: translateY(-4px) scale(1.08);
-
-    color: #0b63ce;
-}
-
-
-/* =========================================================
-   22. SELECTION
-========================================================= */
-
-::selection {
-    background: #0b63ce;
-    color: #ffffff;
-}
-
-
-/* =========================================================
-   23. SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-    width: 9px;
-}
-
-::-webkit-scrollbar-track {
-    background: #eef2f7;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #9ab9d8;
-
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0b63ce;
-}
-
-
-/* =========================================================
-   24. RESPONSIVE - 1100px
-========================================================= */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
 @media (max-width: 1100px) {
 
     .navbar {
         flex-wrap: wrap;
-
         gap: 15px;
-
-        padding-top: 10px;
-        padding-bottom: 10px;
     }
 
     .nav-links {
         flex-wrap: wrap;
-
         justify-content: center;
-
-        margin-left: 0;
     }
 
     .cards {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .steps {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-
-/* =========================================================
-   25. RESPONSIVE - 900px
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .navbar {
-        padding: 15px 20px;
-    }
-
-    .brand {
-        width: 100%;
-
-        text-align: center;
-
-        margin-bottom: 5px;
-    }
-
-    .nav-links {
-        width: 100%;
-
-        margin-left: 0;
-
-        gap: 16px;
-
-        flex-wrap: wrap;
-    }
-
-    .nav-links a {
-        padding: 8px 0;
-    }
-
-    .nav-links a:not(:last-child)::after {
-        bottom: 0;
-    }
-
-    .nav-links a.active::after {
-        bottom: 0;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero h2 {
-        font-size: 24px;
-    }
-}
-
-
-/* =========================================================
-   26. RESPONSIVE - 700px
-========================================================= */
 
 @media (max-width: 700px) {
 
     .navbar {
         flex-direction: column;
-
         text-align: center;
     }
 
     .nav-links {
         flex-direction: column;
-
         gap: 8px;
-    }
-
-    .nav-links a {
-        padding: 6px 0;
-    }
-
-    .nav-links a:last-child {
-        padding: 9px 17px;
-    }
-
-    .language-switch {
-        margin-top: 5px;
     }
 
     .hero {
         min-height: 450px;
-
-        padding: 55px 20px;
     }
 
     .hero h1 {
@@ -1734,170 +492,526 @@ footer a:hover {
         font-size: 16px;
     }
 
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
     .section {
         padding: 45px 20px;
     }
+}
 
-    .section h2 {
-        font-size: 27px;
-    }
+/* =========================
+   COMPLAINT FORM
+========================= */
 
-    .cards {
-        grid-template-columns: 1fr;
-    }
+form {
+    max-width: 750px;
+    margin: 35px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    text-align: left;
+}
 
-    .steps {
-        grid-template-columns: 1fr;
-    }
+form label {
+    display: block;
+    margin: 18px 0 7px;
+    font-weight: 600;
+    color: #123c69;
+}
 
-    form {
-        padding: 25px 20px;
-    }
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d4d9df;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    background: #fafbfc;
+}
 
-    .about-box {
-        padding: 25px 20px;
-    }
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #0b63ce;
+    background: white;
+}
 
-    .login-card {
-        padding: 30px 22px;
-    }
+form textarea {
+    resize: vertical;
+}
+
+form input[type="file"] {
+    background: white;
+    padding: 10px;
+}
+
+form .btn {
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-box {
+    max-width: 900px;
+    margin: 30px auto;
+    background: rgb(233, 202, 202);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.about-box h3 {
+    color: #123c69;
+    margin-bottom: 12px;
+}
+
+.about-box p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.objective-card {
+    background: rgb(224, 202, 202);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.objective-card h3 {
+    color: #0b63ce;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   OFFICIAL FAQ DESIGN
+========================= */
+
+.faq-container {
+    max-width: 900px;
+    margin: 35px auto;
+    text-align: left;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #d9e0e7;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    border: none;
+    background: #ffffff;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #123c69;
+    cursor: pointer;
+}
+
+/* =========================
+   PROFESSIONAL FAQ
+========================= */
+
+.faq-container {
+    max-width: 850px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    border: none;
+    background: #ffffff;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #243b53;
+    cursor: pointer;
+}
+
+/* =========================
+   PROFESSIONAL FAQ
+========================= */
+
+.faq-container {
+    max-width: 850px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #dfe4ea;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    border: none;
+    background: #ffffff;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #243b53;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background: #f7f9fb;
+}
+
+.faq-question span:last-child {
+    font-size: 18px;
+    font-weight: normal;
+    color: #0b63ce;
+    margin-left: 15px;
+}
+
+.faq-answer {
+    display: none;
+    padding: 14px 20px 16px;
+    border-top: 1px solid #e3e8ee;
+    background: #f8fafc;
+}
+
+.faq-answer p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #4a5568;
+    font-weight: 400;
+}
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+.admin-login {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background: #f3f6f9;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #dce2e8;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.login-logo {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.login-card h1 {
+    font-size: 22px;
+    color: #17365d;
+    margin-bottom: 5px;
+}
+
+.login-card h2 {
+    font-size: 18px;
+    color: #1769aa;
+    margin-bottom: 5px;
+}
+
+.login-card > p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.login-card form {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+    max-width: 100%;
+}
+
+.login-card form label {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5dce3;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fafbfc;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: #1769aa;
+    background: #ffffff;
+}
+
+.login-card .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.login-note {
+    font-size: 12px !important;
+    color: #777 !important;
+    margin-top: 20px !important;
+    margin-bottom: 12px !important;
+}
+
+.login-card > a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #1769aa;
+}
+
+.login-card > a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+body {
+    background: #f5f7fa;
+}
+
+/* Admin Navbar */
+
+.navbar > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar > div:last-child span {
+    color: #17365d;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 
-/* =========================================================
-   27. RESPONSIVE - 500px
-========================================================= */
+/* Dashboard Sections */
+
+.section {
+    padding: 30px 20px;
+}
+
+.section h2 {
+    color: #17365d;
+    font-size: 22px;
+}
+
+.section > p {
+    color: #68737d;
+    font-size: 14px;
+}
+
+
+/* Dashboard Cards */
+
+.cards {
+    max-width: 1100px;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 22px;
+    border: 1px solid #e1e6eb;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    color: #5f6b76;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card h2 {
+    color: #17365d;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+
+/* Complaints Table */
+
+.table-container {
+    max-width: 1100px;
+    margin: 20px auto;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.table-container th {
+    background: #17365d;
+    color: white;
+    padding: 13px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.table-container td {
+    padding: 13px;
+    border-bottom: 1px solid #e8ebee;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.table-container tr:hover {
+    background: #f8fafc;
+}
+
+
+/* Status */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status.in-progress {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status.resolved {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+
+/* Dashboard Buttons */
+
+.table-container .btn {
+    padding: 7px 13px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Feedback Cards */
+
+#totalFeedback,
+#averageRating {
+    color: #17365d;
+    font-size: 25px;
+}
+
+
+/* Footer */
+
+footer {
+    margin-top: 40px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 800px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
 
 @media (max-width: 500px) {
 
-    .brand {
-        font-size: 18px;
-    }
-
-    .hero {
-        min-height: 420px;
-    }
-
-    .hero h1 {
-        font-size: 29px;
-    }
-
-    .hero h2 {
-        font-size: 19px;
-    }
-
-    .hero p {
-        font-size: 15px;
-    }
-
-    .btn {
-        width: 100%;
-
-        margin: 5px 0;
-    }
-
-    .language-switch {
-        gap: 3px;
-    }
-
-    .language-switch button {
-        padding: 5px 7px;
-
-        font-size: 11px;
+    .cards {
+        grid-template-columns: 1fr;
     }
 
     .section {
-        padding: 35px 15px;
+        padding: 25px 15px;
     }
 
     .section h2 {
-        font-size: 23px;
-    }
-
-    .section > p {
-        font-size: 14px;
-    }
-
-    .cards {
-        gap: 15px;
-    }
-
-    .card {
-        padding: 22px 16px;
-    }
-
-    .steps {
-        gap: 15px;
-    }
-
-    .steps > div {
-        padding: 22px 16px;
-    }
-
-    .faq-container {
-        margin: 25px 10px;
-    }
-
-    .faq-question {
-        padding: 14px;
-        font-size: 13px;
-    }
-
-    .faq-answer {
-        padding: 12px 15px;
-    }
-
-    .table-container {
-        margin: 15px 5px;
+        font-size: 20px;
     }
 
     .navbar > div:last-child span {
         display: none;
     }
 
-    footer {
-        padding: 30px 15px;
-    }
-}
-
-
-/* =========================================================
-   28. TOUCH DEVICES
-========================================================= */
-
-@media (hover: none) {
-
-    .card:hover,
-    .steps > div:hover,
-    .about-box:hover,
-    .login-card:hover {
-        transform: none;
-    }
-
-    .btn:hover {
-        transform: none;
-    }
-
-    .nav-links a:hover {
-        transform: none;
-    }
-}
-
-
-/* =========================================================
-   29. REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-
-        transition-duration: 0.01ms !important;
-    }
 }
