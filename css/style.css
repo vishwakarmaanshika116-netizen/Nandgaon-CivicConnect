@@ -1015,3 +1015,13 @@ footer {
     }
 
 }
+
+.nav-links a {
+    transition: 0.3s ease;
+    border-radius: 10px;
+}
+
+.nav-links a:hover {
+    color: #0b63ce;
+    background: #eef6ff;
+}
