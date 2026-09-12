@@ -31,58 +31,59 @@
            NAVBAR
         ========================= */
 
-     .navbar{
-            width: 100%;
-            min-height: 76px;
-            padding: 0 7%;
-
+        .navbar {
+            height: 72px;
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid #e7ebf2;
-
-            position: sticky;
-            top: 0;
-            z-index: 999;
-
-            box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
+            padding: 0 7%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 20;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-
-            font-family: "Poppins", sans-serif;
+        .logo {
             font-size: 21px;
             font-weight: 800;
-
-            color: #172033;
-        }
-
-        .brand::first-letter {
-            font-size: 24px;
+            color: #0758b8;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 25px;
+            list-style: none;
         }
 
         .nav-links a {
-            color: #596579;
+            text-decoration: none;
+            color: #244c76;
             font-size: 14px;
             font-weight: 600;
+            position: relative;
+            transition: 0.3s ease;
+        }
 
-            padding: 11px 14px;
-            border-radius: 10px;
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #ffd84d;
+            left: 50%;
+            bottom: -8px;
+            border-radius: 5px;
+            transition: 0.3s ease;
+        }
 
-            transition:
+        .nav-links a:hover {
+            color: #0b63ce;
+            background: #eef6ff;
+        }
+
         /* =========================
            HERO
         ========================= */
