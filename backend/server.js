@@ -1,4 +1,3 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -15,6 +14,7 @@ cloudinary.config({
 });
 
 const Complaint = require("./complaintModel");
+const Feedback = require("./feedbackModel");
 
 const app = express();
 const PORT = 5000;
@@ -241,7 +241,78 @@ if (
 
     }
 );
+// ============================================================
+// FEEDBACK SUBMISSION
+// ============================================================
 
+app.post("/api/feedback", async (req, res) => {
+
+    try {
+
+        const {
+            name,
+            email,
+            rating,
+            feedback
+        } = req.body;
+
+
+        if (!name || !rating || !feedback) {
+
+            return res.status(400).json({
+                success: false,
+                message: "Please fill in all required fields."
+            });
+
+        }
+
+
+        const newFeedback = new Feedback({
+
+            name: name.trim(),
+
+            email: email
+                ? email.trim()
+                : "",
+
+            rating: Number(rating),
+
+            feedback: feedback.trim()
+
+        });
+
+
+        await newFeedback.save();
+
+
+        res.status(201).json({
+
+            success: true,
+
+            message: "Feedback submitted successfully!"
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Feedback submission error:",
+            error
+        );
+
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Failed to submit feedback."
+
+        });
+
+    }
+
+});
 
 // ============================================================
 // TRACK COMPLAINT
@@ -539,7 +610,76 @@ app.post("/api/admin/login", (req, res) => {
 
 });
 
+// ============================================================
+// ADMIN FEEDBACK DATA
+// ============================================================
 
+app.get("/api/admin/feedback", async (req, res) => {
+
+    try {
+
+        const feedbacks =
+            await Feedback.find()
+                .sort({ createdAt: -1 });
+
+
+        const totalFeedback =
+            feedbacks.length;
+
+
+        let averageRating = 0;
+
+
+        if (totalFeedback > 0) {
+
+            const totalRating =
+                feedbacks.reduce(
+                    (sum, item) =>
+                        sum + Number(item.rating),
+                    0
+                );
+
+
+            averageRating =
+                totalRating / totalFeedback;
+
+        }
+
+
+        res.json({
+
+            success: true,
+
+            totalFeedback,
+
+            averageRating:
+
+                Number(averageRating.toFixed(1)),
+
+            feedbacks
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Admin feedback error:",
+            error
+        );
+
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Failed to load feedback."
+
+        });
+
+    }
+
+});
 // ============================================================
 // START SERVER
 // ============================================================
@@ -549,7 +689,7 @@ app.listen(
     () => {
 
         console.log(
-            `Server running at http://localhost:${PORT}`
+            `Server running on port ${PORT}`
         );
 
     }

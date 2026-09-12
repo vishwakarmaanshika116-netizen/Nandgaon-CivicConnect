@@ -20,7 +20,6 @@
 
 
     <style>
-
         /* =====================================================
            GLOBAL
         ===================================================== */
@@ -55,7 +54,6 @@
             width: 100%;
             min-height: 76px;
             padding: 0 7%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -95,7 +93,7 @@
         }
 
         .nav-links a {
-            color: #596579;
+            color: #000000;
             font-size: 14px;
             font-weight: 600;
 
@@ -106,14 +104,13 @@
         }
 
         .nav-links a:hover {
-            color: #0b63ce;
-            background: #eef6ff;
+            color: white;
+            background: hsl(226, 83%, 41%);
         }
 
         .nav-links a.active {
-            color: #ffffff;
-            background: linear-gradient(135deg, #0866d5, #1649a5);
-
+            color: white;
+            background: hsl(226, 83%, 41%);
             box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
         }
 
@@ -134,24 +131,18 @@
             overflow: hidden;
 
             background:
-                radial-gradient(
-                    circle at 15% 20%,
-                    rgba(255,255,255,0.15),
-                    transparent 28%
-                ),
+                radial-gradient(circle at 15% 20%,
+                    rgba(255, 255, 255, 0.15),
+                    transparent 28%),
 
-                radial-gradient(
-                    circle at 85% 80%,
-                    rgba(255,193,7,0.15),
-                    transparent 30%
-                ),
+                radial-gradient(circle at 85% 80%,
+                    rgba(255, 193, 7, 0.15),
+                    transparent 30%),
 
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #063b8f,
                     #0874d1 55%,
-                    #0a9ad6
-                );
+                    #0a9ad6);
         }
 
         .services-hero::before {
@@ -162,7 +153,7 @@
             width: 600px;
             height: 600px;
 
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 50%;
 
             top: -300px;
@@ -177,7 +168,7 @@
             width: 450px;
             height: 450px;
 
-            border: 1px solid rgba(255,255,255,0.10);
+            border: 1px solid rgba(255, 255, 255, 0.10);
             border-radius: 50%;
 
             bottom: -260px;
@@ -201,10 +192,10 @@
             padding: 8px 16px;
             margin-bottom: 20px;
 
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 30px;
 
-            background: rgba(255,255,255,0.10);
+            background: rgba(255, 255, 255, 0.10);
 
             color: white;
 
@@ -237,7 +228,7 @@
 
             margin: auto;
 
-            color: rgba(255,255,255,0.90);
+            color: rgba(255, 255, 255, 0.90);
 
             font-size: 17px;
 
@@ -336,7 +327,7 @@
 
             border-radius: 50%;
 
-            background: rgba(8,113,209,0.07);
+            background: rgba(8, 113, 209, 0.07);
 
             right: -80px;
             bottom: -90px;
@@ -358,11 +349,9 @@
             left: 0;
             top: 0;
 
-            background: linear-gradient(
-                180deg,
-                #0871d1,
-                #0a9ad6
-            );
+            background: linear-gradient(180deg,
+                    #0871d1,
+                    #0a9ad6);
 
             border-radius: 0 0 10px 0;
 
@@ -380,14 +369,14 @@
             border-color: #bcdcff;
 
             box-shadow:
-                0 20px 40px rgba(25,55,95,0.10),
-                0 0 0 1px rgba(8,113,209,0.04);
+                0 20px 40px rgba(25, 55, 95, 0.10),
+                0 0 0 1px rgba(8, 113, 209, 0.04);
         }
 
         .service-card-new:hover::after {
             transform: scale(1.45);
 
-            background: rgba(8,113,209,0.10);
+            background: rgba(8, 113, 209, 0.10);
         }
 
         .service-card-new:hover::before {
@@ -424,14 +413,12 @@
         .service-card-new:hover .service-icon-new {
             transform: translateY(-4px) scale(1.06);
 
-            background: linear-gradient(
-                135deg,
-                #e0f0ff,
-                #f2f9ff
-            );
+            background: linear-gradient(135deg,
+                    #e0f0ff,
+                    #f2f9ff);
 
             box-shadow:
-                0 10px 25px rgba(8,102,213,0.12);
+                0 10px 25px rgba(8, 102, 213, 0.12);
         }
 
 
@@ -513,11 +500,9 @@
 
             border-radius: 11px;
 
-            background: linear-gradient(
-                135deg,
-                #0866d5,
-                #1649a5
-            );
+            background: linear-gradient(135deg,
+                    #0866d5,
+                    #1649a5);
 
             color: white;
 
@@ -528,20 +513,18 @@
             transition: 0.3s ease;
 
             box-shadow:
-                0 6px 15px rgba(8,102,213,0.16);
+                0 6px 15px rgba(8, 102, 213, 0.16);
         }
 
         .service-button:hover {
             transform: translateY(-3px);
 
             box-shadow:
-                0 10px 25px rgba(8,102,213,0.25);
+                0 10px 25px rgba(8, 102, 213, 0.25);
 
-            background: linear-gradient(
-                135deg,
-                #0757b8,
-                #123d91
-            );
+            background: linear-gradient(135deg,
+                    #0757b8,
+                    #123d91);
         }
 
 
@@ -579,7 +562,7 @@
             transform: translateY(-7px);
 
             box-shadow:
-                0 18px 35px rgba(20,50,90,0.10);
+                0 18px 35px rgba(20, 50, 90, 0.10);
 
             border-color: #c8def5;
         }
@@ -635,14 +618,12 @@
             border-radius: 25px;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #063e91,
-                    #0875d1
-                );
+                    #0875d1);
 
             box-shadow:
-                0 25px 55px rgba(7,72,145,0.20);
+                0 25px 55px rgba(7, 72, 145, 0.20);
 
             text-align: center;
         }
@@ -655,7 +636,7 @@
             width: 350px;
             height: 350px;
 
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
 
             border-radius: 50%;
 
@@ -671,7 +652,7 @@
             width: 280px;
             height: 280px;
 
-            border: 1px solid rgba(255,255,255,0.13);
+            border: 1px solid rgba(255, 255, 255, 0.13);
 
             border-radius: 50%;
 
@@ -700,7 +681,7 @@
 
             margin: 0 auto 25px;
 
-            color: rgba(255,255,255,0.82);
+            color: rgba(255, 255, 255, 0.82);
 
             line-height: 1.7;
 
@@ -735,7 +716,7 @@
             transform: translateY(-3px);
 
             box-shadow:
-                0 12px 25px rgba(0,0,0,0.18);
+                0 12px 25px rgba(0, 0, 0, 0.18);
         }
 
 
@@ -883,7 +864,6 @@
                 font-size: 25px;
             }
         }
-
     </style>
 
 </head>
@@ -904,35 +884,21 @@
 
         <div class="nav-links">
 
-            <a href="index.html">
-                Home
-            </a>
+            <a href="index.html">Home</a>
 
-            <a href="about.html">
-                About
-            </a>
+            <a href="about.html">About</a>
 
-            <a href="services.html" class="active">
-                Services
-            </a>
+            <a href="services.html" class="active">Services</a>
 
-            <a href="register-complaint.html">
-                Complaint
-            </a>
+            <a href="register-complaint.html">Complaint</a>
 
-            <a href="faq.html">
-                FAQ
-            </a>
+            <a href="faq.html">FAQ</a>
 
-            <a href="feedback.html">
-                Feedback
-            </a>
+            <a href="feedback.html">Feedback</a>
 
-            <a href="register.html">register</a>
+            <a href="register.html">Register</a>
 
-            <a href="admin.html">
-                Admin Login
-            </a>
+            <a href="admin.html">Admin Login</a>
 
         </div>
 
@@ -1023,10 +989,7 @@
                         garbage, drainage, streetlights and other local issues.
                     </p>
 
-                    <a
-                        href="register-complaint.html"
-                        class="service-button"
-                    >
+                    <a href="register-complaint.html" class="service-button">
                         Register Complaint →
                     </a>
 
@@ -1056,10 +1019,7 @@
                         or resolved.
                     </p>
 
-                    <a
-                        href="track-complaint.html"
-                        class="service-button"
-                    >
+                    <a href="track-complaint.html" class="service-button">
                         Track Complaint →
                     </a>
 
@@ -1089,16 +1049,13 @@
                         public-service platforms.
                     </p>
 
-                    <a
-                        href="awareness.html"
-                        class="service-button"
-                    >
+                    <a href="awareness.html" class="service-button">
                         Explore Awareness →
                     </a>
 
                 </div>
 
-    
+
 
 
 
@@ -1186,10 +1143,7 @@
                         help build a cleaner, safer and better community.
                     </p>
 
-                    <a
-                        href="register-complaint.html"
-                        class="citizen-button"
-                    >
+                    <a href="register-complaint.html" class="citizen-button">
                         📝 Report a Civic Issue
                     </a>
 

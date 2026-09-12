@@ -2,129 +2,262 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Register Complaint | Nandgaon CivicConnect</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 
+
     <style>
-        /* =========================
-           COMPLAINT PAGE
-        ========================= */
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: "Inter", sans-serif;
             background: #f5f8fc;
             color: #173f70;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* =========================
-           NAVBAR
-        ========================= */
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR - SAME AS SERVICES PAGE
+        ===================================================== */
 
         .navbar {
-            height: 72px;
-            background: #ffffff;
+            width: 100%;
+            min-height: 76px;
+
+            padding: 0 7%;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 7%;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-            position: relative;
-            z-index: 20;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #e7ebf2;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 999;
+
+            box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
         }
 
-        .logo {
+
+        /* =========================
+           BRAND
+        ========================= */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            font-family: "Poppins", sans-serif;
+
             font-size: 21px;
             font-weight: 800;
-            color: #0758b8;
-            text-decoration: none;
+
+            color: #172033;
+
             white-space: nowrap;
         }
 
+        .brand::first-letter {
+            font-size: 24px;
+        }
+
+
+        /* =========================
+           NAV LINKS
+        ========================= */
+
         .nav-links {
             display: flex;
+
             align-items: center;
-            gap: 25px;
-            list-style: none;
+
+            gap: 8px;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #244c76;
+            color: #000000;
+
             font-size: 14px;
+
             font-weight: 600;
-            position: relative;
+
+            padding: 11px 14px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
             transition: 0.3s ease;
         }
 
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background: #ffd84d;
-            left: 50%;
-            bottom: -8px;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0b63ce;
-            background: #eef6ff;
-        }
 
         /* =========================
-           HERO
+           NAV HOVER
         ========================= */
+
+        .nav-links a:hover {
+            color: white;
+
+            background: hsl(226, 83%, 41%);
+
+            text-decoration: none;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           ACTIVE TAB
+        ========================= */
+
+        .nav-links a.active {
+            color: white;
+
+            background: hsl(226, 83%, 41%);
+
+            box-shadow:
+                0 6px 18px rgba(8, 102, 213, 0.22);
+
+            text-decoration: none;
+        }
+
+        .nav-links a.active:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           COMPLAINT HERO
+        ===================================================== */
 
         .complaint-hero {
             min-height: 410px;
+
             position: relative;
+
             overflow: hidden;
-            background: linear-gradient(135deg,
+
+            background:
+                radial-gradient(circle at 15% 20%,
+                    rgba(255, 255, 255, 0.12),
+                    transparent 28%),
+
+                radial-gradient(circle at 85% 80%,
+                    rgba(255, 193, 7, 0.12),
+                    transparent 30%),
+
+                linear-gradient(135deg,
                     #0758b8 0%,
                     #1677d8 55%,
                     #35a1ef 100%);
+
             color: white;
         }
 
+
         .complaint-hero-inner {
             max-width: 1150px;
+
             margin: auto;
+
             padding: 75px 25px 145px;
+
             position: relative;
+
             z-index: 3;
         }
 
+
+        /* =========================
+           HERO TAG
+        ========================= */
+
         .complaint-tag {
             display: inline-block;
+
             background: rgba(255, 255, 255, 0.16);
+
             border: 1px solid rgba(255, 255, 255, 0.35);
+
             padding: 9px 18px;
+
             border-radius: 30px;
+
             font-size: 13px;
+
             font-weight: 700;
+
             letter-spacing: 0.8px;
+
             margin-bottom: 20px;
+
             backdrop-filter: blur(8px);
+
+            transition: 0.3s ease;
         }
 
+        .complaint-tag:hover {
+            background: rgba(255, 255, 255, 0.22);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO TITLE
+        ========================= */
+
         .complaint-hero h1 {
+            font-family: "Poppins", sans-serif;
+
             font-size: clamp(40px, 6vw, 65px);
+
             line-height: 1.08;
+
             margin-bottom: 20px;
+
             font-weight: 800;
+
             letter-spacing: -1px;
         }
 
@@ -132,673 +265,1224 @@
             color: #ffd84d;
         }
 
+
         .complaint-hero p {
             max-width: 720px;
+
             font-size: 17px;
+
             line-height: 1.8;
+
             color: rgba(255, 255, 255, 0.93);
         }
 
-        /* Decorative circles */
+
+        /* =====================================================
+           DECORATIVE CIRCLES
+        ===================================================== */
 
         .hero-circle {
             position: absolute;
+
             border-radius: 50%;
+
             border: 1px solid rgba(255, 255, 255, 0.18);
+
             background: rgba(255, 255, 255, 0.06);
         }
+
 
         .circle-one {
             width: 330px;
             height: 330px;
+
             right: -100px;
             top: -100px;
         }
 
+
         .circle-two {
             width: 210px;
             height: 210px;
+
             right: 150px;
             bottom: -130px;
         }
 
+
         .circle-three {
             width: 120px;
             height: 120px;
+
             left: -50px;
             top: 90px;
         }
 
-        /* =========================
+
+        /* =====================================================
            MAIN FLOATING SECTION
-        ========================= */
+        ===================================================== */
 
         .complaint-section {
             width: min(1120px, 92%);
+
             margin: -105px auto 70px;
+
             position: relative;
+
             z-index: 5;
         }
 
+
         .complaint-main-card {
             background: #ffffff;
+
             border-radius: 26px;
+
             padding: 42px;
-            box-shadow: 0 20px 55px rgba(23, 63, 112, 0.13);
+
+            box-shadow:
+                0 20px 55px rgba(23, 63, 112, 0.13);
         }
 
-        /* =========================
+
+        /* =====================================================
            INTRO
-        ========================= */
+        ===================================================== */
 
         .complaint-intro {
             display: flex;
+
             gap: 22px;
+
             align-items: flex-start;
+
             padding: 25px;
+
             border-radius: 18px;
-            background: linear-gradient(135deg, #f1f7ff, #ffffff);
+
+            background:
+                linear-gradient(135deg,
+                    #f1f7ff,
+                    #ffffff);
+
             border: 1px solid #e2edf9;
+
             margin-bottom: 35px;
+
+            transition: 0.3s ease;
         }
+
+
+        .complaint-intro:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(23, 63, 112, 0.08);
+
+            border-color: #c9def3;
+        }
+
 
         .intro-icon {
             min-width: 55px;
+
             height: 55px;
+
             border-radius: 16px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             background: #0758b8;
+
             color: white;
+
             font-size: 25px;
-            box-shadow: 0 8px 20px rgba(7, 88, 184, 0.2);
+
+            box-shadow:
+                0 8px 20px rgba(7, 88, 184, 0.2);
+
+            transition: 0.3s ease;
         }
+
+
+        .complaint-intro:hover .intro-icon {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
 
         .complaint-intro h2 {
             color: #0758b8;
+
+            font-family: "Poppins", sans-serif;
+
             font-size: 23px;
+
             margin-bottom: 5px;
         }
 
+
         .complaint-intro p {
             color: #607892;
+
             font-size: 14px;
         }
 
-        /* =========================
-           SECTION HEADERS
-        ========================= */
+
+        /* =====================================================
+           FORM SECTION
+        ===================================================== */
 
         .form-section {
             margin-top: 38px;
         }
 
+
+        /* =====================================================
+           SECTION HEADERS
+        ===================================================== */
+
         .form-section-header {
             display: flex;
+
             align-items: center;
+
             gap: 13px;
+
             margin-bottom: 22px;
+
             padding-bottom: 14px;
+
             border-bottom: 1px solid #e5edf6;
         }
 
+
         .section-number {
             width: 42px;
+
             height: 42px;
+
             border-radius: 12px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             background: #eaf3ff;
+
             color: #0758b8;
+
             font-size: 20px;
+
+            transition: 0.3s ease;
         }
 
+
+        .form-section-header:hover .section-number {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 8px 18px rgba(7, 88, 184, 0.12);
+        }
+
+
         .form-section-header h3 {
+            font-family: "Poppins", sans-serif;
+
             font-size: 20px;
+
             color: #173f70;
         }
 
+
         .form-section-header p {
             color: #7890a8;
+
             font-size: 12px;
         }
 
-        /* =========================
+
+        /* =====================================================
            FORM GRID
-        ========================= */
+        ===================================================== */
 
         .form-grid {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 22px;
         }
 
+
         .form-group {
             display: flex;
+
             flex-direction: column;
         }
+
 
         .form-group.full {
             grid-column: 1 / -1;
         }
 
+
         .form-group label {
             font-size: 13px;
+
             font-weight: 700;
+
             color: #355776;
+
             margin-bottom: 8px;
         }
+
 
         .required {
             color: #e74c3c;
         }
 
+
+        /* =====================================================
+           INPUTS
+        ===================================================== */
+
         .input-wrapper {
             position: relative;
         }
 
+
         .input-icon {
             position: absolute;
+
             left: 15px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
             font-size: 17px;
+
             opacity: 0.75;
+
             z-index: 2;
+
+            pointer-events: none;
         }
+
 
         .form-group input,
         .form-group select,
         .form-group textarea {
+
             width: 100%;
+
             border: 1.5px solid #dce7f2;
+
             background: #fbfdff;
+
             border-radius: 12px;
+
             padding: 13px 15px;
+
             font-size: 14px;
+
             color: #244c76;
+
             outline: none;
+
             transition: 0.3s ease;
+
             font-family: inherit;
         }
+
 
         .input-wrapper input,
         .input-wrapper select {
             padding-left: 46px;
         }
 
+
         .form-group textarea {
             min-height: 130px;
+
             resize: vertical;
         }
+
+
+        /* =========================
+           INPUT HOVER
+        ========================= */
 
         .form-group input:hover,
         .form-group select:hover,
         .form-group textarea:hover {
+
             border-color: #8dbbea;
+
             background: #ffffff;
+
             transform: translateY(-1px);
         }
+
+
+        /* =========================
+           INPUT FOCUS
+        ========================= */
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
+
             border-color: #1677d8;
+
             background: white;
-            box-shadow: 0 0 0 4px rgba(22, 119, 216, 0.1);
+
+            box-shadow:
+                0 0 0 4px rgba(22, 119, 216, 0.1);
         }
 
-        /* =========================
-           LOCATION
-        ========================= */
+
+        /* =====================================================
+           LOCATION BOX
+        ===================================================== */
 
         .location-box {
+
             background: #f6faff;
+
             border: 1px solid #dceafa;
+
             padding: 22px;
+
             border-radius: 17px;
+
             margin-top: 20px;
+
+            transition: 0.3s ease;
         }
 
+
+        .location-box:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #b8d5f1;
+
+            box-shadow:
+                0 10px 25px rgba(23, 63, 112, 0.07);
+        }
+
+
         .location-box-title {
+
             font-weight: 700;
+
             color: #173f70;
+
             margin-bottom: 5px;
         }
 
+
         .location-box p {
+
             color: #7289a1;
+
             font-size: 13px;
+
             margin-bottom: 15px;
         }
 
+
         .location-btn {
+
             border: none;
+
             background: #0758b8;
+
             color: white;
+
             padding: 12px 20px;
+
             border-radius: 10px;
+
             font-weight: 700;
+
             cursor: pointer;
+
             transition: 0.3s ease;
+
             font-size: 13px;
         }
 
+
         .location-btn:hover {
+
             background: #053f86;
+
             transform: translateY(-3px);
-            box-shadow: 0 9px 20px rgba(7, 88, 184, 0.25);
+
+            box-shadow:
+                0 9px 20px rgba(7, 88, 184, 0.25);
         }
 
-        /* =========================
+
+        /* =====================================================
            UPLOAD CARDS
-        ========================= */
+        ===================================================== */
 
         .upload-grid {
+
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
+
             gap: 20px;
         }
 
+
         .upload-card {
+
             position: relative;
+
             border: 2px dashed #cbdced;
+
             background: #fbfdff;
+
             border-radius: 18px;
+
             padding: 28px 20px;
+
             text-align: center;
+
             cursor: pointer;
+
             transition: 0.35s ease;
+
             overflow: hidden;
         }
 
+
         .upload-card::before {
+
             content: "";
+
             position: absolute;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             height: 4px;
+
             background: #1677d8;
+
             transform: scaleX(0);
+
             transform-origin: left;
+
             transition: 0.35s ease;
         }
 
+
         .upload-card:hover {
+
             border-color: #65a8e8;
+
             background: #f5faff;
+
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(23, 63, 112, 0.09);
+
+            box-shadow:
+                0 12px 25px rgba(23, 63, 112, 0.09);
         }
 
+
         .upload-card:hover::before {
+
             transform: scaleX(1);
         }
 
+
         .upload-icon {
+
             font-size: 36px;
+
             margin-bottom: 8px;
+
+            transition: 0.3s ease;
         }
 
+
+        .upload-card:hover .upload-icon {
+
+            transform: scale(1.12);
+        }
+
+
         .upload-card h4 {
+
             color: #173f70;
+
             margin-bottom: 5px;
         }
 
+
         .upload-card p {
+
             color: #8093a8;
+
             font-size: 12px;
+
             margin-bottom: 13px;
         }
 
+
         .upload-card input {
+
             width: 100%;
+
             font-size: 12px;
+
             color: #56718d;
         }
 
-        /* =========================
+
+        /* =====================================================
            SAFETY BOX
-        ========================= */
+        ===================================================== */
 
         .safety-box {
+
             margin-top: 30px;
+
             display: flex;
+
             gap: 14px;
+
             align-items: center;
+
             padding: 18px;
+
             border-radius: 15px;
+
             background: #f2fbf6;
+
             border: 1px solid #cceedd;
+
+            transition: 0.3s ease;
         }
 
+
+        .safety-box:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(30, 120, 70, 0.08);
+        }
+
+
         .safety-icon {
+
             font-size: 24px;
         }
 
+
         .safety-box strong {
+
             color: #167348;
+
             font-size: 14px;
         }
 
+
         .safety-box p {
+
             color: #668579;
+
             font-size: 12px;
         }
 
-        /* =========================
+
+        /* =====================================================
            SUBMIT AREA
-        ========================= */
+        ===================================================== */
 
         .submit-area {
+
             text-align: center;
+
             margin-top: 38px;
+
             padding-top: 30px;
+
             border-top: 1px solid #e7eef6;
         }
 
+
         .submit-area p {
+
             font-size: 12px;
+
             color: #8294a8;
+
             margin-bottom: 16px;
         }
 
+
         .submit-btn {
+
             position: relative;
+
             overflow: hidden;
+
             border: none;
+
             padding: 15px 42px;
+
             border-radius: 13px;
-            background: linear-gradient(135deg, #0758b8, #1677d8);
+
+            background:
+                linear-gradient(135deg,
+                    #0758b8,
+                    #1677d8);
+
             color: white;
+
             font-size: 15px;
+
             font-weight: 800;
+
             cursor: pointer;
+
             transition: 0.35s ease;
-            box-shadow: 0 10px 25px rgba(7, 88, 184, 0.25);
+
+            box-shadow:
+                0 10px 25px rgba(7, 88, 184, 0.25);
         }
 
+
         .submit-btn::before {
+
             content: "";
+
             position: absolute;
+
             top: 0;
+
             left: -100%;
+
             width: 70%;
+
             height: 100%;
-            background: linear-gradient(90deg,
+
+            background:
+                linear-gradient(90deg,
                     transparent,
                     rgba(255, 255, 255, 0.35),
                     transparent);
+
             transition: 0.6s ease;
         }
 
+
         .submit-btn:hover {
+
             transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(7, 88, 184, 0.3);
+
+            box-shadow:
+                0 15px 30px rgba(7, 88, 184, 0.3);
         }
 
+
         .submit-btn:hover::before {
+
             left: 130%;
         }
 
-        /* =========================
+
+        /* =====================================================
            SUCCESS MESSAGE
-        ========================= */
+        ===================================================== */
 
         #successMessage {
+
             display: none;
+
             margin-top: 20px;
+
             padding: 15px;
+
             border-radius: 12px;
+
             background: #eafaf1;
+
             border: 1px solid #bfe8cf;
+
             color: #187544;
+
             font-weight: 700;
+
             font-size: 14px;
         }
 
-        /* =========================
+
+        /* =====================================================
            CTA
-        ========================= */
+        ===================================================== */
 
         .complaint-cta {
+
             margin-top: 45px;
+
             padding: 42px 30px;
+
             border-radius: 22px;
+
             text-align: center;
-            background: linear-gradient(135deg, #0758b8, #1680dd);
+
+            background:
+                linear-gradient(135deg,
+                    #0758b8,
+                    #1680dd);
+
             color: white;
+
             position: relative;
+
             overflow: hidden;
         }
 
+
         .complaint-cta::before,
         .complaint-cta::after {
+
             content: "";
+
             position: absolute;
+
             border-radius: 50%;
+
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+
         .complaint-cta::before {
+
             width: 180px;
+
             height: 180px;
+
             right: -70px;
+
             top: -80px;
         }
 
+
         .complaint-cta::after {
+
             width: 120px;
+
             height: 120px;
+
             left: -50px;
+
             bottom: -55px;
         }
 
+
         .complaint-cta h2 {
+
             position: relative;
+
             z-index: 2;
+
+            font-family: "Poppins", sans-serif;
+
             font-size: 27px;
+
             margin-bottom: 9px;
         }
 
+
         .complaint-cta p {
+
             position: relative;
+
             z-index: 2;
+
             color: rgba(255, 255, 255, 0.9);
+
             font-size: 14px;
         }
 
-        /* =========================
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
+
             background: #102d4c;
+
             color: white;
+
             padding: 35px 7%;
+
             text-align: center;
         }
 
+
         footer h3 {
+
+            font-family: "Poppins", sans-serif;
+
             margin-bottom: 7px;
         }
 
+
         footer p {
+
             color: #b8c9da;
+
             font-size: 13px;
         }
 
+
         .footer-bottom {
+
             margin-top: 18px;
+
             padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.12);
+
             color: #94abc1;
+
             font-size: 12px;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 900px) {
+        /* =====================================================
+           RESPONSIVE NAVBAR
+        ===================================================== */
+
+        @media (max-width: 1000px) {
 
             .navbar {
-                padding: 0 4%;
+
+                padding: 15px 4%;
+
+                flex-direction: column;
+
+                gap: 12px;
             }
 
+
             .nav-links {
-                gap: 13px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 6px;
             }
+
 
             .nav-links a {
-                font-size: 12px;
+
+                font-size: 13px;
+
+                padding: 10px 12px;
             }
 
-            .complaint-hero-inner {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
 
-            .complaint-main-card {
-                padding: 28px;
-            }
-        }
+            .form-grid {
 
-        @media (max-width: 700px) {
-
-            .navbar {
-                height: auto;
-                padding: 18px 5%;
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 14px;
-            }
-
-            .complaint-hero {
-                min-height: 450px;
-            }
-
-            .complaint-hero-inner {
-                padding-top: 55px;
-                padding-bottom: 140px;
-            }
-
-            .complaint-hero h1 {
-                font-size: 42px;
-            }
-
-            .complaint-hero p {
-                font-size: 14px;
-            }
-
-            .complaint-section {
-                width: 94%;
-                margin-top: -100px;
-            }
-
-            .complaint-main-card {
-                padding: 20px;
-                border-radius: 20px;
-            }
-
-            .complaint-intro {
-                flex-direction: column;
-            }
-
-            .form-grid,
-            .upload-grid {
                 grid-template-columns: 1fr;
             }
 
+
             .form-group.full {
+
                 grid-column: auto;
             }
 
-            .submit-btn {
-                width: 100%;
-            }
-
-            .complaint-cta {
-                padding: 32px 20px;
-            }
-
-            .complaint-cta h2 {
-                font-size: 23px;
-            }
         }
 
-        @media (max-width: 430px) {
 
-            .logo {
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .complaint-hero-inner {
+
+                padding-left: 5%;
+
+                padding-right: 5%;
+            }
+
+
+            .complaint-main-card {
+
+                padding: 28px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                position: relative;
+
+                padding: 15px 4%;
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+
+            .brand {
+
                 font-size: 18px;
             }
 
+
             .nav-links {
-                gap: 10px;
+
+                width: 100%;
+
+                display: flex;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 5px;
             }
+
 
             .nav-links a {
-                font-size: 11px;
+
+                font-size: 12px;
+
+                padding: 8px 9px;
             }
 
+
+            .complaint-hero {
+
+                min-height: 450px;
+            }
+
+
+            .complaint-hero-inner {
+
+                padding-top: 55px;
+
+                padding-bottom: 140px;
+            }
+
+
             .complaint-hero h1 {
+
+                font-size: 42px;
+            }
+
+
+            .complaint-hero p {
+
+                font-size: 14px;
+            }
+
+
+            .complaint-section {
+
+                width: 94%;
+
+                margin-top: -100px;
+            }
+
+
+            .complaint-main-card {
+
+                padding: 20px;
+
+                border-radius: 20px;
+            }
+
+
+            .complaint-intro {
+
+                flex-direction: column;
+            }
+
+
+            .form-grid,
+            .upload-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+
+            .submit-btn {
+
+                width: 100%;
+            }
+
+
+            .complaint-cta {
+
+                padding: 32px 20px;
+            }
+
+
+            .complaint-cta h2 {
+
+                font-size: 23px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 430px) {
+
+            .brand {
+
+                font-size: 16px;
+            }
+
+
+            .nav-links {
+
+                gap: 3px;
+            }
+
+
+            .nav-links a {
+
+                font-size: 11px;
+
+                padding: 7px 8px;
+            }
+
+
+            .complaint-hero h1 {
+
                 font-size: 36px;
             }
 
+
             .complaint-main-card {
+
                 padding: 15px;
             }
 
+
             .form-section-header h3 {
+
                 font-size: 17px;
             }
+
         }
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================================
          NAVBAR
-    ========================== -->
+    ===================================================== -->
 
     <nav class="navbar">
 
-        <a href="index.html" class="logo">
+        <div class="brand">
             🇮🇳 Nandgaon CivicConnect
-        </a>
+        </div>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="register-complaint.html" class="active">Complaint</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="admin-login.html">Admin Login</a></li>
-        </ul>
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="register-complaint.html" class="active">
+                Complaint
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="admin.html">
+                Admin Login
+            </a>
+
+        </div>
 
     </nav>
 
 
-    <!-- =========================
+    <!-- =====================================================
          HERO
-    ========================== -->
+    ===================================================== -->
 
     <section class="complaint-hero">
 
         <div class="hero-circle circle-one"></div>
+
         <div class="hero-circle circle-two"></div>
+
         <div class="hero-circle circle-three"></div>
+
 
         <div class="complaint-hero-inner">
 
@@ -806,9 +1490,12 @@
                 📢 REPORT CIVIC ISSUE
             </div>
 
+
             <h1>
-                Register a <span>Complaint</span>
+                Register a
+                <span>Complaint</span>
             </h1>
+
 
             <p>
                 Help us make Nandgaon cleaner, safer and better.
@@ -821,15 +1508,18 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          MAIN CONTENT
-    ========================== -->
+    ===================================================== -->
 
     <main class="complaint-section">
 
         <div class="complaint-main-card">
 
-            <!-- INTRO -->
+
+            <!-- =================================================
+                 INTRO
+            ================================================= -->
 
             <div class="complaint-intro">
 
@@ -838,7 +1528,10 @@
                 </div>
 
                 <div>
-                    <h2>Your Voice Matters</h2>
+
+                    <h2>
+                        Your Voice Matters
+                    </h2>
 
                     <p>
                         Every complaint helps identify civic problems and
@@ -846,16 +1539,22 @@
                         accurate information so the concerned authority can
                         take appropriate action.
                     </p>
+
                 </div>
 
             </div>
 
 
+            <!-- =================================================
+                 FORM
+            ================================================= -->
+
             <form id="complaintForm">
 
-                <!-- =========================
+
+                <!-- =================================================
                      PERSONAL DETAILS
-                ========================== -->
+                ================================================= -->
 
                 <div class="form-section">
 
@@ -866,8 +1565,15 @@
                         </div>
 
                         <div>
-                            <h3>Personal Details</h3>
-                            <p>Tell us how we can contact you</p>
+
+                            <h3>
+                                Personal Details
+                            </h3>
+
+                            <p>
+                                Tell us how we can contact you
+                            </p>
+
                         </div>
 
                     </div>
@@ -875,15 +1581,21 @@
 
                     <div class="form-grid">
 
+
+                        <!-- NAME -->
+
                         <div class="form-group">
 
                             <label>
-                                Full Name <span class="required">*</span>
+                                Full Name
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">👤</span>
+                                <span class="input-icon">
+                                    👤
+                                </span>
 
                                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
@@ -892,22 +1604,30 @@
                         </div>
 
 
+                        <!-- MOBILE -->
+
                         <div class="form-group">
 
                             <label>
-                                Mobile Number <span class="required">*</span>
+                                Mobile Number
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">📱</span>
+                                <span class="input-icon">
+                                    📱
+                                </span>
 
-                                <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" required>
+                                <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number"
+                                    pattern="[0-9]{10}" maxlength="10" required>
 
                             </div>
 
                         </div>
 
+
+                        <!-- EMAIL -->
 
                         <div class="form-group">
 
@@ -917,7 +1637,9 @@
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">✉️</span>
+                                <span class="input-icon">
+                                    ✉️
+                                </span>
 
                                 <input type="email" id="email" name="email" placeholder="Enter email address">
 
@@ -926,15 +1648,20 @@
                         </div>
 
 
+                        <!-- WARD -->
+
                         <div class="form-group">
 
                             <label>
-                                Ward / Area <span class="required">*</span>
+                                Ward / Area
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">🏘️</span>
+                                <span class="input-icon">
+                                    🏘️
+                                </span>
 
                                 <select id="ward" name="ward" required>
 
@@ -942,16 +1669,45 @@
                                         Select Ward / Area
                                     </option>
 
-                                    <option value="Ward 1">Ward 1</option>
-                                    <option value="Ward 2">Ward 2</option>
-                                    <option value="Ward 3">Ward 3</option>
-                                    <option value="Ward 4">Ward 4</option>
-                                    <option value="Ward 5">Ward 5</option>
-                                    <option value="Ward 6">Ward 6</option>
-                                    <option value="Ward 7">Ward 7</option>
-                                    <option value="Ward 8">Ward 8</option>
-                                    <option value="Ward 9">Ward 9</option>
-                                    <option value="Ward 10">Ward 10</option>
+                                    <option value="Ward 1">
+                                        Ward 1
+                                    </option>
+
+                                    <option value="Ward 2">
+                                        Ward 2
+                                    </option>
+
+                                    <option value="Ward 3">
+                                        Ward 3
+                                    </option>
+
+                                    <option value="Ward 4">
+                                        Ward 4
+                                    </option>
+
+                                    <option value="Ward 5">
+                                        Ward 5
+                                    </option>
+
+                                    <option value="Ward 6">
+                                        Ward 6
+                                    </option>
+
+                                    <option value="Ward 7">
+                                        Ward 7
+                                    </option>
+
+                                    <option value="Ward 8">
+                                        Ward 8
+                                    </option>
+
+                                    <option value="Ward 9">
+                                        Ward 9
+                                    </option>
+
+                                    <option value="Ward 10">
+                                        Ward 10
+                                    </option>
 
                                 </select>
 
@@ -960,15 +1716,20 @@
                         </div>
 
 
+                        <!-- ADDRESS -->
+
                         <div class="form-group full">
 
                             <label>
-                                Address <span class="required">*</span>
+                                Address
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">🏠</span>
+                                <span class="input-icon">
+                                    🏠
+                                </span>
 
                                 <input type="text" id="address" name="address" placeholder="Enter your complete address"
                                     required>
@@ -982,9 +1743,9 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      COMPLAINT DETAILS
-                ========================== -->
+                ================================================= -->
 
                 <div class="form-section">
 
@@ -995,8 +1756,15 @@
                         </div>
 
                         <div>
-                            <h3>Complaint Details</h3>
-                            <p>Describe the civic issue clearly</p>
+
+                            <h3>
+                                Complaint Details
+                            </h3>
+
+                            <p>
+                                Describe the civic issue clearly
+                            </p>
+
                         </div>
 
                     </div>
@@ -1004,15 +1772,21 @@
 
                     <div class="form-grid">
 
+
+                        <!-- CATEGORY -->
+
                         <div class="form-group">
 
                             <label>
-                                Complaint Category <span class="required">*</span>
+                                Complaint Category
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">📂</span>
+                                <span class="input-icon">
+                                    📂
+                                </span>
 
                                 <select id="category" name="category" required>
 
@@ -1055,15 +1829,20 @@
                         </div>
 
 
+                        <!-- LOCATION -->
+
                         <div class="form-group">
 
                             <label>
-                                Issue Location <span class="required">*</span>
+                                Issue Location
+                                <span class="required">*</span>
                             </label>
 
                             <div class="input-wrapper">
 
-                                <span class="input-icon">📍</span>
+                                <span class="input-icon">
+                                    📍
+                                </span>
 
                                 <input type="text" id="location" name="location" placeholder="Where is the issue?"
                                     required>
@@ -1072,6 +1851,8 @@
 
                         </div>
 
+
+                        <!-- DESCRIPTION -->
 
                         <div class="form-group full">
 
@@ -1088,7 +1869,9 @@
                     </div>
 
 
-                    <!-- LOCATION -->
+                    <!-- =================================================
+                         GPS LOCATION
+                    ================================================= -->
 
                     <div class="location-box">
 
@@ -1110,9 +1893,9 @@
                 </div>
 
 
-                <!-- =========================
-                     PHOTO / VIDEO
-                ========================== -->
+                <!-- =================================================
+                     UPLOAD EVIDENCE
+                ================================================= -->
 
                 <div class="form-section">
 
@@ -1123,8 +1906,15 @@
                         </div>
 
                         <div>
-                            <h3>Upload Evidence</h3>
-                            <p>Add photos or videos to explain the issue</p>
+
+                            <h3>
+                                Upload Evidence
+                            </h3>
+
+                            <p>
+                                Add photos or videos to explain the issue
+                            </p>
+
                         </div>
 
                     </div>
@@ -1132,13 +1922,18 @@
 
                     <div class="upload-grid">
 
+
+                        <!-- PHOTO -->
+
                         <div class="upload-card">
 
                             <div class="upload-icon">
                                 📷
                             </div>
 
-                            <h4>Upload Photo</h4>
+                            <h4>
+                                Upload Photo
+                            </h4>
 
                             <p>
                                 Add a clear photo of the civic problem
@@ -1149,13 +1944,17 @@
                         </div>
 
 
+                        <!-- VIDEO -->
+
                         <div class="upload-card">
 
                             <div class="upload-icon">
                                 🎥
                             </div>
 
-                            <h4>Upload Video</h4>
+                            <h4>
+                                Upload Video
+                            </h4>
 
                             <p>
                                 Add a short video if it helps explain the issue
@@ -1170,9 +1969,9 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      SAFETY
-                ========================== -->
+                ================================================= -->
 
                 <div class="safety-box">
 
@@ -1197,9 +1996,9 @@
                 </div>
 
 
-                <!-- =========================
+                <!-- =================================================
                      SUBMIT
-                ========================== -->
+                ================================================= -->
 
                 <div class="submit-area">
 
@@ -1220,9 +2019,9 @@
             </form>
 
 
-            <!-- =========================
+            <!-- =================================================
                  CTA
-            ========================== -->
+            ================================================= -->
 
             <div class="complaint-cta">
 
@@ -1237,41 +2036,46 @@
 
             </div>
 
+
         </div>
 
     </main>
 
 
-    <!-- =========================
+    <!-- =====================================================
          FOOTER
-    ========================== -->
+    ===================================================== -->
 
     <footer>
 
-        <h3>🇮🇳 Nandgaon CivicConnect</h3>
+        <h3>
+            🇮🇳 Nandgaon CivicConnect
+        </h3>
 
         <p>
             A Digital Platform for Better Civic Services & E-Governance
         </p>
 
         <div class="footer-bottom">
-            © 2026 Nandgaon CivicConnect | Empowering Citizens Through Technology
+            © 2026 Nandgaon CivicConnect |
+            Empowering Citizens Through Technology
         </div>
 
     </footer>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================== -->
+    ===================================================== -->
 
     <script src="js/script.js"></script>
 
+
     <script>
 
-        /* =========================
+        /* =====================================================
            GPS LOCATION
-        ========================== */
+        ===================================================== */
 
         function getLocation() {
 
@@ -1281,12 +2085,18 @@
 
                     function (position) {
 
-                        const latitude = position.coords.latitude;
-                        const longitude = position.coords.longitude;
+                        const latitude =
+                            position.coords.latitude;
+
+                        const longitude =
+                            position.coords.longitude;
+
 
                         document.getElementById("location").value =
-                            "Latitude: " + latitude.toFixed(6) +
-                            ", Longitude: " + longitude.toFixed(6);
+                            "Latitude: " +
+                            latitude.toFixed(6) +
+                            ", Longitude: " +
+                            longitude.toFixed(6);
 
                     },
 
@@ -1311,34 +2121,65 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            COMPLAINT SUBMISSION
-        ========================== */
+        ===================================================== */
 
         document
             .getElementById("complaintForm")
-            .addEventListener("submit", function (event) {
+            .addEventListener(
+                "submit",
+                function (event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                const successMessage =
-                    document.getElementById("successMessage");
 
-                successMessage.style.display = "block";
+                    const successMessage =
+                        document.getElementById(
+                            "successMessage"
+                        );
 
-                successMessage.innerHTML =
-                    "✅ Complaint submitted successfully! Your issue has been recorded.";
 
-                this.reset();
+                    successMessage.style.display =
+                        "block";
 
-                window.scrollTo({
-                    top: document.querySelector(".submit-area").offsetTop,
-                    behavior: "smooth"
-                });
 
-            });
+                    successMessage.innerHTML =
+                        "✅ Complaint submitted successfully! Your issue has been recorded.";
+
+
+                    this.reset();
+
+
+                    successMessage.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+            );
+
+
+        /* =====================================================
+           MOBILE NUMBER VALIDATION
+        ===================================================== */
+
+        document
+            .getElementById("mobile")
+            .addEventListener(
+                "input",
+                function () {
+
+                    this.value =
+                        this.value
+                            .replace(/\D/g, "")
+                            .slice(0, 10);
+
+                }
+            );
 
     </script>
+
 
 </body>
 
