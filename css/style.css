@@ -95,11 +95,7 @@ body {
 }
 
 
-/* HOVER */
 
-.nav-links a:hover {
-    color: #2563eb;
-}
 
 
 /* ACTIVE */
@@ -210,9 +206,7 @@ body {
     font-weight: 600;
 }
 
-.nav-links a:hover {
-    color: #0b63ce;
-}
+
 
 
 /* =========================
@@ -1015,53 +1009,36 @@ footer {
     }
 
 }
+/* NAV LINK BUBBLE HOVER EFFECT */
 
-/* =========================
-   GLOBAL HOVER EFFECTS
-========================= */
-
-/* NAVBAR LINKS */
 .nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
+
+/* Bubble appears when cursor comes over the link */
 
 .nav-links a:hover {
-    color: #0b63ce;
+    color: #2563eb;
     background: #eef6ff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(8, 102, 213, 0.12);
 }
 
+/* Active page stays blue */
 
-/* STAT CARDS */
-.stat-card {
-    transition: all 0.3s ease;
+.nav-links a.active {
+    color: #2563eb;
+    background: #eef6ff;
 }
 
-.stat-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 18px 35px rgba(20, 50, 90, 0.10);
-}
+/* Remove old underline */
 
-
-/* MISSION / SERVICE CARDS */
-.mission-card {
-    transition: all 0.35s ease;
-}
-
-.mission-card:hover {
-    transform: translateY(-8px);
-    background: #ffffff;
-    box-shadow: 0 20px 40px rgba(25, 55, 95, 0.10);
-}
-
-
-/* BUTTONS */
-.cta-button {
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+.nav-links a.active::after {
+    display: none;
 }
