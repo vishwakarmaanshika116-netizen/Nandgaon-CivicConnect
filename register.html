@@ -4,17 +4,17 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registration - Nandgaon CivicConnect</title>
+    <title>Register | Nandgaon CivicConnect</title>
 
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
 
-        /* =========================
-           BASIC RESET
-        ========================= */
+        /* =====================================================
+           REGISTER PAGE
+        ===================================================== */
 
         * {
             margin: 0;
@@ -23,166 +23,146 @@
             font-family: Arial, sans-serif;
         }
 
-
         body {
             background: #f5f8fc;
             min-height: 100vh;
+            color: #183b66;
         }
 
-
-        /* =========================
+        /* =====================================================
            NAVBAR
-        ========================= */
+        ===================================================== */
 
         .navbar {
-
             width: 100%;
-            height: 80px;
-
+            min-height: 78px;
             background: white;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            padding: 0 5.2%;
+            padding: 0 5%;
 
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 12px rgba(15, 40, 70, 0.07);
 
             position: relative;
-            z-index: 10;
+            z-index: 20;
         }
-
-
-        /* Website Logo */
 
         .logo {
-
-            font-size: 22px;
-            font-weight: 700;
-
+            font-size: 21px;
+            font-weight: 800;
             color: #123f6b;
-
             white-space: nowrap;
+            transition: 0.3s ease;
         }
 
+        .logo:hover {
+            color: #1677d8;
+            transform: translateY(-1px);
+        }
 
-        /* Menu */
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
 
         .nav-links {
-
             display: flex;
             align-items: center;
-
-            gap: 26px;
+            gap: 24px;
         }
-
 
         .nav-links a {
-
+            position: relative;
             text-decoration: none;
-
-            color: #171717;
-
-            font-size: 16px;
-
+            color: #24364b;
+            font-size: 14px;
             font-weight: 600;
-
             padding: 10px 0;
-
-            transition: 0.2s;
+            transition: 0.25s ease;
         }
-
 
         .nav-links a:hover {
-
-            color: #2563eb;
+            color: #1677d8;
         }
 
-
-        /* Active Register */
-
-        .nav-links .active {
-
-            color: #3065d8;
-
-            position: relative;
-        }
-
-
-        .nav-links .active::after {
-
+        .nav-links a::after {
             content: "";
-
             position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: 2px;
+            height: 2px;
+            border-radius: 10px;
+            background: #1677d8;
+            transition: 0.25s ease;
+        }
 
+        .nav-links a:hover::after {
             left: 0;
             right: 0;
-
-            bottom: 0;
-
-            height: 3px;
-
-            background: #2563eb;
-
-            border-radius: 5px;
         }
 
+        .nav-links .active {
+            color: #1677d8;
+        }
 
-        /* Admin Login Button */
+        .nav-links .active::after {
+            left: 0;
+            right: 0;
+        }
+
+        /* =====================================================
+           ADMIN BUTTON
+        ===================================================== */
 
         .admin-btn {
-
-            background: #2864df !important;
-
+            padding: 11px 17px !important;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #0b5fc4, #1677d8);
             color: white !important;
-
-            padding: 14px 21px !important;
-
-            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(11, 95, 196, 0.15);
         }
 
+        .admin-btn::after {
+            display: none;
+        }
 
         .admin-btn:hover {
-
-            background: #174fc1 !important;
-
             color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 9px 22px rgba(11, 95, 196, 0.25);
         }
 
-
-        /* =========================
-           MAIN BLUE SECTION
-        ========================= */
+        /* =====================================================
+           HERO / MAIN SECTION
+        ===================================================== */
 
         .main-section {
-
-            min-height: calc(100vh - 80px);
-
-            background: linear-gradient(
-                120deg,
-                #0d4c91,
-                #1674db
-            );
+            min-height: calc(100vh - 78px);
 
             position: relative;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
             overflow: hidden;
 
-            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 75px 20px 100px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0758b8 0%,
+                    #1677d8 55%,
+                    #35a1ef 100%
+                );
         }
 
-
-        /* Background Circle - Right */
+        /* Decorative circles */
 
         .circle-one {
-
             position: absolute;
 
             width: 520px;
@@ -190,186 +170,317 @@
 
             border-radius: 50%;
 
-            border: 70px solid rgba(255,255,255,0.04);
+            border: 70px solid rgba(255, 255, 255, 0.05);
 
             right: -200px;
             top: -190px;
+
+            pointer-events: none;
         }
 
-
-        /* Background Circle - Left */
-
         .circle-two {
-
             position: absolute;
 
-            width: 300px;
-            height: 300px;
+            width: 330px;
+            height: 330px;
 
             border-radius: 50%;
 
-            background: rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.05);
 
-            left: -160px;
-            bottom: -170px;
+            left: -170px;
+            bottom: -180px;
+
+            pointer-events: none;
         }
 
+        .circle-three {
+            position: absolute;
 
-        /* =========================
-           REGISTRATION CARD
-        ========================= */
+            width: 110px;
+            height: 110px;
+
+            border-radius: 50%;
+
+            border: 2px solid rgba(255, 255, 255, 0.12);
+
+            left: 12%;
+            top: 18%;
+
+            pointer-events: none;
+        }
+
+        /* =====================================================
+           REGISTER CARD
+        ===================================================== */
 
         .register-card {
 
             position: relative;
+            z-index: 5;
 
-            z-index: 2;
+            width: min(470px, 100%);
 
-            width: 460px;
+            padding: 40px 42px;
 
-            background: rgba(255,255,255,0.98);
+            border-radius: 24px;
 
-            padding: 38px 42px;
+            background: rgba(255, 255, 255, 0.98);
 
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
 
             box-shadow:
-                0 15px 45px rgba(0,0,0,0.18);
+                0 25px 65px rgba(0, 0, 0, 0.18);
+
+            transition: 0.3s ease;
         }
 
+        .register-card:hover {
+            transform: translateY(-5px);
 
-        /* Heading */
+            box-shadow:
+                0 30px 75px rgba(0, 0, 0, 0.22);
+        }
+
+        /* =====================================================
+           REGISTER HEADER
+        ===================================================== */
+
+        .register-badge {
+            display: block;
+            width: fit-content;
+
+            margin: 0 auto 15px;
+
+            padding: 7px 14px;
+
+            border-radius: 50px;
+
+            background: #eaf3ff;
+            color: #0b5fc4;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 0.6px;
+        }
 
         .register-card h1 {
-
             text-align: center;
 
             color: #123f6b;
 
-            font-size: 30px;
+            font-size: 32px;
+            line-height: 1.2;
 
-            margin-bottom: 8px;
+            margin-bottom: 9px;
         }
 
-
-        /* Subtitle */
+        .register-card h1 span {
+            color: #1677d8;
+        }
 
         .subtitle {
-
             text-align: center;
 
             color: #68788c;
 
-            font-size: 15px;
+            font-size: 13px;
+
+            line-height: 1.7;
 
             margin-bottom: 30px;
-
-            line-height: 1.5;
         }
 
-
-        /* =========================
+        /* =====================================================
            FORM
-        ========================= */
+        ===================================================== */
 
         .form-group {
-
             margin-bottom: 20px;
         }
 
-
         .form-group label {
-
             display: block;
 
             color: #24364b;
 
-            font-size: 15px;
+            font-size: 13px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             margin-bottom: 8px;
         }
 
+        .required {
+            color: #d23b3b;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+
+            pointer-events: none;
+        }
 
         .form-group input {
-
             width: 100%;
+            height: 49px;
 
-            height: 48px;
-
-            padding: 0 15px;
+            padding: 0 15px 0 43px;
 
             border: 1px solid #d5dce5;
 
-            border-radius: 9px;
+            border-radius: 10px;
 
             outline: none;
 
-            font-size: 15px;
+            font-size: 13px;
 
             color: #333;
 
-            background: white;
+            background: #fbfcfe;
 
-            transition: 0.2s;
+            transition: all 0.25s ease;
         }
 
-
         .form-group input::placeholder {
-
             color: #9aa4b2;
         }
 
-
-        .form-group input:focus {
-
-            border-color: #2864df;
-
-            box-shadow:
-                0 0 0 3px rgba(40,100,223,0.10);
+        .form-group input:hover {
+            border-color: #9fb9d4;
+            background: white;
         }
 
+        .form-group input:focus {
+            border-color: #2864df;
 
-        /* =========================
+            background: white;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 0 0 4px rgba(40, 100, 223, 0.09);
+        }
+
+        /* =====================================================
+           PASSWORD / SECURITY NOTE
+        ===================================================== */
+
+        .security-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            margin: 3px 0 20px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: #f1f8ff;
+
+            border: 1px solid #dcecff;
+
+            color: #627b95;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+        .security-note span {
+            font-size: 15px;
+        }
+
+        /* =====================================================
            REGISTER BUTTON
-        ========================= */
+        ===================================================== */
 
         .register-btn {
 
-            width: 100%;
+            position: relative;
+            overflow: hidden;
 
-            height: 50px;
+            width: 100%;
+            height: 51px;
 
             border: none;
 
-            border-radius: 9px;
+            border-radius: 10px;
 
-            background: #2864df;
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5fc4,
+                    #1677d8
+                );
 
             color: white;
 
-            font-size: 16px;
+            font-size: 14px;
 
             font-weight: 700;
 
             cursor: pointer;
 
-            margin-top: 5px;
+            margin-top: 4px;
 
-            transition: 0.2s;
+            transition: all 0.3s ease;
+
+            box-shadow:
+                0 8px 20px rgba(11, 95, 196, 0.16);
         }
 
+        .register-btn::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 80%;
+            height: 100%;
+
+            transform: skewX(-20deg);
+
+            background: rgba(255, 255, 255, 0.17);
+
+            transition: 0.5s ease;
+        }
+
+        .register-btn:hover::before {
+            left: 130%;
+        }
 
         .register-btn:hover {
 
-            background: #a7b0c2;
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 13px 28px rgba(11, 95, 196, 0.27);
         }
 
+        .register-btn:active {
+            transform: translateY(-1px);
+        }
 
-        /* =========================
+        /* =====================================================
            SUCCESS MESSAGE
-        ========================= */
+        ===================================================== */
 
         .success-message {
 
@@ -377,60 +488,89 @@
 
             margin-top: 18px;
 
-            padding: 12px;
+            padding: 13px;
 
             background: #e8f7ee;
 
+            border: 1px solid #c8ecd6;
+
             color: #18733b;
 
-            border-radius: 8px;
+            border-radius: 10px;
 
             text-align: center;
 
-            font-size: 14px;
+            font-size: 12px;
 
-            font-weight: 600;
+            font-weight: 700;
+
+            animation: successPop 0.35s ease;
         }
 
+        @keyframes successPop {
 
-        /* =========================
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =====================================================
+           BOTTOM INFORMATION
+        ===================================================== */
+
+        .register-info {
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #8795a5;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+        /* =====================================================
            RESPONSIVE
-        ========================= */
+        ===================================================== */
 
         @media (max-width: 1100px) {
 
             .nav-links {
-
                 gap: 16px;
             }
 
             .nav-links a {
-
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .admin-btn {
-
-                padding: 12px 15px !important;
+                padding: 10px 13px !important;
             }
-        }
 
+        }
 
         @media (max-width: 850px) {
 
             .navbar {
 
-                height: auto;
-
                 min-height: 80px;
 
-                padding: 15px 20px;
+                padding: 14px 20px;
 
                 flex-direction: column;
 
-                gap: 15px;
-            }
+                gap: 13px;
 
+            }
 
             .nav-links {
 
@@ -438,45 +578,68 @@
 
                 justify-content: center;
 
-                gap: 15px;
-            }
+                gap: 13px;
 
+            }
 
             .main-section {
 
-                min-height: calc(100vh - 130px);
-            }
-        }
+                min-height: calc(100vh - 145px);
 
+                padding: 55px 15px 75px;
+
+            }
+
+        }
 
         @media (max-width: 500px) {
 
             .logo {
-
-                font-size: 19px;
+                font-size: 18px;
             }
 
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .admin-btn {
+                padding: 8px 10px !important;
+            }
 
             .register-card {
 
                 width: 100%;
 
-                padding: 30px 24px;
+                padding: 30px 22px;
 
-                border-radius: 15px;
+                border-radius: 19px;
+
             }
-
 
             .register-card h1 {
-
-                font-size: 26px;
+                font-size: 27px;
             }
 
-
-            .nav-links a {
-
-                font-size: 13px;
+            .subtitle {
+                font-size: 12px;
             }
+
+            .circle-one {
+                width: 350px;
+                height: 350px;
+                right: -180px;
+            }
+
+            .circle-two {
+                width: 230px;
+                height: 230px;
+                left: -130px;
+            }
+
         }
 
     </style>
@@ -487,59 +650,42 @@
 <body>
 
 
-    <!-- ==================================================
+    <!-- =====================================================
          NAVBAR
-    ================================================== -->
+    ===================================================== -->
 
     <nav class="navbar">
 
-
-        <!-- Logo -->
-
         <div class="logo">
-            Nandgaon CivicConnect
+            🇮🇳 Nandgaon CivicConnect
         </div>
 
 
-        <!-- Menu -->
-
         <div class="nav-links">
-
 
             <a href="index.html">
                 Home
             </a>
 
-
             <a href="about.html">
                 About
             </a>
-
 
             <a href="services.html">
                 Services
             </a>
 
-
             <a href="register-complaint.html">
                 Complaint
             </a>
-
-
-            <!-- CURRENT PAGE -->
-
-            
-
 
             <a href="faq.html">
                 FAQ
             </a>
 
-
             <a href="feedback.html">
                 Feedback
             </a>
-
 
             <a href="register.html" class="active">
                 Register
@@ -549,26 +695,25 @@
                 Admin Login
             </a>
 
-
         </div>
 
     </nav>
 
 
-
-    <!-- ==================================================
-         REGISTRATION SECTION
-    ================================================== -->
+    <!-- =====================================================
+         REGISTER SECTION
+    ===================================================== -->
 
     <section class="main-section">
 
 
-        <!-- Decorative circles -->
+        <!-- Decorative background -->
 
         <div class="circle-one"></div>
 
         <div class="circle-two"></div>
 
+        <div class="circle-three"></div>
 
 
         <!-- Registration Card -->
@@ -576,15 +721,20 @@
         <div class="register-card">
 
 
+            <span class="register-badge">
+                👤 CITIZEN REGISTRATION
+            </span>
+
+
             <h1>
-                Register
+                Create Your <span>Account</span>
             </h1>
 
 
             <p class="subtitle">
                 Register to connect with Nandgaon CivicConnect
+                and participate in better civic services.
             </p>
-
 
 
             <!-- Registration Form -->
@@ -597,19 +747,25 @@
                 <div class="form-group">
 
                     <label for="fullName">
-                        Full Name
+                        Full Name <span class="required">*</span>
                     </label>
 
-                    <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        placeholder="Enter your full name"
-                        required
-                    >
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required>
+
+                    </div>
 
                 </div>
-
 
 
                 <!-- EMAIL -->
@@ -617,41 +773,67 @@
                 <div class="form-group">
 
                     <label for="email">
-                        Email
+                        Email Address <span class="required">*</span>
                     </label>
 
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        required
-                    >
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉️
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
 
                 </div>
 
 
-
-                <!-- MOBILE NUMBER -->
+                <!-- MOBILE -->
 
                 <div class="form-group">
 
                     <label for="mobile">
-                        Mobile Number
+                        Mobile Number <span class="required">*</span>
                     </label>
 
-                    <input
-                        type="tel"
-                        id="mobile"
-                        name="mobile"
-                        placeholder="Enter your mobile number"
-                        maxlength="10"
-                        pattern="[0-9]{10}"
-                        required
-                    >
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            📱
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            required>
+
+                    </div>
 
                 </div>
 
+
+                <!-- SECURITY NOTE -->
+
+                <div class="security-note">
+
+                    <span>🔒</span>
+
+                    <div>
+                        Your information is used only to support
+                        your participation in the CivicConnect platform.
+                    </div>
+
+                </div>
 
 
                 <!-- REGISTER BUTTON -->
@@ -660,10 +842,9 @@
                     type="submit"
                     class="register-btn">
 
-                    Register
+                    🚀 Register Now
 
                 </button>
-
 
 
                 <!-- SUCCESS MESSAGE -->
@@ -672,9 +853,15 @@
                     id="successMessage"
                     class="success-message">
 
-                    Registration submitted successfully!
+                    ✅ Registration submitted successfully!
 
                 </div>
+
+
+                <p class="register-info">
+                    By registering, you agree to provide accurate
+                    information for civic service communication.
+                </p>
 
 
             </form>
@@ -684,10 +871,9 @@
     </section>
 
 
-
-    <!-- ==================================================
+    <!-- =====================================================
          JAVASCRIPT
-    ================================================== -->
+    ===================================================== -->
 
     <script>
 
@@ -702,9 +888,7 @@
 
             event.preventDefault();
 
-
             successMessage.style.display = "block";
-
 
             form.reset();
 
