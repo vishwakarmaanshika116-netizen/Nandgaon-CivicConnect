@@ -1009,36 +1009,3 @@ footer {
     }
 
 }
-/* NAV LINK BUBBLE HOVER EFFECT */
-
-.nav-links a {
-    position: relative;
-    text-decoration: none;
-    color: #4b5563;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 10px 14px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-/* Bubble appears when cursor comes over the link */
-
-.nav-links a:hover {
-    color: #2563eb;
-    background: #eef6ff;
-    transform: translateY(-2px);
-}
-
-/* Active page stays blue */
-
-.nav-links a.active {
-    color: #2563eb;
-    background: #eef6ff;
-}
-
-/* Remove old underline */
-
-.nav-links a.active::after {
-    display: none;
-}
