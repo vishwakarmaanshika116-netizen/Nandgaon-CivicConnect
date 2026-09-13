@@ -816,7 +816,7 @@ form .btn {
 }
 
 .login-card > a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* =========================
