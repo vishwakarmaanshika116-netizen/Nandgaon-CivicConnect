@@ -107,23 +107,6 @@ body {
 
 /* ACTIVE UNDERLINE */
 
-.nav-links a.active::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 16px;
-
-    height: 2px;
-
-    background: #2563eb;
-
-    border-radius: 10px;
-}
-
 
 /* ADMIN LOGIN */
 
@@ -180,9 +163,6 @@ body {
         padding: 8px 0;
     }
 
-    .nav-links a.active::after {
-        bottom: 2px;
-    }
 
 }
 
