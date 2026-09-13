@@ -746,3 +746,133 @@ if (trackForm) {
 console.log(
     "Nandgaon CivicConnect loaded successfully."
 );
+
+// ============================================================
+// FEEDBACK SUBMISSION
+// ============================================================
+
+const feedbackForm =
+    document.getElementById("feedbackForm");
+
+
+if (feedbackForm) {
+
+    feedbackForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            if (!validateForm(feedbackForm)) {
+                return;
+            }
+
+
+            const selectedRating =
+                document.querySelector(
+                    'input[name="rating"]:checked'
+                );
+
+
+            if (!selectedRating) {
+
+                alert(
+                    "Please select a rating."
+                );
+
+                return;
+
+            }
+
+
+            const feedbackData = {
+
+                name:
+                    document
+                        .getElementById("feedbackName")
+                        .value
+                        .trim(),
+
+                email:
+                    document
+                        .getElementById("feedbackEmail")
+                        .value
+                        .trim(),
+
+                rating:
+                    selectedRating.value,
+
+                feedback:
+                    document
+                        .getElementById("feedback")
+                        .value
+                        .trim()
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "https://nandgaon-civicconnect.onrender.com/api/feedback",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    feedbackData
+                                )
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    alert(
+                        "Feedback submitted successfully!"
+                    );
+
+
+                    feedbackForm.reset();
+
+
+                } else {
+
+                    alert(
+                        result.message ||
+                        "Failed to submit feedback."
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Feedback submission error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to connect to the server. " +
+                    "Please try again."
+                );
+
+            }
+
+        }
+    );
+
+}
