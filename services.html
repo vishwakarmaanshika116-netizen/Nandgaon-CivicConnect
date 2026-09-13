@@ -111,9 +111,28 @@
         .nav-links a.active {
             color: white;
             background: hsl(226, 83%, 41%);
+            box-shadow:
+                0 6px 18px rgba(8, 102, 213, 0.22);
+            text-decoration: none;
+        }
+
+        .nav-links a.active:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.login {
+            color: white;
+            background: hsl(226, 83%, 41%);
             box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
         }
 
+        .nav-links a.login:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
 
         /* =====================================================
            SERVICES HERO
@@ -898,7 +917,7 @@
 
             <a href="register.html">Register</a>
 
-            <a href="admin.html">Admin Login</a>
+            <a href="admin.html" class="login">Admin Login</a>
 
         </div>
 

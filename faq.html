@@ -7,10 +7,12 @@
 
     <title>FAQ | Nandgaon CivicConnect</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -43,31 +45,7 @@
 
         /* =====================================================
            NAVBAR
-        ===================================================== */
-
-        
-
-
-        /* LOGO */
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-
-            font-family: "Poppins", sans-serif;
-            font-size: 21px;
-            font-weight: 800;
-
-            color: #172033;
-        }
-
-        .logo span {
-            color: #1675d1;
-        }
-
-
-        /* NAVIGATION */
+        =====================================================*/
 
         .navbar {
             width: 100%;
@@ -106,12 +84,10 @@
         }
 
         .nav-links {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .nav-links a {
             color: #000000;
@@ -132,8 +108,29 @@
         .nav-links a.active {
             color: white;
             background: hsl(226, 83%, 41%);
+            box-shadow:
+                0 6px 18px rgba(8, 102, 213, 0.22);
+            text-decoration: none;
+        }
+
+        .nav-links a.active:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.login {
+            color: white;
+            background: hsl(226, 83%, 41%);
             box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
         }
+
+        .nav-links a.login:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
 
 
         /* =====================================================
@@ -166,6 +163,7 @@
 
         .hero::before {
             content: "";
+
             position: absolute;
 
             width: 350px;
@@ -180,6 +178,7 @@
 
         .hero::after {
             content: "";
+
             position: absolute;
 
             width: 430px;
@@ -201,7 +200,7 @@
         }
 
 
-        /* SMALL BADGE */
+        /* HERO BADGE */
 
         .hero-badge {
             display: inline-flex;
@@ -272,7 +271,7 @@
         }
 
 
-        /* SECTION INTRO CARD */
+        /* INTRO CARD */
 
         .intro-card {
             max-width: 1100px;
@@ -450,7 +449,7 @@
 
             align-items: center;
 
-            justify-content: center;
+            justify-content: space-between;
 
             gap: 20px;
 
@@ -591,6 +590,7 @@
             box-shadow: 0 15px 40px rgba(15, 103, 190, 0.20);
         }
 
+
         .faq-cta::before {
             content: "";
 
@@ -606,6 +606,7 @@
             left: -90px;
             bottom: -130px;
         }
+
 
         .faq-cta h2 {
             position: relative;
@@ -688,15 +689,18 @@
                 padding: 0 4%;
             }
 
+            .brand {
+                font-size: 24px;
+            }
+
             .nav-links {
-                gap: 2px;
+                gap: 4px;
             }
 
             .nav-links a {
                 padding: 11px 10px;
-                font-size: 14px;
+                font-size: 16px;
             }
-
         }
 
 
@@ -737,14 +741,17 @@
 
                 margin-top: -45px;
             }
-
         }
 
 
         @media (max-width: 600px) {
 
-            .logo {
+            .brand {
                 font-size: 20px;
+            }
+
+            .nav-links {
+                gap: 2px;
             }
 
             .nav-links a {
@@ -822,10 +829,8 @@
             .faq-cta h2 {
                 font-size: 25px;
             }
-
         }
     </style>
-
 </head>
 
 
@@ -838,11 +843,12 @@
 
     <header class="navbar">
 
-        <a href="index.html" class="brand">
-            IN Nandgaon CivicConnect
-        </a>
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
 
 
+        <!-- NAVIGATION -->
         <nav class="nav-links">
 
             <a href="index.html">Home</a>
@@ -851,16 +857,25 @@
 
             <a href="serv.html">Services</a>
 
-            <a href="register-complaint.html">Complaint</a>
+            <a href="register-complaint.html">
+                Complaint
+            </a>
 
-            <a href="faq.html" class="active">FAQ</a>
+            <a href="faq.html" class="active">
+                FAQ
+            </a>
 
-            <a href="feedback.html">Feedback</a>
+            <a href="feedback.html">
+                Feedback
+            </a>
 
-            <a href="register.html">Register</a>
+            <a href="register.html">
+                Register
+            </a>
 
-            <a href="admin.html">Admin Login</a>
-            
+            <a href="admin.html" class="login">
+                Admin Login
+            </a>
 
         </nav>
 
@@ -937,9 +952,11 @@
                 QUICK INFORMATION
             </div>
 
+
             <h2>
                 Frequently Asked <span>Questions</span>
             </h2>
+
 
             <p>
                 Everything you need to know about Nandgaon CivicConnect.
@@ -1357,7 +1374,6 @@
 
             </div>
 
-
         </div>
 
 
@@ -1372,10 +1388,12 @@
                 Still have a question?
             </h2>
 
+
             <p>
                 If you need assistance, you can submit your feedback
                 or register a civic complaint through CivicConnect.
             </p>
+
 
             <a href="feedback.html" class="cta-button">
                 Give Feedback →
@@ -1418,7 +1436,8 @@
 
             question.addEventListener("click", () => {
 
-                const isActive = item.classList.contains("active");
+                const isActive =
+                    item.classList.contains("active");
 
 
                 /* Close all FAQ items */
@@ -1435,7 +1454,7 @@
                 });
 
 
-                /* Open selected item */
+                /* Open selected FAQ item */
 
                 if (!isActive) {
 
