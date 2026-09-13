@@ -150,12 +150,9 @@
 
         .nav-links a.active {
             color: white;
-
             background: hsl(226, 83%, 41%);
-
             box-shadow:
                 0 6px 18px rgba(8, 102, 213, 0.22);
-
             text-decoration: none;
         }
 
@@ -165,6 +162,17 @@
             transform: translateY(-1px);
         }
 
+        .nav-links a.login {
+            color: white;
+            background: hsl(226, 83%, 41%);
+            box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
+        }
+
+        .nav-links a.login:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
 
         /* =====================================================
            COMPLAINT HERO
@@ -197,14 +205,11 @@
 
         .complaint-hero-inner {
             max-width: 1150px;
-
-            margin: auto;
-
-            padding: 75px 25px 145px;
-
+            margin: 0 auto;
+            padding: 75px 7% 145px;
             position: relative;
-
             z-index: 3;
+            text-align: center;
         }
 
 
@@ -268,12 +273,11 @@
 
         .complaint-hero p {
             max-width: 720px;
-
+            margin: 0;
             font-size: 17px;
-
             line-height: 1.8;
-
             color: rgba(255, 255, 255, 0.93);
+            text-align: center;
         }
 
 
@@ -1462,7 +1466,7 @@
                 Register
             </a>
 
-            <a href="admin.html">
+            <a href="admin.html" class="login">
                 Admin Login
             </a>
 

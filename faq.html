@@ -53,7 +53,7 @@
             padding: 0 7%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
 
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(15px);
@@ -77,11 +77,17 @@
             font-weight: 800;
 
             color: #172033;
-            position: absolute;
-            left: 7%;
         }
 
+        .brand::first-letter {
+            font-size: 24px;
+        }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .nav-links a {
             color: #000000;
@@ -679,23 +685,9 @@
 
         @media (max-width: 1100px) {
 
-    .navbar {
-        padding: 0 4%;
-    }
-
-    .brand {
-        font-size: 24px;
-    }
-
-    .nav-links {
-        gap: 4px;
-    }
-
-    .nav-links a {
-        padding: 11px 10px;
-        font-size: 16px;
-    }
-}
+            .navbar {
+                padding: 0 4%;
+            }
 
             .brand {
                 font-size: 24px;
@@ -709,7 +701,1483 @@
                 padding: 11px 10px;
                 font-size: 16px;
             }
-        
+        }
+
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                height: auto;
+
+                padding: 18px 5%;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 400px;
+
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .faq-section {
+                padding: 70px 5%;
+            }
+
+            .intro-card {
+                padding: 38px 25px;
+
+                margin-top: -45px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .brand {
+                font-size: 20px;
+            }
+
+            .nav-links {
+                gap: 2px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+
+                padding: 9px 9px;
+            }
+
+            .hero {
+                min-height: 380px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-badge {
+                font-size: 11px;
+            }
+
+            .intro-card {
+                border-radius: 20px;
+
+                padding: 30px 20px;
+            }
+
+            .intro-card h2 {
+                font-size: 27px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .faq-question {
+                padding: 18px 16px;
+
+                font-size: 15px;
+            }
+
+            .question-left {
+                gap: 10px;
+            }
+
+            .faq-number {
+                min-width: 32px;
+                height: 32px;
+
+                font-size: 12px;
+            }
+
+            .faq-icon {
+                min-width: 30px;
+                height: 30px;
+
+                font-size: 21px;
+            }
+
+            .faq-answer p {
+                padding: 0 18px 20px 58px;
+
+                font-size: 14px;
+            }
+
+            .faq-cta {
+                padding: 35px 22px;
+            }
+
+            .faq-cta h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            🇮🇳 Nandgaon CivicConnect
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="serv.html">Services</a>
+
+            <a href="register-complaint.html">
+                Complaint
+            </a>
+
+            <a href="faq.html" class="active">
+                FAQ
+            </a>
+
+            <a href="feedback.html">
+                Feedback
+            </a>
+
+            <a href="register.html">
+                Register
+            </a>
+
+            <a href="admin.html" class="login">
+                Admin Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ❓ &nbsp; HELP & INFORMATION
+            </div>
+
+
+            <h1>
+                Frequently Asked
+                <span>Questions</span>
+            </h1>
+
+
+            <p>
+                Find simple answers to common questions about
+                Nandgaon CivicConnect, complaint registration,
+                tracking and digital civic services.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FAQ MAIN SECTION
+    ====================================================== -->
+
+    <main class="faq-section">
+
+
+        <!-- INTRO CARD -->
+
+        <div class="intro-card">
+
+            <div class="intro-icon">
+                ❓
+            </div>
+
+
+            <h2>
+                How can we <span>help you?</span>
+            </h2>
+
+
+            <p>
+                Explore the questions below to learn more about
+                using CivicConnect and accessing digital civic services.
+            </p>
+
+        </div>
+
+
+
+        <!-- SECTION HEADING -->
+
+        <div class="section-heading">
+
+            <div class="small-title">
+                QUICK INFORMATION
+            </div>
+
+
+            <h2>
+                Frequently Asked <span>Questions</span>
+            </h2>
+
+
+            <p>
+                Everything you need to know about Nandgaon CivicConnect.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FAQ LIST
+        ================================================== -->
+
+        <div class="faq-container">
+
+
+            <!-- FAQ 1 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            01
+                        </span>
+
+                        <span>
+                            How can I register a complaint?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        You can register a complaint by visiting the
+                        Complaint section of Nandgaon CivicConnect.
+                        Fill in your required details, select the
+                        complaint category and area, describe the issue
+                        and submit the complaint.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 2 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            02
+                        </span>
+
+                        <span>
+                            What type of civic complaints can I report?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Citizens can report common local civic issues
+                        such as roads, drainage, garbage, water supply,
+                        street lights, sanitation and other public
+                        service-related problems.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 3 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            03
+                        </span>
+
+                        <span>
+                            Can I upload a photo or video with my complaint?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. Supporting photos or videos can help
+                        explain the civic issue more clearly and
+                        provide useful information for complaint
+                        verification and processing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 4 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            04
+                        </span>
+
+                        <span>
+                            How do I select my ward or area?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        During complaint registration, select the
+                        appropriate ward or local area where the
+                        civic issue is located. This helps direct
+                        the complaint to the appropriate authority.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 5 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            05
+                        </span>
+
+                        <span>
+                            Can I track my complaint?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Yes. CivicConnect is designed to provide
+                        complaint tracking so that citizens can
+                        check the progress and current status of
+                        their submitted complaint.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 6 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            06
+                        </span>
+
+                        <span>
+                            What happens after submitting a complaint?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        After submission, the complaint can be reviewed
+                        and processed by the concerned authority.
+                        Its status can be updated as the issue moves
+                        through the complaint management process.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 7 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            07
+                        </span>
+
+                        <span>
+                            Why is my complaint information important?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Accurate complaint information helps authorities
+                        understand the issue, identify its location and
+                        take appropriate action. Clear descriptions and
+                        supporting media can make the complaint easier
+                        to understand.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 8 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            08
+                        </span>
+
+                        <span>
+                            Who can use Nandgaon CivicConnect?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        The platform is designed for local citizens,
+                        students, youth, shopkeepers, elderly residents
+                        and other community members who want to report
+                        and follow up on civic issues.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 9 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            09
+                        </span>
+
+                        <span>
+                            What is the purpose of CivicConnect?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Nandgaon CivicConnect aims to make civic
+                        complaint registration easier, improve
+                        communication between citizens and authorities,
+                        and promote transparency and digital
+                        participation in local governance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAQ 10 -->
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <div class="question-left">
+
+                        <span class="faq-number">
+                            10
+                        </span>
+
+                        <span>
+                            Where can I get more information?
+                        </span>
+
+                    </div>
+
+                    <span class="faq-icon">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        You can explore the Home, About, Services,
+                        Complaint and Feedback sections of
+                        Nandgaon CivicConnect for additional
+                        information and available platform features.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <div class="faq-cta">
+
+            <h2>
+                Still have a question?
+            </h2>
+
+
+            <p>
+                If you need assistance, you can submit your feedback
+                or register a civic complaint through CivicConnect.
+            </p>
+
+
+            <a href="feedback.html" class="cta-button">
+                Give Feedback →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Nandgaon CivicConnect</span>.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         FAQ JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+
+            const question = item.querySelector(".faq-question");
+            const answer = item.querySelector(".faq-answer");
+
+            question.addEventListener("click", () => {
+
+                const isActive =
+                    item.classList.contains("active");
+
+
+                /* Close all FAQ items */
+
+                faqItems.forEach((otherItem) => {
+
+                    otherItem.classList.remove("active");
+
+                    const otherAnswer =
+                        otherItem.querySelector(".faq-answer");
+
+                    otherAnswer.style.maxHeight = null;
+
+                });
+
+
+                /* Open selected FAQ item */
+
+                if (!isActive) {
+
+                    item.classList.add("active");
+
+                    answer.style.maxHeight =
+                        answer.scrollHeight + "px";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ | Nandgaon CivicConnect</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           BASIC RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5f8fc;
+            color: #17233c;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        =====================================================*/
+
+        .navbar {
+            width: 100%;
+            min-height: 76px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #e7ebf2;
+
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+            box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+
+            color: #172033;
+        }
+
+        .brand::first-letter {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: #000000;
+            font-size: 14px;
+            font-weight: 600;
+
+            padding: 11px 14px;
+            border-radius: 10px;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: hsl(226, 83%, 41%);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: hsl(226, 83%, 41%);
+            box-shadow:
+                0 6px 18px rgba(8, 102, 213, 0.22);
+            text-decoration: none;
+        }
+
+        .nav-links a.active:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.login {
+            color: white;
+            background: hsl(226, 83%, 41%);
+            box-shadow: 0 6px 18px rgba(8, 102, 213, 0.22);
+        }
+
+        .nav-links a.login:hover {
+            background: hsl(226, 83%, 36%);
+
+            transform: translateY(-1px);
+        }
+
+
+
+        /* =====================================================
+           HERO SECTION
+        ===================================================== */
+
+        .hero {
+            min-height: 440px;
+
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 70px 20px 80px;
+
+            background:
+                linear-gradient(120deg,
+                    #155bb5 0%,
+                    #0876d1 48%,
+                    #23a6c8 100%);
+        }
+
+
+        /* Decorative circles */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 50%;
+
+            left: -170px;
+            bottom: -190px;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 50%;
+
+            right: -160px;
+            top: -220px;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 900px;
+        }
+
+
+        /* HERO BADGE */
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 9px 18px;
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 30px;
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 25px;
+
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+
+        /* HERO TITLE */
+
+        .hero h1 {
+            color: #ffffff;
+
+            font-size: clamp(50px, 6vw, 76px);
+
+            line-height: 1.05;
+
+            font-weight: 900;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ffd11a;
+        }
+
+
+        /* HERO DESCRIPTION */
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.95);
+
+            max-width: 760px;
+
+            margin: auto;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           MAIN FAQ SECTION
+        ===================================================== */
+
+        .faq-section {
+            padding: 85px 7% 100px;
+
+            background: #f5f8fc;
+        }
+
+
+        /* INTRO CARD */
+
+        .intro-card {
+            max-width: 1100px;
+
+            margin: -65px auto 65px;
+
+            position: relative;
+            z-index: 5;
+
+            background: #ffffff;
+
+            border-radius: 28px;
+
+            padding: 48px 40px;
+
+            text-align: center;
+
+            box-shadow: 0 18px 45px rgba(23, 45, 80, 0.10);
+
+            border: 1px solid #e8eef7;
+        }
+
+
+        .intro-icon {
+            width: 76px;
+            height: 76px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background: #eef6ff;
+
+            border: 1px solid #d8eaff;
+
+            font-size: 38px;
+        }
+
+
+        .intro-card h2 {
+            font-size: 34px;
+
+            line-height: 1.2;
+
+            color: #17233c;
+
+            margin-bottom: 12px;
+
+            font-weight: 800;
+        }
+
+        .intro-card h2 span {
+            color: #1675d1;
+        }
+
+
+        .intro-card p {
+            color: #73829b;
+
+            font-size: 16px;
+
+            max-width: 780px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           SECTION HEADING
+        ===================================================== */
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-heading .small-title {
+            color: #0872d2;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: 40px;
+
+            color: #17233c;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 span {
+            color: #1675d1;
+        }
+
+        .section-heading p {
+            color: #72819a;
+
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           FAQ CONTAINER
+        ===================================================== */
+
+        .faq-container {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+
+        /* =====================================================
+           FAQ ITEM
+        ===================================================== */
+
+        .faq-item {
+            background: #ffffff;
+
+            border: 1px solid #e1e9f4;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+
+            box-shadow: 0 5px 18px rgba(26, 49, 83, 0.04);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+
+            border-color: #bddcff;
+
+            box-shadow: 0 12px 30px rgba(30, 105, 180, 0.10);
+        }
+
+
+        /* QUESTION BUTTON */
+
+        .faq-question {
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            padding: 23px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            color: #17233c;
+
+            font-size: 17px;
+
+            font-weight: 700;
+        }
+
+
+        .question-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        /* NUMBER */
+
+        .faq-number {
+            min-width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eef6ff;
+
+            color: #0872d2;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        /* PLUS */
+
+        .faq-icon {
+            min-width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eef6ff;
+
+            color: #0872d2;
+
+            font-size: 24px;
+
+            font-weight: 500;
+
+            transition: all 0.3s ease;
+        }
+
+
+        /* ANSWER */
+
+        .faq-answer {
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.4s ease;
+
+            background: #fbfdff;
+        }
+
+        .faq-answer p {
+            padding: 0 75px 25px;
+
+            color: #687992;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ACTIVE FAQ */
+
+        .faq-item.active {
+            border-color: #a9d2f8;
+
+            box-shadow: 0 12px 30px rgba(23, 105, 184, 0.10);
+        }
+
+        .faq-item.active .faq-icon {
+            background: #1675d1;
+
+            color: #ffffff;
+
+            transform: rotate(45deg);
+        }
+
+
+        /* =====================================================
+           CTA SECTION
+        ===================================================== */
+
+        .faq-cta {
+            max-width: 1050px;
+
+            margin: 70px auto 0;
+
+            padding: 45px 40px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(120deg,
+                    #1265c5,
+                    #1687d8,
+                    #21a3c4);
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow: 0 15px 40px rgba(15, 103, 190, 0.20);
+        }
+
+
+        .faq-cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 50%;
+
+            left: -90px;
+            bottom: -130px;
+        }
+
+
+        .faq-cta h2 {
+            position: relative;
+
+            color: #ffffff;
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .faq-cta p {
+            position: relative;
+
+            color: rgba(255, 255, 255, 0.9);
+
+            margin-bottom: 25px;
+        }
+
+
+        /* BUTTON */
+
+        .cta-button {
+            position: relative;
+
+            display: inline-block;
+
+            background: #ffffff;
+
+            color: #1267c7;
+
+            padding: 13px 25px;
+
+            border-radius: 12px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #142039;
+
+            color: #ffffff;
+
+            text-align: center;
+
+            padding: 25px 20px;
+
+            font-size: 14px;
+        }
+
+        footer span {
+            color: #4ba0ed;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE DESIGN
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .brand {
+                font-size: 24px;
+            }
+
+            .nav-links {
+                gap: 4px;
+            }
+
+            .nav-links a {
+                padding: 11px 10px;
+                font-size: 16px;
+            }
+        }
 
 
         @media (max-width: 850px) {
