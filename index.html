@@ -14,7 +14,59 @@
 
         /* =====================================================
            NANDGAON CIVICCONNECT - PROFESSIONAL HOME PAGE
-        ===================================================== */
+        ===================================================== 
+/* =========================
+   BLUE BUBBLE / TAG EFFECT
+   ========================= */
+
+.navbar a,
+.btn,
+.card,
+.service-card {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.navbar a::before,
+.btn::before,
+.card::before,
+.service-card::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 123, 255, 0.15);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.navbar a:hover::before,
+.btn:hover::before,
+.card:hover::before,
+.service-card:hover::before {
+    width: 180px;
+    height: 180px;
+}
+
+.navbar a,
+.btn,
+.card,
+.service-card {
+    z-index: 1;
+}
+
+.navbar a *,
+.btn *,
+.card *,
+.service-card * {
+    position: relative;
+    z-index: 2;
+}
 
         * {
             box-sizing: border-box;
