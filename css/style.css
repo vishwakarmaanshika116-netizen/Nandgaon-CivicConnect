@@ -630,7 +630,7 @@ form .btn {
     background: #ffffff;
     padding: 14px 18px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: left;
     font-family: Arial, sans-serif;
@@ -664,7 +664,7 @@ form .btn {
     background: #ffffff;
     padding: 14px 18px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: left;
     font-family: Arial, sans-serif;
