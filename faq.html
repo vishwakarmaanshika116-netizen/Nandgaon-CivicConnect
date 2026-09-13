@@ -46,47 +46,42 @@
         /* =====================================================
            NAVBAR
         =====================================================*/
+
         .navbar {
-    width: 100%;
-    min-height: 76px;
-    padding: 0 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+            width: 100%;
+            min-height: 76px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid #e7ebf2;
+            border-bottom: 1px solid #e7ebf2;
 
-    position: sticky;
-    top: 0;
-    z-index: 999;
+            position: sticky;
+            top: 0;
+            z-index: 999;
 
-    box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
-}
+            box-shadow: 0 5px 25px rgba(20, 40, 80, 0.06);
+        }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 9px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
 
-    font-family: "Poppins", sans-serif;
-    font-size: 21px;
-    font-weight: 800;
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
 
-    color: #172033;
-}
+            color: #172033;
+            position: absolute;
+            left: 7%;
+        }
 
-.brand::first-letter {
-    font-size: 24px;
-}
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
         .nav-links a {
             color: #000000;
@@ -714,7 +709,7 @@
                 padding: 11px 10px;
                 font-size: 16px;
             }
-
+        
 
 
         @media (max-width: 850px) {
@@ -757,144 +752,92 @@
         }
 
 
-        /* =====================================================
-   RESPONSIVE DESIGN
-===================================================== */
+        @media (max-width: 600px) {
 
-@media (max-width: 1100px) {
+            .brand {
+                font-size: 20px;
+            }
 
-    .navbar {
-        padding: 0 4%;
-    }
+            .nav-links {
+                gap: 2px;
+            }
 
-    .brand {
-        font-size: 21px;
-    }
+            .nav-links a {
+                font-size: 13px;
 
-    .nav-links {
-        gap: 4px;
-    }
+                padding: 9px 9px;
+            }
 
-    .nav-links a {
-        padding: 11px 10px;
-        font-size: 14px;
-    }
-}
+            .hero {
+                min-height: 380px;
+            }
 
+            .hero h1 {
+                font-size: 42px;
 
-@media (max-width: 850px) {
+                letter-spacing: -1px;
+            }
 
-    .navbar {
-        height: auto;
-        padding: 18px 5%;
-        flex-direction: column;
-        gap: 15px;
-    }
+            .hero p {
+                font-size: 15px;
+            }
 
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+            .hero-badge {
+                font-size: 11px;
+            }
 
-    .hero {
-        min-height: 400px;
-        padding: 60px 20px;
-    }
+            .intro-card {
+                border-radius: 20px;
 
-    .hero h1 {
-        font-size: 50px;
-    }
+                padding: 30px 20px;
+            }
 
-    .faq-section {
-        padding: 70px 5%;
-    }
+            .intro-card h2 {
+                font-size: 27px;
+            }
 
-    .intro-card {
-        padding: 38px 25px;
-        margin-top: -45px;
-    }
-}
+            .section-heading h2 {
+                font-size: 30px;
+            }
 
+            .faq-question {
+                padding: 18px 16px;
 
-@media (max-width: 600px) {
+                font-size: 15px;
+            }
 
-    .brand {
-        font-size: 20px;
-    }
+            .question-left {
+                gap: 10px;
+            }
 
-    .nav-links {
-        gap: 2px;
-    }
+            .faq-number {
+                min-width: 32px;
+                height: 32px;
 
-    .nav-links a {
-        font-size: 13px;
-        padding: 9px 9px;
-    }
+                font-size: 12px;
+            }
 
-    .hero {
-        min-height: 380px;
-    }
+            .faq-icon {
+                min-width: 30px;
+                height: 30px;
 
-    .hero h1 {
-        font-size: 42px;
-        letter-spacing: -1px;
-    }
+                font-size: 21px;
+            }
 
-    .hero p {
-        font-size: 15px;
-    }
+            .faq-answer p {
+                padding: 0 18px 20px 58px;
 
-    .hero-badge {
-        font-size: 11px;
-    }
+                font-size: 14px;
+            }
 
-    .intro-card {
-        border-radius: 20px;
-        padding: 30px 20px;
-    }
+            .faq-cta {
+                padding: 35px 22px;
+            }
 
-    .intro-card h2 {
-        font-size: 27px;
-    }
-
-    .section-heading h2 {
-        font-size: 30px;
-    }
-
-    .faq-question {
-        padding: 18px 16px;
-        font-size: 15px;
-    }
-
-    .question-left {
-        gap: 10px;
-    }
-
-    .faq-number {
-        min-width: 32px;
-        height: 32px;
-        font-size: 12px;
-    }
-
-    .faq-icon {
-        min-width: 30px;
-        height: 30px;
-        font-size: 21px;
-    }
-
-    .faq-answer p {
-        padding: 0 18px 20px 58px;
-        font-size: 14px;
-    }
-
-    .faq-cta {
-        padding: 35px 22px;
-    }
-
-    .faq-cta h2 {
-        font-size: 25px;
-    }
-}
+            .faq-cta h2 {
+                font-size: 25px;
+            }
+        }
     </style>
 </head>
 
