@@ -494,6 +494,55 @@
     }
 
 
+    // ============================================================
+// LOAD FEEDBACK DATA
+// ============================================================
+
+async function loadFeedback() {
+
+    try {
+
+
+        const response =
+            await fetch(
+                "https://nandgaon-civicconnect.onrender.com/api/admin/feedback"
+            );
+
+        const result =
+            await response.json();
+
+
+        if (!result.success) {
+
+            console.error(
+                "Unable to load feedback."
+            );
+
+            return;
+
+        }
+
+
+        document.getElementById("totalFeedback").textContent =
+            result.totalFeedback;
+
+
+        document.getElementById("averageRating").textContent =
+            "⭐ " +
+            Number(result.averageRating).toFixed(1);
+
+
+    } catch (error) {
+
+        console.error(
+            "Loading feedback error:",
+            error
+        );
+
+    }
+
+}
+
     // ====================================================
     // VIEW COMPLAINT
     // ====================================================
@@ -508,12 +557,12 @@
 
     }
 
-
     // ====================================================
     // LOAD DATA
     // ====================================================
 
     loadAdminComplaints();
+    loadFeedback();
 
 </script>
 
