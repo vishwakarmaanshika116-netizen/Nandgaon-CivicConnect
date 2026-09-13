@@ -597,7 +597,7 @@ form .btn {
     background: #ffffff;
     padding: 18px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: left;
     font-size: 16px;
